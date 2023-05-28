@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin-bottom: 30rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HomePage */
+.homepage {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  max-width: 1200px;
+}
+
+.homepage h1 {
+  text-align: center;
+  font-size: 3rem;
+  height: 70vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  color: rgb(238, 238, 238);
+  font-weight: 800;
+}
+
+.banner {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(80%);
+  z-index: -1;
+}
+
+/* Accommodation Nav */
+.accommodations-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.accommodations-nav img {
+  width: 150px;
+  margin-left: -1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  border-radius: 40px;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid black;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-right: 1px solid black;
+  padding: 0 0.5rem;
+}
+
+.nav-search {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.menu-icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.user-icon {
+  font-size: 1.3rem;
+}
+
+.user-container {
+  padding: 0.5rem 0.8rem 0.3rem 0.8rem;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+/* Accommodations Cat */
+.accommodations-category {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  margin: 1.5rem 0 0 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.accommodations-cat-item img {
+  width: 25px;
+}
+
+.accommodations-cat-item span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.accommodations-cat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accommodations-filter {
+  padding: 0.3rem 0.7rem 0.2rem 0.5rem;
+  border: 1px solid black;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.accommodations-filter span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}

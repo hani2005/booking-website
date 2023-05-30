@@ -64,7 +64,7 @@ body {
 }
 
 /*=========== Accommodation Nav ===========*/
-.accommodations-nav {
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,7 +72,7 @@ body {
   /* padding: 0 2rem; */
 }
 
-.accommodations-nav img {
+nav img {
   width: 180px;
   margin-right: -2rem;
   /* margin-left: -1rem; */
@@ -194,7 +194,7 @@ body {
 
 .places-data img {
   width: 100%;
-  height: 15rem;
+  height: 16rem;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
@@ -206,6 +206,7 @@ body {
 .places-data p {
   font-size: 0.85rem;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .places-data h5 {
@@ -373,9 +374,9 @@ p {
 
 .book {
   flex: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-top: 2rem;
 }
 
@@ -413,6 +414,11 @@ p {
   gap: 10px;
 }
 
+.reserve hr {
+  color: rgb(126, 126, 126);
+  margin: 0 1rem;
+}
+
 .reserve button {
   padding: 1rem;
   font-size: 1.05rem;
@@ -435,6 +441,34 @@ p {
   margin: 0 0 1rem 0;
   letter-spacing: -0.5px;
 }
+
+.extra-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.info-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.extra-info-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 2rem 0 1rem 0;
+  letter-spacing: -0.5px;
+}
+
+.info-detail span {
+  letter-spacing: -0.5px;
+  margin-top: 0.3rem;
+}
+
+.info-detail strong {
+  font-size: 1.1rem;
+}
+
 /*=========== Rent Accommodation ===========*/
 .rent-accommodation {
   width: 100%;
@@ -638,4 +672,245 @@ input[type="checkbox"] {
   margin-top: 1rem;
 }
 
-/*=========== Rent Accommodation ===========*/
+/*=========== Big Footer ===========*/
+.big-footer {
+  background-color: black;
+  color: rgb(230, 230, 230);
+  padding: 2rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  gap: 5px;
+}
+
+.column-container {
+  display: flex;
+  gap: 80px;
+}
+
+.column span {
+  letter-spacing: -0.2px;
+  font-size: 0.9rem;
+  color: rgb(221, 221, 221);
+}
+
+.big-footer h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.big-footer h4 {
+  color: rgb(228, 228, 228);
+}
+
+/*=========== Hosting Page ===========*/
+.hosting-page {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.hosting-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.hosting-nav-item a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.hosting-menu {
+  display: flex;
+  align-items: center;
+}
+
+.hosting-page h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.hosting-page h4 {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.hosting-details {
+  display: flex;
+  gap: 20px;
+}
+
+.hosting-details a {
+  border: 1px solid rgb(170, 170, 170);
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: black;
+}
+
+.hosting-detail-container img {
+  width: 220px;
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.hosting-detail-container {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hosting-detail-container h5 {
+  letter-spacing: -0.6px;
+  font-size: 0.95rem;
+}
+
+.hosting-detail-container span {
+  font-size: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+.inbox-container {
+  margin: 0 0 4rem 0;
+  display: flex;
+}
+
+.inbox-column-1 {
+  flex: 1;
+}
+
+.inbox-column-2 {
+  flex: 2;
+  margin-top: 0.2rem;
+}
+
+.inbox-column-2 h3 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.message-input {
+  display: flex;
+  align-items: center;
+  margin-top: 4rem;
+  gap: 12px;
+}
+
+.message-input svg {
+  font-size: 1.5rem;
+}
+
+.message-input input {
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.inbox-column-3 {
+  flex: 1;
+}
+
+.inbox-column-3 hr {
+  color: rgb(170, 170, 170);
+  margin: 0 1rem;
+}
+
+.hosting-detail-container p {
+  text-decoration: none;
+}
+
+.inbox-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inbox-heading svg {
+  font-size: 1.3rem;
+}
+
+.inbox-heading h3 {
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  font-size: 1.4rem;
+}
+
+.inbox-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(170, 170, 170);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 1rem 0 2rem 0;
+}
+
+.inbox-search input {
+  border: none;
+  width: 100%;
+}
+
+.inbox-search input::placeholder {
+  font-size: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+.inbox-search svg {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.message-box-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.message-box-user img {
+  width: 60px;
+  height: 60px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+.message-box-user h4 {
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.message-box-user h5 {
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
+}
+
+.host-listing img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0.8rem;
+}
+
+.host-listing {
+  margin: 2rem 0 0 0;
+}
+
+.host-listing h5 {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.host-listing p {
+  text-decoration: none;
+  color: rgb(124, 124, 124);
+}

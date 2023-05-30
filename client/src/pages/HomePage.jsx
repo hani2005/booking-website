@@ -1,6 +1,9 @@
 import React from "react"
 import AccommodationsNav from "../components/AccommodationsNav"
 import AccommodationsCat from "../components/AccommodationsCat"
+import PlacesData from "../components/PlacesData"
+import SmallFooter from "../components/SmallFooter"
+import banner from "/src/dubai-banner.mp4"
 
 function HomePage() {
   return (
@@ -14,13 +17,15 @@ function HomePage() {
       </div>
       <video
         className="banner"
-        src="/public/dubai-banner.mp4"
+        src={banner}
         muted
         autoPlay
         loop
         type="video/mp4"
       ></video>
       <AccommodationsCat />
+      <PlacesData />
+      <SmallFooter />
     </>
   )
 }

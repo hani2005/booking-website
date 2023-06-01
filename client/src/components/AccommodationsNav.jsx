@@ -18,7 +18,7 @@ function AccommodationsNav() {
       </div>
       <div className="profile">
         <Link to={"/rent-accommodation"}>Host Your Home</Link>
-        <Link to={"/hosting"} className="user-container">
+        <Link to={"/hosting/today"} className="user-container">
           <HiMenu className="menu-icon" />
           <FaUserCircle className="user-icon" />
         </Link>

@@ -4,6 +4,8 @@ import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
 import { BiMenu, BiSearch } from "react-icons/bi"
 import { BsFillImageFill } from "react-icons/bs"
+import { AiOutlinePlus } from "react-icons/ai"
+import placesData from "../data"
 
 function HostingPage() {
   let { subpage } = useParams()
@@ -23,14 +25,18 @@ function HostingPage() {
             <Link>Pending Review (0)</Link>
           </div>
           <div className="hosting-detail-container">
-            <img
-              src="https://a0.muscache.com/im/pictures/miso/Hosting-891612948952049681/original/65496d15-3f82-4ca2-a03b-fec4d8dfd975.jpeg?im_w=1200"
-              alt=""
-            />
-            <h5>Apartment in Khawr Fakkan</h5>
-            <span>HOOUD Apartments</span>
-            <span>Jun 1 - 8</span>
-            <p>night 397</p>
+            {placesData.slice(0, 1).map((item) => (
+              <Link key={item.id} to={`/accommodation/${item.id}`}>
+                <img
+                  src={item.mainImg}
+                  alt=""
+                />
+                <h5>{item.property}</h5>
+                <span>{item.title}</span>
+                <span>{item.date}</span>
+                <p>night {item.price}</p>
+              </Link>
+            ))}
           </div>
         </div>
       )}
@@ -133,6 +139,14 @@ function HostingPage() {
           <h1>Hello Inbox</h1>
         </div>
       )}
+      {/* {subpage === "listings" && (
+        
+      )} */}
+      {/* {subpage === "listings/details" && (
+        <div className="">
+            Hello
+        </div>
+      )} */}
       <BigFooter />
     </div>
   )

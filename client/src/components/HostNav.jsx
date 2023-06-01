@@ -17,12 +17,12 @@ function HostNav() {
         <Link to={"/hosting/calendar"}>Calendar</Link>
         <Link to={"/hosting/insights"}>Insights</Link>
         <div className="hosting-menu">
-          <Link>Menu</Link>
+          <Link to={"/listings"}>Menu</Link>
           <IoIosArrowDown />
         </div>
       </div>
       <div className="profile">
-        <Link to={"/hosting"} className="user-container">
+        <Link to={"/hosting/today"} className="user-container">
           <HiMenu className="menu-icon" />
           <FaUserCircle className="user-icon" />
         </Link>

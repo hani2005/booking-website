@@ -324,3 +324,5 @@ export const amenities = [
     icon: "https://cdn-icons-png.flaticon.com/128/846/846296.png",
   },
 ]
+
+export const DAYS = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];

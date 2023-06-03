@@ -14,7 +14,7 @@ function HostNav() {
       <div className="hosting-nav-item">
         <Link to={"/hosting/today"}>Today</Link>
         <Link to={"/hosting/inbox"}>Inbox</Link>
-        <Link to={"/hosting/calendar"}>Calendar</Link>
+        <Link to={"/calendar"}>Calendar</Link>
         <Link to={"/hosting/insights"}>Insights</Link>
         <div className="hosting-menu">
           <Link to={"/listings"}>Menu</Link>

@@ -26,15 +26,6 @@ function ManageListing() {
     location,
     desc,
     price,
-    offer1,
-    offer2,
-    offer3,
-    offer4,
-    checkIn,
-    checkOut,
-    maxGuests,
-    reviews,
-    rate
   } = place
   return (
     <div>

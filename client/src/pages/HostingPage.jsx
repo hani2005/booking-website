@@ -4,7 +4,6 @@ import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
 import { BiMenu, BiSearch } from "react-icons/bi"
 import { BsFillImageFill } from "react-icons/bs"
-import { AiOutlinePlus } from "react-icons/ai"
 import placesData from "../data"
 
 function HostingPage() {
@@ -27,10 +26,7 @@ function HostingPage() {
           <div className="hosting-detail-container">
             {placesData.slice(0, 1).map((item) => (
               <Link key={item.id} to={`/accommodation/${item.id}`}>
-                <img
-                  src={item.mainImg}
-                  alt=""
-                />
+                <img src={item.mainImg} alt="" />
                 <h5>{item.property}</h5>
                 <span>{item.title}</span>
                 <span>{item.date}</span>
@@ -139,14 +135,6 @@ function HostingPage() {
           <h1>Hello Inbox</h1>
         </div>
       )}
-      {/* {subpage === "listings" && (
-        
-      )} */}
-      {/* {subpage === "listings/details" && (
-        <div className="">
-            Hello
-        </div>
-      )} */}
       <BigFooter />
     </div>
   )

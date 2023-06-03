@@ -786,6 +786,8 @@ input[type="checkbox"] {
   letter-spacing: -0.5px;
 }
 
+/*=========== Inbox Subpage ===========*/
+
 .inbox-container {
   margin: 0 0 4rem 0;
   display: flex;
@@ -920,6 +922,8 @@ input[type="checkbox"] {
   color: rgb(124, 124, 124);
 }
 
+/*=========== Listings Page ===========*/
+
 .listings-container {
   margin: 0 0 5rem 0;
 }
@@ -990,6 +994,8 @@ input[type="checkbox"] {
   margin-bottom: 1.5rem;
 }
 
+/*=========== ManageListings Page ===========*/
+/*===== Listings Details Subage =====*/
 .details-container {
   display: flex;
   gap: 100px;
@@ -1169,6 +1175,7 @@ input[type="checkbox"] {
   margin: 1.5rem 0;
 }
 
+/*===== Pricing Details Subage =====*/
 .pricing-page {
   display: flex;
   gap: 150px;
@@ -1234,6 +1241,7 @@ input[type="checkbox"] {
   margin-bottom: 0.5rem;
 }
 
+/*===== Policies Subage =====*/
 .policies-page {
   display: flex;
   gap: 150px;
@@ -1284,6 +1292,7 @@ input[type="checkbox"] {
   margin-top: 1.5rem;
 }
 
+/*=========== Login Page ===========*/
 .login-page {
   width: 100%;
   max-width: 1200px;
@@ -1323,4 +1332,105 @@ input[type="checkbox"] {
 .login-page-content a {
   color: black;
   margin-top: 1rem;
+}
+/*=========== Register Page ===========*/
+
+/*=========== Calendar ===========*/
+.calendar-container {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.calendar-page {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 5rem;
+}
+
+.date-control {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  cursor: default;
+}
+
+.date-control ion-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.col-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.span-price {
+  text-align: center !important;
+  margin-top: -1.5rem;
+  margin-left: 1rem;
+}
+
+.col-div span {
+  text-align: right;
+  padding: 15px 15px 0 0;
+  font-weight: 600;
+  /* height: fit-content; */
+}
+
+.col-div {
+  display: grid;
+  border: 1px solid;
+  height: 120px;
+}
+
+.headDays {
+  text-align: center;
+  border: 1px solid;
+  height: 30px;
+  padding: 5px;
+  background: black;
+  color: white;
+  font-weight: 600;
+}
+
+.date-control svg {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.calendar-page-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+.calendar-page-content span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.calendar-page-content img {
+  width: 150px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.calendar-page-img {
+  width: 35rem;
+}
+
+.calendar-page-img a {
+  text-decoration: none;
+  color: black;
 }

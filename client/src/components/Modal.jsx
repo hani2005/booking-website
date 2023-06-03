@@ -1,0 +1,38 @@
+import React from "react"
+import { FaArrowRight, FaTimes } from "react-icons/fa"
+import { useGlobalContext } from "../context"
+import { Link } from "react-router-dom"
+
+function Modal() {
+  const { isModalOpen, closeModal } = useGlobalContext()
+
+  return (
+    <div
+      className={`${
+        isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
+      }`}
+    >
+      <div className="modal-container">
+        <div className="modal-links">
+          <div className="modal-links-content">
+            <a href="#stays">Stays</a>
+            <FaArrowRight />
+          </div>
+          <div className="modal-links-content">
+            <Link to={"/rent-car"}>Rent Car</Link>
+            <FaArrowRight />
+          </div>
+          <div className="modal-links-content">
+            <Link to={"/experiences"}>Experiences</Link>
+            <FaArrowRight />
+          </div>
+        </div>
+        <button className="close-modal-btn" onClick={closeModal}>
+          <FaTimes></FaTimes>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+export default Modal

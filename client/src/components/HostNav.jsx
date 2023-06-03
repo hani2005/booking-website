@@ -1,5 +1,5 @@
 import React from "react"
-import logo from "/src/digital-bnb.png"
+import logo from "../assets/digital-bnb.png"
 import { Link } from "react-router-dom"
 import { HiMenu } from "react-icons/hi"
 import { FaUserCircle } from "react-icons/fa"

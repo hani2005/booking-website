@@ -8,6 +8,7 @@ import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 import { DateRange } from "react-date-range"
 import BigFooter from "../components/BigFooter"
+import Modal from "../components/Modal"
 
 function AccommodationPage() {
   const [state, setState] = useState([
@@ -44,6 +45,7 @@ function AccommodationPage() {
   return (
     <div className="accommodation-page">
       <AccommodationsNav />
+      <Modal />
       <h2 className="place-title">{title}</h2>
       <div className="place-subtitle">
         <div className="place-rate">

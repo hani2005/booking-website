@@ -1533,3 +1533,75 @@ input[type="checkbox"] {
   align-items: center;
   gap: 5px;
 }
+
+/*=========== Rent Car ===========*/
+.rent-car-page {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.cars-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cars-categories img {
+  width: 50px;
+  height: 50px;
+}
+
+.cars-categories span {
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.cars-categories-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rem 0;
+}
+
+.carsData-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  max-width: 1200px;
+  gap: 10px;
+}
+
+.carsData-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.carsData-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+.carsData-content img {
+  width: 100%;
+  height: 16rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.carsData-content span {
+  color: rgb(99, 99, 99);
+  letter-spacing: -0.5px;
+  font-size: 0.95rem;
+}
+
+.carsData-content h4 {
+  letter-spacing: -0.5px;
+}
+
+.carsData-content h5 {
+  font-size: 1rem;
+}

@@ -10,7 +10,11 @@ import Calendar from "./components/Calendar"
 import IdCalendar from "./components/IdCalendar"
 import RegisterPage from "./pages/RegisterPage"
 import RentCar from "./pages/RentCar"
-import Experiences from "./components/Experiences"
+import Experiences from "./pages/Experiences"
+import RentYourCar from "./pages/RentYourCar"
+import CarDetails from "./pages/CarDetails"
+import HostExperience from "./pages/HostExperience"
+import Experience from "./pages/Experience"
 
 function App() {
   return (
@@ -27,7 +31,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/rent-car" element={<RentCar />} />
+        <Route path="/rent-your-car" element={<RentYourCar />} />
+        <Route path="/car-details/:id" element={<CarDetails />} />
         <Route path="/experiences" element={<Experiences />} />
+        <Route path="/host-experience" element={<HostExperience />} />
+        <Route path="/experience" element={<Experience />} />
       </Routes>
     </div>
   )

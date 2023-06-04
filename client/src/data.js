@@ -1,19 +1,3 @@
-import { TbBeach, TbMountain, TbPool } from "react-icons/tb"
-import {
-  GiBarn,
-  GiBoatFishing,
-  GiCactus,
-  GiCastle,
-  GiCaveEntrance,
-  GiForestCamp,
-  GiIsland,
-  GiWindmill
-} from "react-icons/gi"
-import { FaSkiing } from "react-icons/fa"
-import { BsSnow } from "react-icons/bs"
-import { IoDiamond } from "react-icons/io5"
-import { MdOutlineVilla } from "react-icons/md"
-
 const placesData = [
   {
     id: "1",
@@ -216,113 +200,515 @@ const placesData = [
     reviews: "32"
   }
 ]
-
 export default placesData
+
+export const carsData = [
+  {
+    id: "1",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "2",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "3",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "4",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "5",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "6",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "7",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "8",
+    mainImg:
+      "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674246.jpg",
+    title: "Cadillac Escalade-V 2023",
+    model: "2023",
+    price: "397",
+    img1: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674252.jpg",
+    img2: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674249.jpg",
+    img3: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674258.jpg",
+    img4: "https://www.mad4wheels.com/img/free-car-images/desktop/19391/cadillac-escalade-v-2023-674262.jpg",
+    location: "Abu Dhabi, United Arab Emirates",
+    desc: "Brand new, ultimate luxury and comfort for your family and friends With tv screens in the back, watch Netflix, Disney, YouTube and more. Kids can watch with independent headphones while you listen to music.Fully loaded vehicle with heated and cooling seats. Interior leather color is upgraded with auto park, moonroof, and an amazing sound system...",
+    pickUp: "Abu Dhabi, United Arab Emirates",
+    rate: "5.0",
+    reviews: "7"
+  }
+]
+
+export const experienceData = [
+  {
+    id: "1",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "2",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "3",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "4",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "5",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "6",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "7",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+  {
+    id: "8",
+    mainImg:
+      "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/303cd806-9705-4c06-89c1-e1a4a290c481.jpeg?im_w=1200",
+    title: "High Red Dunes with Camel & vip Dinner",
+    price: "597",
+    img1: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/56f07a04-81d2-4020-9077-8d01bd36f792.jpeg?im_w=1200",
+    img2: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2cd7a71e-2035-4d22-a63f-1e99f128fe01.jpeg?im_w=1200",
+    img3: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/f42aa50c-ef08-49f0-a41b-d0de2728de39.jpeg?im_w=1200",
+    img4: "https://a0.muscache.com/im/pictures/lombard/MtTemplate-232074-media_library/original/2b543e16-69ac-46fe-8a6d-05c09063fbe6.jpg?im_w=1200",
+    location: "Dubai, United Arab Emirates",
+    desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
+    rate: "5.0",
+    reviews: "7"
+  },
+]
 
 export const categories = [
   {
     label: "Serviced Apartment",
-    icon: "https://cdn-icons-png.flaticon.com/128/88/88970.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/88/88970.png"
   },
   {
     label: "Hotel Apartment",
-    icon: "https://cdn-icons-png.flaticon.com/128/10365/10365182.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/10365/10365182.png"
   },
   {
     label: "Villa",
-    icon: "https://cdn-icons-png.flaticon.com/128/2935/2935898.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2935/2935898.png"
   },
   {
     label: "Hotel Room",
-    icon: "https://cdn-icons-png.flaticon.com/128/5140/5140130.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/5140/5140130.png"
   },
   {
     label: "Private Room",
-    icon: "https://cdn-icons-png.flaticon.com/128/6934/6934759.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/6934/6934759.png"
   },
   {
     label: "Campsite",
-    icon: "https://cdn-icons-png.flaticon.com/128/7666/7666243.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/7666/7666243.png"
   },
   {
     label: "Farmhouse",
-    icon: "https://cdn-icons-png.flaticon.com/128/2134/2134519.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2134/2134519.png"
   },
   {
     label: "Unique Stays",
-    icon: "https://cdn-icons-png.flaticon.com/128/67/67745.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/67/67745.png"
+  }
+]
+
+export const carsCategories = [
+  {
+    label: "Mercedes",
+    icon: "https://static.cdnlogo.com/logos/m/68/mercedes.svg"
   },
+  {
+    label: "Bentley",
+    icon: "https://static.cdnlogo.com/logos/b/28/bentley.svg"
+  },
+  {
+    label: "Ferrari",
+    icon: "https://static.cdnlogo.com/logos/f/85/ferrari.svg"
+  },
+  {
+    label: "Cadillac",
+    icon: "https://static.cdnlogo.com/logos/c/63/cadillac.svg"
+  },
+  {
+    label: "Lamborghini",
+    icon: "https://static.cdnlogo.com/logos/l/63/lamborghini.svg"
+  },
+  {
+    label: "Aston Martin",
+    icon: "https://static.cdnlogo.com/logos/a/63/aston-martin.svg"
+  },
+  {
+    label: "Infiniti",
+    icon: "https://static.cdnlogo.com/logos/i/65/infiniti.svg"
+  },
+  {
+    label: "Jaguar",
+    icon: "https://static.cdnlogo.com/logos/j/98/jaguar.svg"
+  },
+  {
+    label: "Tesla",
+    icon: "https://static.cdnlogo.com/logos/t/75/tesla.svg"
+  },
+  {
+    label: "Lincoln",
+    icon: "https://static.cdnlogo.com/logos/l/41/lincoln.svg"
+  },
+  {
+    label: "Rolls-Royce",
+    icon: "https://static.cdnlogo.com/logos/r/50/rolls-royce-motors.svg"
+  }
+]
+
+export const experienceCategories = [
+  {
+    label: "Art and culture"
+  },
+  {
+    label: "Entertainment"
+  },
+  {
+    label: "Food and drink"
+  },
+  {
+    label: "Sports"
+  },
+  {
+    label: "Tours"
+  },
+  {
+    label: "Sightseeing"
+  },
+  {
+    label: "Wellness"
+  },
+  {
+    label: "Nature and outdoors"
+  }
 ]
 
 export const amenities = [
   {
     amenitie: "Wifi",
-    icon: "https://cdn-icons-png.flaticon.com/128/2696/2696335.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2696/2696335.png"
   },
   {
     amenitie: "TV",
-    icon: "https://cdn-icons-png.flaticon.com/128/3386/3386992.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/3386/3386992.png"
   },
   {
     amenitie: "Washer",
-    icon: "https://cdn-icons-png.flaticon.com/128/1010/1010385.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1010/1010385.png"
   },
   {
     amenitie: "Air conditioning",
-    icon: "https://cdn-icons-png.flaticon.com/128/1530/1530297.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1530/1530297.png"
   },
   {
     amenitie: "Kitchen",
-    icon: "https://cdn-icons-png.flaticon.com/128/1606/1606657.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1606/1606657.png"
   },
   {
     amenitie: "Exercise equipment",
-    icon: "https://cdn-icons-png.flaticon.com/128/1414/1414446.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1414/1414446.png"
   },
   {
     amenitie: "Beach access",
-    icon: "https://cdn-icons-png.flaticon.com/128/2664/2664589.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2664/2664589.png"
   },
   {
     amenitie: "Ski-in/Ski-out",
-    icon: "https://cdn-icons-png.flaticon.com/128/1412/1412921.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1412/1412921.png"
   },
   {
     amenitie: "Piano",
-    icon: "https://cdn-icons-png.flaticon.com/128/1286/1286652.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1286/1286652.png"
   },
   {
     amenitie: "Pool",
-    icon: "https://cdn-icons-png.flaticon.com/128/2784/2784593.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/2784/2784593.png"
   },
   {
     amenitie: "Elevator",
-    icon: "https://cdn-icons-png.flaticon.com/128/637/637209.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/637/637209.png"
   },
   {
     amenitie: "BBQ grill",
-    icon: "https://cdn-icons-png.flaticon.com/128/823/823317.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/823/823317.png"
   },
   {
     amenitie: "Dedicated workspace",
-    icon: "https://cdn-icons-png.flaticon.com/128/1599/1599910.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1599/1599910.png"
   },
   {
     amenitie: "Hot tub",
-    icon: "https://cdn-icons-png.flaticon.com/128/5139/5139174.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/5139/5139174.png"
   },
   {
     amenitie: "Canal view",
-    icon: "https://cdn-icons-png.flaticon.com/128/3152/3152754.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/3152/3152754.png"
   },
   {
     amenitie: "Skyline view",
-    icon: "https://cdn-icons-png.flaticon.com/128/1916/1916251.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/1916/1916251.png"
   },
   {
     amenitie: "Free parking on premises",
-    icon: "https://cdn-icons-png.flaticon.com/128/846/846296.png",
-  },
+    icon: "https://cdn-icons-png.flaticon.com/128/846/846296.png"
+  }
 ]
 
-export const DAYS = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
+export const carFeatures = [
+  {
+    carFeature: "Apple play",
+    icon: "https://cdn-icons-png.flaticon.com/128/1240/1240942.png"
+  },
+  {
+    carFeature: "Bluetooth",
+    icon: "https://cdn-icons-png.flaticon.com/128/6457/6457277.png"
+  },
+  {
+    carFeature: "GPS",
+    icon: "https://cdn-icons-png.flaticon.com/128/2794/2794702.png"
+  },
+  {
+    carFeature: "Backup camera",
+    icon: "https://cdn-icons-png.flaticon.com/128/7395/7395432.png"
+  },
+  {
+    carFeature: "USB input",
+    icon: "https://cdn-icons-png.flaticon.com/128/4738/4738945.png"
+  },
+  {
+    carFeature: "Heated seats",
+    icon: "https://cdn-icons-png.flaticon.com/128/638/638470.png"
+  },
+  {
+    carFeature: "Convertible",
+    icon: "https://cdn-icons-png.flaticon.com/128/3097/3097139.png"
+  },
+  {
+    carFeature: "Automatic transmission",
+    icon: "https://cdn-icons-png.flaticon.com/128/4901/4901004.png"
+  },
+  {
+    carFeature: "Sunroof",
+    icon: "https://cdn-icons-png.flaticon.com/128/10450/10450336.png"
+  },
+  {
+    carFeature: "AUX input",
+    icon: "https://cdn-icons-png.flaticon.com/128/4097/4097062.png"
+  },
+  {
+    carFeature: "Keyless entry",
+    icon: "https://cdn-icons-png.flaticon.com/128/5828/5828699.png"
+  },
+  {
+    carFeature: "Emergency Braking",
+    icon: "https://cdn-icons-png.flaticon.com/128/9104/9104208.png"
+  },
+  {
+    carFeature: "Long-term car",
+    icon: "https://cdn-icons-png.flaticon.com/128/1442/1442912.png"
+  },
+  {
+    carFeature: "Lane Departure Warning",
+    icon: "https://cdn-icons-png.flaticon.com/128/5013/5013522.png"
+  },
+  {
+    carFeature: "Android Auto",
+    icon: "https://cdn-icons-png.flaticon.com/128/1069/1069944.png"
+  },
+  {
+    carFeature: "Automatic Parking",
+    icon: "https://cdn-icons-png.flaticon.com/128/6747/6747404.png"
+  }
+]
+
+export const DAYS = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]

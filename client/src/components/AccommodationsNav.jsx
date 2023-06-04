@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import logo from "../assets/digital-bnb.png"
 import { FaSearch, FaUserCircle } from "react-icons/fa"
 import { HiMenu } from "react-icons/hi"

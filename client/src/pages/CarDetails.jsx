@@ -4,7 +4,7 @@ import { DateRange } from "react-date-range"
 import { AiFillStar } from "react-icons/ai"
 import Modal from "../components/Modal"
 import { useParams } from "react-router-dom"
-import { carFeatures, carsData } from "../data"
+import { carFeatures, carsData, reviewsData } from "../data"
 import RentCarNav from "../components/RentCarNav"
 
 function CarDetails() {
@@ -121,36 +121,29 @@ function CarDetails() {
           date={new Date()}
         />
       </div>
-      {/* <h2 className="extra-info-title">Things To Know</h2>
-      <div className="extra-info">
-        <div className="info-detail">
-          <span>
-            <strong>House rules</strong>
-          </span>
-          <span>{checkIn}</span>
-          <span>{checkOut}</span>
-          <span>{maxGuests}</span>
+      <div className="reviews-container">
+        <div className="review-header">
+          <div className="review-header-rate">
+            <AiFillStar />
+            <h5>{rate}</h5>
+          </div>
+          <h5>{reviews} reviews</h5>
         </div>
-        <div className="info-detail">
-          <span>
-            <strong>Safety & property</strong>
-          </span>
-          <span>Carbon monoxide alarm not reported</span>
-          <span>Smoke alarm not reported</span>
-          <span>Pool/hot tub without a gate or lock</span>
+        <div className="review-profile-container">
+          {reviewsData.map((item) => (
+            <div className="review-profile-content">
+              <div className="review-profile">
+                <img src={item.img} alt="" />
+                <div className="review-profile-text">
+                  <h5>{item.name}</h5>
+                  <span>{item.date}</span>
+                </div>
+              </div>
+              <p>{item.review}</p>
+            </div>
+          ))}
         </div>
-        <div className="info-detail">
-          <span>
-            <strong>Cancellation policy</strong>
-          </span>
-          <span>Free cancellation for 48 hours.</span>
-          <p>
-            Review the Host's full cancellation policy which
-            <br /> applies even if you cancel for illness or disruptions
-            <br /> caused by COVID-19.
-          </p>
-        </div>
-      </div> */}
+      </div>
       <BigFooter />
     </div>
   )

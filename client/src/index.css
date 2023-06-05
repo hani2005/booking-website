@@ -1605,3 +1605,70 @@ input[type="checkbox"] {
 .carsData-content h5 {
   font-size: 1rem;
 }
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.review-header-rate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.review-header-rate svg {
+  font-size: 1.7rem;
+}
+
+.review-header h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.review-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 8px;
+}
+
+.review-profile h5 {
+  font-size: 1rem;
+  margin-bottom: -0.2rem;
+}
+
+.review-profile span {
+  letter-spacing: -0.5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.review-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.reviews-container p {
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.reviews-container {
+  margin: 5rem 0 6rem 0;
+}
+
+.review-profile-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 50px;
+}
+
+.review-profile-content {
+  display: flex;
+  flex-direction: column;
+}

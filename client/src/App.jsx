@@ -35,7 +35,7 @@ function App() {
         <Route path="/car-details/:id" element={<CarDetails />} />
         <Route path="/experiences" element={<Experiences />} />
         <Route path="/host-experience" element={<HostExperience />} />
-        <Route path="/experience" element={<Experience />} />
+        <Route path="/experience/:id" element={<Experience />} />
       </Routes>
     </div>
   )

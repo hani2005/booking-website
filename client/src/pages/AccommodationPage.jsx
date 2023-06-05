@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import AccommodationsNav from "../components/AccommodationsNav"
-import placesData, { amenities } from "../data"
+import placesData, { amenities, reviewsData } from "../data"
 import { AiFillStar } from "react-icons/ai"
 
 import "react-date-range/dist/styles.css" // main css file
@@ -126,6 +126,29 @@ function AccommodationPage() {
           minDate={new Date()}
           date={new Date()}
         />
+      </div>
+      <div className="reviews-container">
+        <div className="review-header">
+          <div className="review-header-rate">
+            <AiFillStar />
+            <h5>{rate}</h5>
+          </div>
+          <h5>{reviews} reviews</h5>
+        </div>
+        <div className="review-profile-container">
+          {reviewsData.map((item) => (
+            <div className="review-profile-content">
+              <div className="review-profile">
+                <img src={item.img} alt="" />
+                <div className="review-profile-text">
+                  <h5>{item.name}</h5>
+                  <span>{item.date}</span>
+                </div>
+              </div>
+              <p>{item.review}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <h2 className="extra-info-title">Things To Know</h2>
       <div className="extra-info">

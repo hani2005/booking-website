@@ -461,7 +461,7 @@ export const experienceData = [
     desc: "Cool off from the heat of the city and escape to the sea on a cruise from Dubai. Climb aboard a luxury boat and marvel at the legendary attractions from the water. Admire the luxury developments of Palm Jumeirah and see the Atlantis the Palm Hotel and more. Get privileged views of the Burj Al Arab and other iconic monuments. Boats capacity is up to 6 people, the cruise includes a stop to swim in the sea and a good stereo system on board the boat to listen to your favorite songs...",
     rate: "5.0",
     reviews: "7"
-  },
+  }
 ]
 
 export const categories = [
@@ -644,6 +644,29 @@ export const amenities = [
   }
 ]
 
+export const perks = [
+  {
+    perk: "Food",
+    icon: "https://cdn-icons-png.flaticon.com/128/562/562678.png"
+  },
+  {
+    perk: "Drinks",
+    icon: "https://cdn-icons-png.flaticon.com/128/3025/3025900.png"
+  },
+  {
+    perk: "Transportation",
+    icon: "https://cdn-icons-png.flaticon.com/128/3124/3124381.png"
+  },
+  {
+    perk: "Tickets",
+    icon: "https://cdn-icons-png.flaticon.com/128/389/389801.png"
+  },
+  {
+    perk: "Equipment",
+    icon: "https://cdn-icons-png.flaticon.com/128/7466/7466185.png"
+  }
+]
+
 export const carFeatures = [
   {
     carFeature: "Apple play",
@@ -708,6 +731,57 @@ export const carFeatures = [
   {
     carFeature: "Automatic Parking",
     icon: "https://cdn-icons-png.flaticon.com/128/6747/6747404.png"
+  }
+]
+
+export const reviewsData = [
+  {
+    id: "1",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
+  },
+  {
+    id: "2",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
+  },
+  {
+    id: "3",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
+  },
+  {
+    id: "4",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
+  },
+  {
+    id: "5",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
+  },
+  {
+    id: "6",
+    img: "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600",
+    name: "Hani",
+    date: "December 2021",
+    review:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias ut cupiditate aspernatur facere aliquid explicabo!"
   }
 ]
 

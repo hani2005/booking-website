@@ -15,11 +15,11 @@ function ExperienceNav() {
       <div className="nav-item" onClick={openModal}>
         <span>Anywhere</span>
         <span>Any week</span>
-        <span>Rent Car</span>
+        <span>Experience</span>
         <FaSearch className="nav-search" />
       </div>
       <div className="profile">
-        <Link to={"/rent-your-car"}>Rent Your Car</Link>
+        <Link to={"/host-experience"}>Host Your Experience</Link>
         <Link to={"/hosting/today"} className="user-container">
           <HiMenu className="menu-icon" />
           <FaUserCircle className="user-icon" />

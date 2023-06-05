@@ -15,7 +15,7 @@ function ExperienceNav() {
       <div className="nav-item" onClick={openModal}>
         <span>Anywhere</span>
         <span>Any week</span>
-        <span>Experience</span>
+        <span className="add-guests">Experience</span>
         <FaSearch className="nav-search" />
       </div>
       <div className="profile">

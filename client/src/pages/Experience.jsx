@@ -1,13 +1,16 @@
 import React, { useState } from "react"
 import BigFooter from "../components/BigFooter"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { experienceData, perks, reviewsData } from "../data"
 import ExperienceNav from "../components/ExperienceNav"
 import Modal from "../components/Modal"
 import { AiFillStar } from "react-icons/ai"
 import { DateRange } from "react-date-range"
+import "react-date-range/dist/styles.css" // main css file
+import "react-date-range/dist/theme/default.css" // theme css file
 
 function Experience() {
+  const [readMore, setReadMore] = useState(false)
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -28,15 +31,12 @@ function Experience() {
     location,
     desc,
     price,
-    offer1,
-    offer2,
-    offer3,
-    offer4,
     reviews,
     rate
   } = experience
+
   return (
-    <div className="accommodation-page">
+    <div className="experience-page">
       <ExperienceNav />
       <Modal />
       <h2 className="place-title">{title}</h2>
@@ -59,13 +59,18 @@ function Experience() {
       </div>
       <div className="place-details-container">
         <div className="place-details">
-          <h1>Room in a rental unit hosted by Ahmed</h1>
+          <h1>Experience hosted by Rakan</h1>
           <div className="desc-container">
-            <h2>About This Place</h2>
-            <p>{desc}</p>
+            <h2>What you'll do</h2>
+            <p>
+              {readMore ? desc : `${desc.substring(0, 200)}...`}
+              <button onClick={() => setReadMore(!readMore)}>
+                {readMore ? "Show less" : "Show more"}
+              </button>
+            </p>
           </div>
           <div className="offers">
-            <h2>What This Place Offers</h2>
+            <h2>What's included</h2>
             <div className="offer-detail">
               {perks.slice(0, 6).map((item) => (
                 <div key={item.perk} className="amenities">
@@ -79,7 +84,7 @@ function Experience() {
         <div className="book">
           <div className="book-price-detail">
             <span className="book-price">
-              <strong>${price}</strong>/night
+              <strong>${price}</strong>/person
             </span>
             <div className="book-perfomance">
               <div className="book-rate">
@@ -100,7 +105,7 @@ function Experience() {
             />
           </div>
           <div className="reserve">
-            <button>Reserve</button>
+            <Link to={"/checkout"}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">
@@ -111,7 +116,7 @@ function Experience() {
         </div>
       </div>
       <div className="date-picker">
-        <h2>7 Nights in Dubai</h2>
+        <h2>Add dates</h2>
         <DateRange
           rangeColors={["#000000"]}
           onChange={(item) => setState([item.selection])}

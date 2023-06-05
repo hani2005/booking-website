@@ -9,10 +9,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* body {
-  margin-bottom: 10rem;
-} */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -20,11 +16,28 @@
 }
 
 .date-picker .rdrCalendarWrapper {
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .date-picker .rdrMonthAndYearPickers select {
   font-size: 16px !important;
+}
+
+.date-picker .rdrNextPrevButton {
+  width: 50px;
+  height: 50px;
+}
+
+.date-picker .rdrNextButton i {
+  margin: auto;
+}
+
+.date-picker .rdrDays {
+  margin-top: 2rem;
+}
+
+.date-picker .rdrMonthAndYearPickers select {
+  font-size: 1rem;
 }
 
 .rdrDateDisplayWrapper {
@@ -70,12 +83,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   margin-top: -1.5rem;
-  /* padding: 0 2rem; */
 }
 
 nav img {
   width: 180px;
-  /* margin-right: -1rem; */
   margin-left: -1rem;
 }
 
@@ -87,6 +98,7 @@ nav img {
   border: 1px solid black;
   box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.3);
   margin-right: -1.8rem;
+  cursor: pointer;
 }
 
 .nav-item span {
@@ -94,6 +106,10 @@ nav img {
   font-weight: 600;
   border-right: 1px solid black;
   padding: 0 0.5rem;
+}
+
+.add-guests {
+  border-right: none !important;
 }
 
 .nav-search {
@@ -163,21 +179,6 @@ nav img {
   align-items: center;
 }
 
-.accommodations-filter {
-  padding: 0.3rem 1rem 0.2rem 0.8rem;
-  border: 1px solid black;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.accommodations-filter span {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 /*=========== Places Data ===========*/
 .places-data-container {
   max-width: 1200px;
@@ -239,6 +240,16 @@ nav img {
   max-width: 1100px;
 }
 
+.experience-page {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.car-details-page {
+  width: 100%;
+  max-width: 1100px;
+}
+
 .place-title {
   font-size: 1.8rem;
   font-weight: 500;
@@ -271,6 +282,7 @@ p {
 
 .img-container {
   display: flex;
+  margin: 2rem 0;
 }
 
 .mainImg {
@@ -340,8 +352,30 @@ p {
   text-decoration: none;
 }
 
+.place-details button {
+  display: block;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  background-color: transparent;
+  color: black;
+  font-weight: 600;
+  letter-spacing: -1px;
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+}
+
 .offers {
   margin-bottom: 2rem;
+}
+
+.offers button {
+  margin-top: 1.5rem;
+  border: 1px solid rgb(124, 124, 124);
+  padding: 1rem;
+  letter-spacing: 0px;
+  text-decoration: none;
+  border-radius: 10px;
 }
 
 .offer-detail {
@@ -354,7 +388,7 @@ p {
 .offers h2 {
   font-weight: 600;
   letter-spacing: -0.5px;
-  margin: 6rem 0 1rem 0;
+  margin: 4rem 0 1rem 0;
 }
 
 .offer-detail img {
@@ -378,9 +412,9 @@ p {
 
 .book {
   flex: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 0.35rem;
   margin-top: 2rem;
 }
 
@@ -393,6 +427,7 @@ p {
 
 .book-price strong {
   font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .book-reviews {
@@ -408,6 +443,7 @@ p {
 .book-rate {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 
 .reserve {
@@ -423,13 +459,14 @@ p {
   margin: 0 1rem;
 }
 
-.reserve button {
+.reserve a {
   padding: 1rem;
   font-size: 1.05rem;
   font-weight: 500;
   border-radius: 10px;
   background-color: black;
   color: white;
+  text-decoration: none;
 }
 
 .reserve span {
@@ -441,9 +478,17 @@ p {
 
 .date-picker h2 {
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin: 0 0 1rem 0;
   letter-spacing: -0.5px;
+}
+
+.date-picker {
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  width: fit-content;
+  border-radius: 0.35rem;
 }
 
 .extra-info {
@@ -467,6 +512,7 @@ p {
 .info-detail span {
   letter-spacing: -0.5px;
   margin-top: 0.3rem;
+  font-weight: 500;
 }
 
 .info-detail strong {
@@ -681,6 +727,8 @@ input[type="checkbox"] {
   background-color: black;
   color: rgb(230, 230, 230);
   padding: 2rem;
+  border-start-end-radius: 10px;
+  border-start-start-radius: 10px;
 }
 
 .column {
@@ -1022,6 +1070,11 @@ input[type="checkbox"] {
   gap: 20px;
 }
 
+.details-icon a {
+  text-decoration: none;
+  margin-top: 0.35rem;
+}
+
 .listed-icon {
   font-size: 2.9rem;
   color: green;
@@ -1070,13 +1123,13 @@ input[type="checkbox"] {
 .details-content-img {
   display: flex;
   gap: 10px;
+  margin: 0.5rem 0 2rem 0;
 }
 
 .details-content-img img {
   width: 140px;
   border-radius: 10px;
   height: 100px;
-  margin: 1rem 0;
 }
 
 .details-content-title {
@@ -1096,7 +1149,7 @@ input[type="checkbox"] {
 }
 
 .listing-title-edit {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .listing-desc-edit p {
@@ -1107,7 +1160,7 @@ input[type="checkbox"] {
 .guests-num {
   display: flex;
   justify-content: space-between;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .guests-num-icons {
@@ -1145,7 +1198,7 @@ input[type="checkbox"] {
 }
 
 .amenities-edit {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .amenities-edit-data-container {
@@ -1211,7 +1264,7 @@ input[type="checkbox"] {
 }
 
 .taxes-edit {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .trip-length-edit {
@@ -1386,7 +1439,6 @@ input[type="checkbox"] {
 
 .calendar-page {
   display: flex;
-  gap: 100px;
   margin-bottom: 5rem;
 }
 
@@ -1472,6 +1524,72 @@ input[type="checkbox"] {
   color: black;
 }
 
+.listing-availability {
+  margin-top: 3rem;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 10px;
+  padding: 1rem 1rem 3rem 1rem;
+  width: fit-content;
+}
+
+.listing-availability-header h3 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  font-size: 1.1rem;
+}
+
+.listing-availability-header svg {
+  color: black;
+}
+
+.listing-availability-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.listing-available {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.listing-availability h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.listing-available-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.listing-available-icons svg {
+  font-size: 1.5rem;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 50%;
+}
+
+.listing-available-price {
+  border: 1px solid rgb(48, 48, 48);
+  padding: 0.7rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+}
+
+.listing-available-price input {
+  border: none;
+  padding-left: 0.3rem;
+}
+
+.listing-available-price span {
+  font-size: 0.9rem;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+}
+
 /*=========== Modal ===========*/
 .modal-overlay {
   position: fixed;
@@ -1481,7 +1599,6 @@ input[type="checkbox"] {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: grid;
-  /* place-items: center; */
   transition: 0.3s;
   visibility: hidden;
   justify-content: center;
@@ -1497,7 +1614,6 @@ input[type="checkbox"] {
   width: 450px;
   height: 120px;
   top: 10px;
-  /* max-width: 320px; */
   text-align: center;
   display: grid;
   justify-content: center;
@@ -1553,7 +1669,7 @@ input[type="checkbox"] {
 
 .cars-categories span {
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
 }
 
 .cars-categories-container {
@@ -1671,4 +1787,299 @@ input[type="checkbox"] {
 .review-profile-content {
   display: flex;
   flex-direction: column;
+}
+
+.model {
+  padding: 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  width: 50%;
+  margin: 0.5rem 0 3rem 0;
+}
+
+.month-picker {
+  margin: 2rem 0;
+}
+
+.month-picker .rdrDays,
+.rdrDateDisplay,
+.rdrWeekDays,
+.rdrYearPicker {
+  display: none;
+}
+
+.month-picker .rdrNextPrevButton {
+  width: 50px;
+  height: 50px;
+}
+
+.month-picker .rdrNextButton i {
+  margin: auto;
+}
+
+.month-picker .rdrMonthAndYearPickers select {
+  font-size: 1rem;
+}
+
+.insights-container {
+  display: flex;
+  gap: 150px;
+}
+
+.insights-performance {
+  background-color: rgb(236, 236, 236);
+  padding: 5rem;
+  height: 50vh;
+  border-radius: 10px;
+}
+
+.insights-performance h1 {
+  letter-spacing: -0.5px;
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.insights-performance h3 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  letter-spacing: -0.2px;
+  padding: 0.5rem 5rem 0.5rem 1rem;
+  border-radius: 30px;
+}
+
+.earnings {
+  color: white;
+  background-color: black;
+}
+
+.performance-content-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.performance-content-title span {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.performance-content-title svg {
+  margin-top: 0.2rem;
+}
+
+.performance-payment {
+  display: flex;
+  gap: 50px;
+  margin-top: 3rem;
+}
+
+.performance-content h1 {
+  font-size: 2.9rem;
+  font-weight: 600;
+  color: rgb(48, 48, 48);
+}
+
+.performance-content span {
+  color: rgb(99, 99, 99);
+}
+
+.performance-payment h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: rgb(48, 48, 48);
+}
+
+.checkout-item-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+.checkout-item-content img {
+  width: 200px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.checkout-item-content span {
+  color: rgb(99, 99, 99);
+  letter-spacing: -0.5px;
+  font-size: 0.9rem;
+}
+
+.checkout-item-content h4 {
+  letter-spacing: -0.5px;
+}
+
+.checkout-item-content h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.checkout-item-content-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkout-container {
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  gap: 100px;
+  margin-bottom: 5rem;
+}
+
+.checkout-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.checkout-header svg {
+  font-size: 1.9rem;
+  color: rgb(99, 99, 99);
+}
+
+.checkout-header h1 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+  font-weight: 500;
+}
+
+.checkout-details h3 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.checkout-details h5 {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgb(99, 99, 99);
+  margin-bottom: 1rem;
+}
+
+.checkout-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-details input {
+  padding: 0.8rem;
+}
+
+.checkout-details button {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  border-radius: 10px;
+}
+
+.price-details-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.price-details-content span {
+  letter-spacing: -0.25px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.checkout-content {
+  border: 1px solid rgb(99, 99, 99);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.checkout-cancellation-policy {
+  margin-top: 1rem;
+}
+
+.checkout-cancellation-policy h3 {
+  letter-spacing: -0.5px;
+  font-size: 1.15rem;
+}
+
+.checkout-cancellation-policy span {
+  font-size: 0.85rem;
+  letter-spacing: -0.5px;
+  color: rgb(48, 48, 48);
+  font-weight: 500;
+}
+
+.checkout-page a {
+  text-decoration: none;
+  color: black;
+}
+
+.experience-categories {
+  padding: 0.7rem;
+  border: 1px solid rgb(99, 99, 99);
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.experience-categories-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rem 0;
+}
+
+.experienceData-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  max-width: 1200px;
+  gap: 10px;
+}
+
+.experienceData-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.experienceData-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+.experienceData-content img {
+  width: 100%;
+  height: 16rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.experienceData-content span {
+  color: rgb(99, 99, 99);
+  letter-spacing: -0.5px;
+  font-size: 0.95rem;
+}
+
+.experienceData-content h4 {
+  letter-spacing: -0.5px;
+}
+
+.experienceData-content h5 {
+  font-size: 1rem;
 }

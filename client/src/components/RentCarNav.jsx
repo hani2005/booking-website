@@ -16,7 +16,7 @@ function RentCarNav() {
       <div className="nav-item" onClick={openModal}>
         <span>Anywhere</span>
         <span>Any week</span>
-        <span>Rent Car</span>
+        <span className="add-guests">Rent Car</span>
         <FaSearch className="nav-search" />
       </div>
       <div className="profile">

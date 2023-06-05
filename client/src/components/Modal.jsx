@@ -11,19 +11,26 @@ function Modal() {
       className={`${
         isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
       }`}
+      onClick={closeModal}
     >
       <div className="modal-container">
         <div className="modal-links">
           <div className="modal-links-content">
-            <a href="#stays">Stays</a>
+            <Link onClick={closeModal} to={"/"}>
+              Stays
+            </Link>
             <FaArrowRight />
           </div>
           <div className="modal-links-content">
-            <Link to={"/rent-car"}>Rent Car</Link>
+            <Link onClick={closeModal} to={"/rent-car"}>
+              Rent Car
+            </Link>
             <FaArrowRight />
           </div>
           <div className="modal-links-content">
-            <Link to={"/experiences"}>Experiences</Link>
+            <Link onClick={closeModal} to={"/experiences"}>
+              Experiences
+            </Link>
             <FaArrowRight />
           </div>
         </div>

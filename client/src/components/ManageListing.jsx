@@ -16,17 +16,8 @@ function ManageListing() {
   let { subpage } = useParams()
   const { id } = useParams()
   const place = placesData.find((place) => place.id === id)
-  const {
-    mainImg,
-    img1,
-    img2,
-    img3,
-    img4,
-    title,
-    location,
-    desc,
-    price,
-  } = place
+  const { mainImg, img1, img2, img3, img4, title, location, desc, price } =
+    place
   return (
     <div>
       <HostNav />
@@ -50,7 +41,9 @@ function ManageListing() {
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <AiFillEye />
+                <Link to={`/accommodation/${id}`}>
+                  <AiFillEye />
+                </Link>
               </div>
             </div>
             <div className="details-links">
@@ -162,7 +155,9 @@ function ManageListing() {
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <AiFillEye />
+                <Link to={`/accommodation/${id}`}>
+                  <AiFillEye />
+                </Link>
               </div>
             </div>
             <div className="details-links">
@@ -260,7 +255,9 @@ function ManageListing() {
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <AiFillEye />
+                <Link to={`/accommodation/${id}`}>
+                  <AiFillEye />
+                </Link>
               </div>
             </div>
             <div className="details-links">

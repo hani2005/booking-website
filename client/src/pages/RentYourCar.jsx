@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import BigFooter from '../components/BigFooter'
-import { AiOutlineCloudUpload, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-import { carFeatures } from '../data'
-import { carsCategories } from '../data'
+import React, { useState } from "react"
+import BigFooter from "../components/BigFooter"
+import {
+  AiOutlineCloudUpload,
+  AiOutlineMinus,
+  AiOutlinePlus
+} from "react-icons/ai"
+import { carFeatures } from "../data"
+import { carsCategories } from "../data"
 import RentCarNav from "../components/RentCarNav"
-import Modal from '../components/Modal'
+import Modal from "../components/Modal"
 
 function RentYourCar() {
+  const [modelYear, setModelYear] = useState("")
   const [country, setCountry] = useState("")
   const [address, setAddress] = useState("")
   const [city, setCity] = useState("")
@@ -18,8 +23,8 @@ function RentYourCar() {
         <RentCarNav />
         <div className="rent-accommodation-container">
           <div className="rent-accommodation-title">
-            <h2>Which of these best describes your place?</h2>
-            <span>Pick category</span>
+            <h2>Which of these best describes your car brand?</h2>
+            <span>Pick a brand</span>
           </div>
           <div className="perks">
             {carsCategories.map((item) => (
@@ -33,8 +38,8 @@ function RentYourCar() {
             ))}
           </div>
           <div className="rent-accommodation-title">
-            <h2>Where is your place located?</h2>
-            <span>Tell us where your place will be</span>
+            <h2>Where is your car located?</h2>
+            <span>Tell us where your car will be</span>
           </div>
           <div className="location-container">
             <input
@@ -63,46 +68,19 @@ function RentYourCar() {
             />
           </div>
           <div className="rent-accommodation-title">
-            <h2>Share some basics about your place</h2>
-            <span>Add some details about your place space</span>
+            <h2>Model</h2>
+            <span>What is your car model</span>
           </div>
-          <div className="place-basics-container">
-            <div className="place-basics">
-              <h5>Guests</h5>
-              <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
-              </div>
-            </div>
-            <div className="place-basics">
-              <h5>Bedrooms</h5>
-              <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
-              </div>
-            </div>
-            <div className="place-basics">
-              <h5>Beds</h5>
-              <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
-              </div>
-            </div>
-            <div className="place-basics">
-              <h5>Bathrooms</h5>
-              <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
-              </div>
-            </div>
-          </div>
+          <input
+            type="text"
+            placeholder="2030"
+            value={modelYear}
+            onChange={(e) => setModelYear(e.target.value)}
+            className="model"
+          />
           <div className="rent-accommodation-title">
-            <h2>Tell guests what your place has to offer</h2>
-            <span>What amenities do you have?</span>
+            <h2>Features</h2>
+            <span>What features does your car have?</span>
           </div>
           <div className="amenities-container">
             {carFeatures.map((item) => (
@@ -116,8 +94,8 @@ function RentYourCar() {
             ))}
           </div>
           <div className="rent-accommodation-title">
-            <h2>Add some photos of you place</h2>
-            <span>Show guests what your place looks like</span>
+            <h2>Add some photos of you car</h2>
+            <span>Show guests what your car looks like</span>
           </div>
           <label className="places-upload">
             <div>
@@ -136,7 +114,7 @@ function RentYourCar() {
           </div>
           <div className="rent-accommodation-title">
             <h2>Now, set your price</h2>
-            <span>How much do you charge per night</span>
+            <span>How much do you charge per trip</span>
           </div>
           <div className="place-price">
             <h4>$</h4>

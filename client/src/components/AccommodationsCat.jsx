@@ -57,10 +57,6 @@ function AccommodationsCat() {
         />
         <span>Unique Stays</span>
       </div>
-      <div className="accommodations-filter">
-        <MdFilterAlt />
-        <span>Filter</span>
-      </div>
     </div>
   )
 }

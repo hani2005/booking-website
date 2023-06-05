@@ -16,7 +16,7 @@ function AccommodationsNav() {
       <div className="nav-item" onClick={openModal}>
         <span>Anywhere</span>
         <span>Any week</span>
-        <span>Add guests</span>
+        <span className="add-guests">Add guests</span>
         <FaSearch className="nav-search" />
       </div>
       <div className="profile">

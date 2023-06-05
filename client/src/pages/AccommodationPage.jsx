@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import AccommodationsNav from "../components/AccommodationsNav"
 import placesData, { amenities, reviewsData } from "../data"
 import { AiFillStar } from "react-icons/ai"
-
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 import { DateRange } from "react-date-range"
@@ -11,6 +10,7 @@ import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
 
 function AccommodationPage() {
+  const [readMore, setReadMore] = useState(false)
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -31,10 +31,6 @@ function AccommodationPage() {
     location,
     desc,
     price,
-    offer1,
-    offer2,
-    offer3,
-    offer4,
     checkIn,
     checkOut,
     maxGuests,
@@ -69,7 +65,12 @@ function AccommodationPage() {
           <h1>Room in a rental unit hosted by Ahmed</h1>
           <div className="desc-container">
             <h2>About This Place</h2>
-            <p>{desc}</p>
+            <p>
+              {readMore ? desc : `${desc.substring(0, 200)}...`}
+              <button onClick={() => setReadMore(!readMore)}>
+                {readMore ? "Show less" : "Show more"}
+              </button>
+            </p>
           </div>
           <div className="offers">
             <h2>What This Place Offers</h2>
@@ -81,6 +82,7 @@ function AccommodationPage() {
                 </div>
               ))}
             </div>
+            <button>Show all 20 amenities</button>
           </div>
         </div>
         <div className="book">
@@ -107,7 +109,7 @@ function AccommodationPage() {
             />
           </div>
           <div className="reserve">
-            <button>Reserve</button>
+            <Link to={"/checkout"}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">

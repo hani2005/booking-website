@@ -15,6 +15,7 @@ import RentYourCar from "./pages/RentYourCar"
 import CarDetails from "./pages/CarDetails"
 import HostExperience from "./pages/HostExperience"
 import Experience from "./pages/Experience"
+import Checkout from "./pages/Checkout"
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/experiences" element={<Experiences />} />
         <Route path="/host-experience" element={<HostExperience />} />
         <Route path="/experience/:id" element={<Experience />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   )

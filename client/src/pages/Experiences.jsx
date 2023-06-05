@@ -25,16 +25,16 @@ function Experiences() {
       loop
       type="video/mp4"
     ></video>
-    <div className="cars-categories-container">
+    <div className="experience-categories-container">
       {experienceCategories.map((item) => (
-        <div key={item.label} className="cars-categories">
+        <div key={item.label} className="experience-categories">
           <span>{item.label}</span>
         </div>
       ))}
     </div>
-    <div className="carsData-container">
+    <div className="experienceData-container">
       {experienceData.map((item) => (
-        <Link to={`/experience/${item.id}`} key={item.id} className="carsData-content">
+        <Link to={`/experience/${item.id}`} key={item.id} className="experienceData-content">
           <img src={item.mainImg} alt="" />
           <h4>{item.title}</h4>
           <span>{item.location}</span>

@@ -3,11 +3,14 @@ import BigFooter from "../components/BigFooter"
 import { DateRange } from "react-date-range"
 import { AiFillStar } from "react-icons/ai"
 import Modal from "../components/Modal"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { carFeatures, carsData, reviewsData } from "../data"
 import RentCarNav from "../components/RentCarNav"
+import "react-date-range/dist/styles.css" // main css file
+import "react-date-range/dist/theme/default.css" // theme css file
 
 function CarDetails() {
+  const [readMore, setReadMore] = useState(false)
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -28,16 +31,12 @@ function CarDetails() {
     location,
     desc,
     price,
-    offer1,
-    offer2,
-    offer3,
-    offer4,
     reviews,
     rate
   } = car
 
   return (
-    <div className="accommodation-page">
+    <div className="car-details-page">
       <RentCarNav />
       <Modal />
       <h2 className="place-title">{title}</h2>
@@ -60,13 +59,18 @@ function CarDetails() {
       </div>
       <div className="place-details-container">
         <div className="place-details">
-          <h1>Room in a rental unit hosted by Ahmed</h1>
+          <h1>Car hosted by Ahmed</h1>
           <div className="desc-container">
-            <h2>About This Place</h2>
-            <p>{desc}</p>
+            <h2>About This Car</h2>
+            <p>
+              {readMore ? desc : `${desc.substring(0, 200)}...`}
+              <button onClick={() => setReadMore(!readMore)}>
+                {readMore ? "Show less" : "Show more"}
+              </button>
+            </p>
           </div>
           <div className="offers">
-            <h2>What This Place Offers</h2>
+            <h2>Features</h2>
             <div className="offer-detail">
               {carFeatures.slice(0, 6).map((item) => (
                 <div key={item.carFeature} className="amenities">
@@ -75,12 +79,13 @@ function CarDetails() {
                 </div>
               ))}
             </div>
+            <button>Show all 8 features</button>
           </div>
         </div>
         <div className="book">
           <div className="book-price-detail">
             <span className="book-price">
-              <strong>${price}</strong>/night
+              <strong>${price}</strong>/day
             </span>
             <div className="book-perfomance">
               <div className="book-rate">
@@ -101,7 +106,7 @@ function CarDetails() {
             />
           </div>
           <div className="reserve">
-            <button>Reserve</button>
+            <Link to={"/checkout"}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">
@@ -112,7 +117,7 @@ function CarDetails() {
         </div>
       </div>
       <div className="date-picker">
-        <h2>7 Nights in Dubai</h2>
+        <h2>7 Days</h2>
         <DateRange
           rangeColors={["#000000"]}
           onChange={(item) => setState([item.selection])}

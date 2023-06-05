@@ -1,13 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import HostNav from "../components/HostNav"
 import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
 import { BiMenu, BiSearch } from "react-icons/bi"
 import { BsFillImageFill } from "react-icons/bs"
 import placesData from "../data"
+import { HiMenu } from "react-icons/hi"
+import { DateRange } from "react-date-range"
 
 function HostingPage() {
   let { subpage } = useParams()
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection"
+    }
+  ])
 
   return (
     <div className="hosting-page">
@@ -131,8 +140,41 @@ function HostingPage() {
         </div>
       )}
       {subpage === "insights" && (
-        <div>
-          <h1>Hello Inbox</h1>
+        <div className="insights-container">
+          <div className="insights-performance">
+            <h1>Performance</h1>
+            <h3 className="earnings">Earnings</h3>
+            <h3>Star Host</h3>
+          </div>
+          <div className="performance-content-container">
+            <div className="performance-content-title">
+              <HiMenu className="menu-icon" />
+              <span>Earnings</span>
+            </div>
+            <div className="performance-content">
+              <div className="month-picker">
+                <DateRange
+                  rangeColors={["#000000"]}
+                  onChange={(item) => setState([item.selection])}
+                  ranges={state}
+                  minDate={new Date()}
+                  date={new Date()}
+                />
+              </div>
+              <h1>$17,330</h1>
+              <span>Booked earnings for 2023</span>
+              <div className="performance-payment">
+                <div className="paid-out">
+                  <h3>$17,330</h3>
+                  <span>Paid</span>
+                </div>
+                <div className="expected">
+                  <h3>$0</h3>
+                  <span>Expected</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
       <BigFooter />

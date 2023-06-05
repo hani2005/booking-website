@@ -1821,6 +1821,7 @@ input[type="checkbox"] {
   font-size: 1rem;
 }
 
+/*=========== Insights Subpage ===========*/
 .insights-container {
   display: flex;
   gap: 150px;
@@ -1894,6 +1895,7 @@ input[type="checkbox"] {
   color: rgb(48, 48, 48);
 }
 
+/*=========== Checkout Page ===========*/
 .checkout-item-content {
   display: flex;
   align-items: center;
@@ -2027,6 +2029,7 @@ input[type="checkbox"] {
   color: black;
 }
 
+/*=========== Experience Page ===========*/
 .experience-categories {
   padding: 0.7rem;
   border: 1px solid rgb(99, 99, 99);

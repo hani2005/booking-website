@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { FaArrowRight, FaTimes } from "react-icons/fa"
 import { useGlobalContext } from "../context"
 import { Link } from "react-router-dom"

@@ -7,6 +7,7 @@ import banner from "../assets/dubai-banner.mp4"
 import Modal from "../components/Modal"
 
 function HomePage() {
+  window.scrollBy(0,300)
   return (
     <>
       <div className="homepage">

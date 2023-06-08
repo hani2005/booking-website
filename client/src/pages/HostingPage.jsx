@@ -22,7 +22,7 @@ function HostingPage() {
     <div className="hosting-page">
       <HostNav />
       {subpage === "today" && (
-        <div>
+        <div className="today">
           <h2>Welcome back, Hani</h2>
           <h4>Your reservations</h4>
           <div className="hosting-details">

@@ -1,9 +1,8 @@
 import React from "react"
-import { MdFilterAlt } from "react-icons/md"
 
 function AccommodationsCat() {
   return (
-    <div className="accommodations-category">
+    <div className="accommodations-category" id="accommodations-category">
       <div className="accommodations-cat-item">
         <img src="https://cdn-icons-png.flaticon.com/128/88/88970.png" alt="" />
         <span>Serviced Apartment</span>

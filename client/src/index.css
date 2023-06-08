@@ -83,6 +83,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   margin-top: -1.5rem;
+  padding: 0 2rem;
 }
 
 nav img {
@@ -765,6 +766,10 @@ input[type="checkbox"] {
   max-width: 1400px;
 }
 
+.today {
+  padding: 0 2rem;
+}
+
 .hosting-nav-item {
   display: flex;
   align-items: center;
@@ -838,7 +843,7 @@ input[type="checkbox"] {
 /*=========== Inbox Subpage ===========*/
 
 .inbox-container {
-  margin: 0 0 4rem 0;
+ padding: 2rem;
   display: flex;
 }
 
@@ -974,7 +979,7 @@ input[type="checkbox"] {
 /*=========== Listings Page ===========*/
 
 .listings-container {
-  margin: 0 0 5rem 0;
+  margin: 0 2rem 5rem 2rem;
 }
 
 .listings-page {
@@ -1051,6 +1056,7 @@ input[type="checkbox"] {
   margin-bottom: 5rem;
   width: 100%;
   max-width: 1400px;
+  padding: 0 2rem;
 }
 
 .details-column-2 {
@@ -1234,6 +1240,7 @@ input[type="checkbox"] {
   display: flex;
   gap: 150px;
   margin-bottom: 5rem;
+  padding: 0 2rem;
 }
 
 .pricing-container {
@@ -1300,6 +1307,7 @@ input[type="checkbox"] {
   display: flex;
   gap: 150px;
   margin-bottom: 5rem;
+  padding: 0 2rem;
 }
 
 .policies-container {
@@ -1435,11 +1443,13 @@ input[type="checkbox"] {
 .calendar-container {
   width: 100%;
   max-width: 1400px;
+  /* padding: 0 2rem 5rem 0; */
 }
 
 .calendar-page {
   display: flex;
   margin-bottom: 5rem;
+  padding: 0 2rem;
 }
 
 .date-control {
@@ -1501,12 +1511,14 @@ input[type="checkbox"] {
   align-items: center;
   margin-bottom: 1rem;
   gap: 5px;
+  flex: 1;
 }
 
 .calendar-page-content span {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: -0.5px;
+  width: max-content;
 }
 
 .calendar-page-content img {
@@ -1825,6 +1837,7 @@ input[type="checkbox"] {
 .insights-container {
   display: flex;
   gap: 150px;
+  padding: 0 2rem;
 }
 
 .insights-performance {
@@ -2086,3 +2099,36 @@ input[type="checkbox"] {
 .experienceData-content h5 {
   font-size: 1rem;
 }
+
+.calendar-page-test {
+  padding: 0 2rem;
+}
+
+.calendar-multi-date {
+  display: flex;
+}
+
+.calendar-page-days {
+  display: flex;
+  overflow: scroll;
+  flex: 1;
+}
+
+.calendar-page-day-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid rgb(124, 124, 124);
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+}
+
+.calendar-page-day-content-span {
+  text-align: right;
+}
+
+.calendar-page-multi-date a {
+  text-decoration: none;
+  color: black;
+}
+

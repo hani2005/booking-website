@@ -7,7 +7,6 @@ import { carsCategories, carsData } from "../data"
 import { Link } from "react-router-dom"
 
 function RentCar() {
-  window.scrollBy(0,450)
   return (
     <>
       <div className="homepage">
@@ -17,6 +16,14 @@ function RentCar() {
           The Best Vacation Rental Apartments, Luxury Cars & Experiences in
           Dubai
         </h1>
+      <div className="cars-categories-container">
+        {carsCategories.map((item) => (
+          <div key={item.label} className="cars-categories">
+            <img src={item.icon} alt="" />
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
       </div>
       <video
         className="banner"
@@ -26,14 +33,6 @@ function RentCar() {
         loop
         type="video/mp4"
       ></video>
-      <div className="cars-categories-container">
-        {carsCategories.map((item) => (
-          <div key={item.label} className="cars-categories">
-            <img src={item.icon} alt="" />
-            <span>{item.label}</span>
-          </div>
-        ))}
-      </div>
       <div className="carsData-container">
         {carsData.map((item) => (
           <Link to={`/car-details/${item.id}`} key={item.id} className="carsData-content">

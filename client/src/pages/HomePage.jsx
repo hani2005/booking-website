@@ -7,7 +7,6 @@ import banner from "../assets/dubai-banner.mp4"
 import Modal from "../components/Modal"
 
 function HomePage() {
-  window.scrollBy(0,450)
   return (
     <>
       <div className="homepage">
@@ -17,6 +16,7 @@ function HomePage() {
           The Best Vacation Rental Apartments, Luxury Cars & Experiences in
           Dubai
         </h1>
+      <AccommodationsCat />
       </div>
       <video
         className="banner"
@@ -26,7 +26,6 @@ function HomePage() {
         loop
         type="video/mp4"
       ></video>
-      <AccommodationsCat />
       <PlacesData />
       <SmallFooter />
     </>

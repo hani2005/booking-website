@@ -7,7 +7,7 @@ import { experienceCategories, experienceData } from '../data'
 import SmallFooter from '../components/SmallFooter'
 
 function Experiences() {
-  window.scrollBy(0,300)
+  window.scrollBy(0,450)
   return (
     <>
     <div className="homepage">

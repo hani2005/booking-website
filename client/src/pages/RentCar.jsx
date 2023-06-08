@@ -7,7 +7,7 @@ import { carsCategories, carsData } from "../data"
 import { Link } from "react-router-dom"
 
 function RentCar() {
-  window.scrollBy(0,300)
+  window.scrollBy(0,450)
   return (
     <>
       <div className="homepage">

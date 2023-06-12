@@ -10,10 +10,42 @@ import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
 
 function RentAccommodation() {
-  const [country, setCountry] = useState("")
+  const { id } = useParams()
+  const [title, setTitle] = useState("")
   const [address, setAddress] = useState("")
-  const [city, setCity] = useState("")
   const [state, setState] = useState("")
+  const [city, setCity] = useState("")
+  const [addedPhotos, setAddedPhotos] = useState([])
+  const [description, setDescription] = useState("")
+  const [perks, setPerks] = useState([])
+  const [extraInfo, setExtraInfo] = useState("")
+  const [checkIn, setCheckIn] = useState("")
+  const [checkOut, setCheckOut] = useState("")
+  const [maxGuests, setMaxGuests] = useState(1)
+  const [bedrooms, setBedrooms] = useState(1)
+  const [bathrooms, setBathrooms] = useState(1)
+  const [baths, setBaths] = useState(1)
+  const [price, setPrice] = useState(100)
+  const [redirect, setRedirect] = useState(false)
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+    fetch("http://localhost:3000/places/" + id).then((response) => {
+      const { data } = response
+      setTitle(data.title)
+      setAddress(data.address)
+      // setAddedPhotos(data.photos)
+      
+      setDescription(data.description)
+      setPerks(data.perks)
+      setExtraInfo(data.extraInfo)
+      setCheckIn(data.checkIn)
+      setCheckOut(data.checkOut)
+      setMaxGuests(data.maxGuests)
+      setPrice(data.price)
+    })
+  }, [id])
   return (
     <>
       <Modal />
@@ -145,7 +177,7 @@ function RentAccommodation() {
             <h4>$</h4>
             <input type="text" />
           </div>
-          <button>Save</button>
+          <button className="save-btn">Save</button>
         </div>
         <BigFooter />
       </div>

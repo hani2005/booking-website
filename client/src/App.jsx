@@ -15,10 +15,13 @@ import RentYourCar from "./pages/RentYourCar"
 import CarDetails from "./pages/CarDetails"
 import HostExperience from "./pages/HostExperience"
 import Experience from "./pages/Experience"
+import axios from "axios";
 import Checkout from "./pages/Checkout"
 import { UserContextProvider } from "./UserContext"
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:3000"
+  axios.defaults.withCredentials = true
   return (
     <div className="container">
       <UserContextProvider>

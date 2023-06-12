@@ -74,49 +74,31 @@ app.post("/logout", (req, res) => {
   res.cookie("token", "").json("ok")
 })
 
+// mongoose.connect(process.env.MONGO_URL)
 app.post("/places", (req, res) => {
-  mongoose.connect(process.env.MONGO_URL)
   const { token } = req.cookies
   const {
-    // addedPhotos
     title,
     country,
     city,
     state,
-    bedrooms,
-    bathrooms,
-    beds,
-    category,
     address,
     description,
     price,
     perks,
-    // extraInfo,
-    // checkIn,
-    // checkOut,
-    maxGuests
   } = req.body
-  jwt.verify(token, secret, {}, async (err, userData) => {
+  jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err
     const AccommodationDoc = await AccommodationModel.create({
-      owner: userData.id,
+      owner: info.id,
       price,
       title,
       address,
       country,
       city,
       state,
-      bedrooms,
-      bathrooms,
-      beds,
-      category,
-      // photos: addedPhotos,
       description,
       perks,
-      // extraInfo,
-      // checkIn,
-      // checkOut,
-      maxGuests
     })
     res.json(AccommodationDoc)
   })

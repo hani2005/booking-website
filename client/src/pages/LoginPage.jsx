@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import AccommodationsNav from "../components/AccommodationsNav"
 import BigFooter from "../components/BigFooter"
 import { Link, Navigate } from "react-router-dom"
 import Modal from "../components/Modal"
 import { UserContext } from "../UserContext"
+import axios from "axios"
 
 function LoginPage() {
   const [username, setUsername] = useState("")
@@ -29,6 +30,16 @@ function LoginPage() {
       alert("Login Failed")
     }
   }
+
+  // useEffect(() => {
+  // axios.get("https://api.chatengine.io/users/me/", {
+  //   headers: {
+  //     "Project-ID": "d1edf851-346b-41d6-adb7-f520dec7f196",
+  //     "User-Name": username,
+  //     "User-Secret": password
+  //   }
+  // })
+  // }, [])
 
   if (redirect) {
     return <Navigate to={"/"} />

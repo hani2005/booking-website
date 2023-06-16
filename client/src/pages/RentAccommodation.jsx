@@ -21,15 +21,17 @@ function RentAccommodation() {
   const [addedPhotos, setAddedPhotos] = useState([])
   const [description, setDescription] = useState("")
   const [perks, setPerks] = useState([])
+  const [categoriesCheck, setCategoriesCheck] = useState([])
   const [extraInfo, setExtraInfo] = useState("")
   const [checkIn, setCheckIn] = useState("")
   const [checkOut, setCheckOut] = useState("")
-  const [maxGuests, setMaxGuests] = useState(1)
-  const [bedrooms, setBedrooms] = useState(1)
-  const [bathrooms, setBathrooms] = useState(1)
-  const [baths, setBaths] = useState(1)
+  const [maxGuests, setMaxGuests] = useState("")
+  const [bedrooms, setBedrooms] = useState("")
+  const [bathrooms, setBathrooms] = useState("")
+  const [beds, setBeds] = useState("")
   const [price, setPrice] = useState("")
   const [redirect, setRedirect] = useState(false)
+
   useEffect(() => {
     if (!id) {
       return
@@ -44,9 +46,10 @@ function RentAccommodation() {
       // setAddedPhotos(data.photos)
       setBathrooms(data.bathrooms)
       setBedrooms(data.bedrooms)
-      setBaths(data.baths)
+      setBeds(data.beds)
       setDescription(data.description)
       setPerks(data.perks)
+      setCategoriesCheck(data.categoriesCheck)
       // setExtraInfo(data.extraInfo)
       // setCheckIn(data.checkIn)
       // setCheckOut(data.checkOut)
@@ -65,7 +68,12 @@ function RentAccommodation() {
       city,
       description,
       perks,
-      price
+      price,
+      categoriesCheck,
+      maxGuests,
+      beds,
+      bedrooms,
+      bathrooms
     }
     if (id) {
       // update
@@ -85,7 +93,7 @@ function RentAccommodation() {
     return <Navigate to={"/"} />
   }
 
-  function handleCbClick(ev) {
+  function handlePerksClick(ev) {
     const { checked, name } = ev.target
     if (checked) {
       setPerks([...perks, name])
@@ -93,6 +101,40 @@ function RentAccommodation() {
       setPerks([...perks.filter((selectedName) => selectedName !== name)])
     }
   }
+
+  function handleCatClick(ev) {
+    const { checked, name } = ev.target
+    if (checked) {
+      setCategoriesCheck([...categoriesCheck, name])
+    } else {
+      setCategoriesCheck([
+        ...categoriesCheck.filter((selectedName) => selectedName !== name)
+      ])
+    }
+  }
+
+  function uploadPhoto(ev) {
+    const files = ev.target.files
+    const data = new FormData()
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i])
+    }
+    axios
+      .post("/upload", data, {
+        headers: { "Content-type": "multipart/form-data" }
+      })
+      .then((response) => {
+        const { data: filenames } = response
+        onChange((prev) => {
+          return [...prev, ...filenames]
+        })
+      })
+  }
+  function removePhoto(ev, filename) {
+    ev.preventDefault()
+    onChange([...addedPhotos.filter((photo) => photo !== filename)])
+  }
+
 
   return (
     <>
@@ -107,7 +149,12 @@ function RentAccommodation() {
           <div className="perks">
             {categories.map((item) => (
               <label key={item.label}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={categoriesCheck.includes(`${item.label}`)}
+                  name={`${item.label}`}
+                  onChange={handleCatClick}
+                />
                 <div className="perks-label">
                   <img src={item.icon} alt="" />
                   <h5>{item.label}</h5>
@@ -153,33 +200,41 @@ function RentAccommodation() {
             <div className="place-basics">
               <h5>Guests</h5>
               <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
+                <input
+                  type="text"
+                  value={maxGuests}
+                  onChange={(e) => setMaxGuests(e.target.value)}
+                />
               </div>
             </div>
             <div className="place-basics">
               <h5>Bedrooms</h5>
               <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
+                <input
+                  type="text"
+                  value={bedrooms}
+                  onChange={(e) => setBedrooms(e.target.value)}
+                />
               </div>
             </div>
             <div className="place-basics">
               <h5>Beds</h5>
               <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
+                <input
+                  type="text"
+                  value={beds}
+                  onChange={(e) => setBeds(e.target.value)}
+                />
               </div>
             </div>
             <div className="place-basics">
               <h5>Bathrooms</h5>
               <div className="place-basic-input">
-                <AiOutlineMinus />
-                <span>1</span>
-                <AiOutlinePlus />
+                <input
+                  type="text"
+                  value={bathrooms}
+                  onChange={(e) => setBathrooms(e.target.value)}
+                />
               </div>
             </div>
           </div>
@@ -195,7 +250,7 @@ function RentAccommodation() {
                   type="checkbox"
                   checked={perks.includes(`${item.amenitie}`)}
                   name={`${item.amenitie}`}
-                  onChange={handleCbClick}
+                  onChange={handlePerksClick}
                 />
                 <div className="amenities-label">
                   <img src={item.icon} alt="" />
@@ -213,7 +268,7 @@ function RentAccommodation() {
               <AiOutlineCloudUpload className="upload-icon" />
               <p>Click here to upload</p>
             </div>
-            <input type="file" />
+            <input type="file" multiple className="hidden" onChange={uploadPhoto}/>
           </label>
           <div className="rent-accommodation-title">
             <h2>How would you describe your place</h2>

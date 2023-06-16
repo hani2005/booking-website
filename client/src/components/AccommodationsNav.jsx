@@ -27,6 +27,8 @@ function AccommodationsNav() {
     setUserInfo(null)
   }
 
+  const username = userInfo?.username
+
   return (
     <nav>
       <Link to={"/"}>
@@ -39,7 +41,7 @@ function AccommodationsNav() {
         <FaSearch className="nav-search" />
       </div>
       <div className="profile">
-        {userInfo ? (
+        {username ? (
           <>
             <Link to={"/rent-accommodation"}>Host Your Home</Link>
             <button className="logout-btn" onClick={logout}>Logout</button>

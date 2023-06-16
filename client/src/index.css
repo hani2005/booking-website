@@ -649,13 +649,16 @@ input[type="checkbox"] {
 }
 
 .place-basic-input {
-  display: flex;
-  align-items: center;
   margin: 1.5rem 0;
-  gap: 18px;
 }
 
-.place-basic-input svg {
+.place-basic-input input {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(126, 126, 126);
+  border-radius: 5px;
+}
+
+/* .place-basic-input svg {
   border: 1px solid rgb(170, 170, 170);
   padding: 0.5rem;
   border-radius: 50%;
@@ -664,7 +667,7 @@ input[type="checkbox"] {
 
 .place-basic-input span {
   font-weight: 500;
-}
+} */
 
 .place-basics h5 {
   font-size: 1.2rem;

@@ -9,7 +9,12 @@ const AccommodationSchema = new mongoose.Schema({
   state: String,
   description: String,
   perks: [String],
-  price: Number
+  categoriesCheck: [String],
+  price: Number,
+  beds: Number,
+  bathrooms: Number,
+  bedrooms: Number,
+  maxGuests: Number
 })
 
 const AccommodationModel = mongoose.model("Accommodation", AccommodationSchema)

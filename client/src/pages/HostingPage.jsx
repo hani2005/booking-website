@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import HostNav from "../components/HostNav"
 import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
@@ -7,8 +7,15 @@ import { BsFillImageFill } from "react-icons/bs"
 import placesData from "../data"
 import { HiMenu } from "react-icons/hi"
 import { DateRange } from "react-date-range"
+import {
+  MultiChatSocket,
+  MultiChatWindow,
+  useMultiChatLogic
+} from "react-chat-engine-advanced"
+import { UserContext } from "../UserContext"
 
 function HostingPage() {
+  const { setUserInfo, userInfo } = useContext(UserContext)
   let { subpage } = useParams()
   const [state, setState] = useState([
     {
@@ -18,12 +25,31 @@ function HostingPage() {
     }
   ])
 
+  useEffect(() => {
+    fetch("http://localhost:3000/profile", {
+      credentials: "include"
+    }).then((response) => {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+      })
+    })
+  }, [])
+
+  const userName = userInfo.username
+  const userPassword = userInfo.password
+
+  const chatProps = useMultiChatLogic(
+    "d1edf851-346b-41d6-adb7-f520dec7f196",
+    'ahmed',
+    'ahmed'
+  )
+
   return (
     <div className="hosting-page">
       <HostNav />
       {subpage === "today" && (
         <div className="today">
-          <h2>Welcome back, Hani</h2>
+          <h2>Welcome back, {userInfo.username}</h2>
           <h4>Your reservations</h4>
           <div className="hosting-details">
             <Link>Checking out(1)</Link>
@@ -46,8 +72,11 @@ function HostingPage() {
         </div>
       )}
       {subpage === "inbox" && (
-        <div className="inbox-container">
-          <div className="inbox-column-1">
+        // className="inbox-container"
+        <div style={{ height: "100vh" }}>
+          <MultiChatSocket {...chatProps} />
+          <MultiChatWindow {...chatProps} style={{ height: "100%" }} />
+          {/* <div className="inbox-column-1">
             <div className="inbox-heading">
               <BiMenu />
               <h3>All messages</h3>
@@ -136,7 +165,7 @@ function HostingPage() {
                 alt=""
               />
             </div>
-          </div>
+          </div> */}
         </div>
       )}
       {subpage === "insights" && (

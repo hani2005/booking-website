@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import HostNav from "./HostNav"
 import BigFooter from "./BigFooter"
 import { Link, useParams } from "react-router-dom"
@@ -11,37 +11,46 @@ import {
   AiOutlinePlusCircle
 } from "react-icons/ai"
 import { FiMinus, FiPlus } from "react-icons/fi"
+import axios from "axios"
 
 function ManageListing() {
   let { subpage } = useParams()
   const { id } = useParams()
-  const place = placesData.find((place) => place.id === id)
-  const { mainImg, img1, img2, img3, img4, title, location, desc, price } =
-    place
+  const [place, setPlace] = useState(null)
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+    axios.get(`/places/${id}`).then((response) => {
+      setPlace(response.data)
+    })
+  }, [id])
+
+  if (!place) return ""
+
   return (
     <div>
       <HostNav />
       {subpage === "details" && (
         <div className="details-container">
           <div className="details-column-1">
-            <h2>3 Listings</h2>
             <div className="inbox-search">
               <BiSearch />
               <input type="search" placeholder="Search inbox" />
             </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
-              <img src={mainImg} alt="" />
-              <span>{title}</span>
+              <img src={place.photos[0]} alt="" />
+              <span>{place.title}</span>
             </div>
           </div>
           <div className="details-column-2">
             <div className="details-column-2-header">
-              <h4>{title}</h4>
+              <h3>{place.title}</h3>
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <Link to={`/accommodation/${id}`}>
+                <Link to={`/accommodation/${place._id}`}>
                   <AiFillEye />
                 </Link>
               </div>
@@ -59,11 +68,9 @@ function ManageListing() {
                 <p>Edit</p>
               </div>
               <div className="details-content-img">
-                <img src={mainImg} alt="" />
-                <img src={img1} alt="" />
-                <img src={img2} alt="" />
-                <img src={img3} alt="" />
-                <img src={img4} alt="" />
+                {place.photos.map((imgData) => (
+                  <img src={imgData} alt="" />
+                ))}
               </div>
             </div>
             <div className="listing-title-edit">
@@ -71,20 +78,20 @@ function ManageListing() {
                 <h4>Listing title</h4>
                 <p>Edit</p>
               </div>
-              <span className="details-content-span">{title}</span>
+              <span className="details-content-span">{place.title}</span>
             </div>
             <div className="listing-desc-edit">
               <div className="details-content-title">
                 <h4>Listing description</h4>
                 <p>Edit</p>
               </div>
-              <p>{desc}</p>
+              <p>{place.description}</p>
             </div>
             <div className="guests-num">
               <h4>Number of Guests</h4>
               <div className="guests-num-icons">
                 <FiPlus />
-                <h4>5</h4>
+                <h4>{place.maxGuests}</h4>
                 <FiMinus />
               </div>
             </div>
@@ -114,7 +121,7 @@ function ManageListing() {
                 <h4>Listing location</h4>
                 <p>Edit</p>
               </div>
-              <span className="details-content-span">{location}</span>
+              <span className="details-content-span">{place.address}</span>
             </div>
             <div className="listing-category">
               <div className="details-content-title">
@@ -128,9 +135,9 @@ function ManageListing() {
                 <h4>Rooms and spaces</h4>
                 <p>Edit</p>
               </div>
-              <span>Bedroom:</span>
-              <span>Bed:</span>
-              <span>Bathroom:</span>
+              <span>Bedroom: {place.bedrooms}</span>
+              <span>Bed: {place.beds}</span>
+              <span>Bathroom: {place.bathrooms}</span>
             </div>
           </div>
         </div>
@@ -138,24 +145,23 @@ function ManageListing() {
       {subpage === "pricing" && (
         <div className="pricing-page">
           <div className="details-column-1">
-            <h2>3 Listings</h2>
             <div className="inbox-search">
               <BiSearch />
               <input type="search" placeholder="Search inbox" />
             </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
-              <img src={mainImg} alt="" />
-              <span>{title}</span>
+              <img src={place.photos[0]} alt="" />
+              <span>{place.title}</span>
             </div>
           </div>
           <div className="pricing-container">
             <div className="details-column-2-header">
-              <h4>{title}</h4>
+              <h3>{place.title}</h3>
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <Link to={`/accommodation/${id}`}>
+                <Link to={`/accommodation/${place._id}`}>
                   <AiFillEye />
                 </Link>
               </div>
@@ -172,7 +178,7 @@ function ManageListing() {
                 <h4>Pricing</h4>
                 <p>Edit</p>
               </div>
-              <span className="details-content-span">${price}</span>
+              <span className="details-content-span">${place.price}</span>
             </div>
             <div className="discounts-edit">
               <div className="details-content-title">
@@ -238,24 +244,23 @@ function ManageListing() {
       {subpage === "policies" && (
         <div className="policies-page">
           <div className="details-column-1">
-            <h2>3 Listings</h2>
             <div className="inbox-search">
               <BiSearch />
               <input type="search" placeholder="Search inbox" />
             </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
-              <img src={mainImg} alt="" />
-              <span>{title}</span>
+              <img src={place.photos[0]} alt="" />
+              <span>{place.title}</span>
             </div>
           </div>
           <div className="policies-container">
             <div className="details-column-2-header">
-              <h4>{title}</h4>
+              <h3>{place.title}</h3>
               <div className="details-icon">
                 <BsDot className="listed-icon" />
                 <BsFillLightningFill className="instant-book-icon" />
-                <Link to={`/accommodation/${id}`}>
+                <Link to={`/accommodation/${place._id}`}>
                   <AiFillEye />
                 </Link>
               </div>

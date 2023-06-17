@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import HostNav from "../components/HostNav"
 import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
-import { BiMenu, BiSearch } from "react-icons/bi"
-import { BsFillImageFill } from "react-icons/bs"
+import axios from "axios"
 import placesData from "../data"
 import { HiMenu } from "react-icons/hi"
 import { DateRange } from "react-date-range"
@@ -16,6 +15,13 @@ import { UserContext } from "../UserContext"
 
 function HostingPage() {
   const { setUserInfo, userInfo } = useContext(UserContext)
+  const [places, setPlaces] = useState([])
+  useEffect(() => {
+    axios.get("/user-places").then(({ data }) => {
+      setPlaces(data)
+    })
+  }, [])
+
   let { subpage } = useParams()
   const [state, setState] = useState([
     {
@@ -49,23 +55,21 @@ function HostingPage() {
       <HostNav />
       {subpage === "today" && (
         <div className="today">
-          <h2>Welcome back, {userInfo.username}</h2>
+          <h2>Welcome back, <span>{userInfo.username}</span></h2>
           <h4>Your reservations</h4>
           <div className="hosting-details">
-            <Link>Checking out(1)</Link>
             <Link>Currently hosting (1)</Link>
-            <Link>Arriving soon (0)</Link>
-            <Link>Upcoming (0)</Link>
+            <Link>Your Bookings (1)</Link>
             <Link>Pending Review (0)</Link>
           </div>
           <div className="hosting-detail-container">
-            {placesData.slice(0, 1).map((item) => (
-              <Link key={item.id} to={`/accommodation/${item.id}`}>
-                <img src={item.mainImg} alt="" />
-                <h5>{item.property}</h5>
-                <span>{item.title}</span>
-                <span>{item.date}</span>
-                <p>night {item.price}</p>
+            {places.map((place) => (
+              <Link key={place._id} to={`/accommodation/${place._id}`}>
+                <img src={place.photos[0]} alt="" />
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <span><strong>Beds:</strong> {place.beds}</span>
+                <p>night {place.price}</p>
               </Link>
             ))}
           </div>

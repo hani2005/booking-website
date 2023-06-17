@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import AccommodationsNav from "../components/AccommodationsNav"
 import placesData, { amenities, reviewsData } from "../data"
@@ -8,6 +8,7 @@ import "react-date-range/dist/theme/default.css" // theme css file
 import { DateRange } from "react-date-range"
 import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
+import axios from "axios"
 
 function AccommodationPage() {
   const [readMore, setReadMore] = useState(false)
@@ -20,44 +21,40 @@ function AccommodationPage() {
   ])
 
   const { id } = useParams()
-  const place = placesData.find((place) => place.id === id)
-  const {
-    mainImg,
-    img1,
-    img2,
-    img3,
-    img4,
-    title,
-    location,
-    desc,
-    price,
-    checkIn,
-    checkOut,
-    maxGuests,
-    reviews,
-    rate
-  } = place
+  const [place, setPlace] = useState(null)
+  useEffect(() => {
+    // if (!id) {
+    //   return;
+    // }
+    axios.get(`/places/${id}`).then((response) => {
+      setPlace(response.data)
+    })
+  }, [id])
+
+  if (!place) return ""
 
   return (
     <div className="accommodation-page">
       <AccommodationsNav />
       <Modal />
-      <h2 className="place-title">{title}</h2>
+      <h2 className="place-title">{place.title}</h2>
       <div className="place-subtitle">
         <div className="place-rate">
           <AiFillStar />
-          <span>{rate}</span>
+          <span>0.0</span>
         </div>
-        <h5>{reviews} reviews</h5>
-        <p>{location}</p>
+        <h5>0 reviews</h5>
+        <p>
+          {place.address}, {place.country}
+        </p>
       </div>
       <div className="img-container">
-        <img src={mainImg} alt="" className="mainImg" />
+        <img src={place.photos[0]} alt="" className="mainImg" />
         <div className="small-img-container">
-          <img src={img1} alt="" />
-          <img src={img2} alt="" className="img2" />
-          <img src={img3} alt="" />
-          <img src={img4} alt="" className="img4" />
+          <img src={place.photos[1]} alt="" />
+          <img src={place.photos[2]} alt="" className="img2" />
+          <img src={place.photos[3]} alt="" />
+          <img src={place.photos[4]} alt="" className="img4" />
         </div>
       </div>
       <div className="place-details-container">
@@ -66,7 +63,9 @@ function AccommodationPage() {
           <div className="desc-container">
             <h2>About This Place</h2>
             <p>
-              {readMore ? desc : `${desc.substring(0, 200)}...`}
+              {readMore
+                ? place.description
+                : `${place.description.substring(0, 200)}...`}
               <button onClick={() => setReadMore(!readMore)}>
                 {readMore ? "Show less" : "Show more"}
               </button>
@@ -75,27 +74,24 @@ function AccommodationPage() {
           <div className="offers">
             <h2>What This Place Offers</h2>
             <div className="offer-detail">
-              {amenities.slice(0, 6).map((item) => (
-                <div key={item.amenitie} className="amenities">
-                  <img src={item.icon} alt="" />
-                  <span>{item.amenitie}</span>
-                </div>
+              {place.perks.slice(0, 6).map((perk) => (
+                <span>{perk}</span>
               ))}
             </div>
-            <button>Show all 20 amenities</button>
+            <button>Show all {place.perks.length} amenities</button>
           </div>
         </div>
         <div className="book">
           <div className="book-price-detail">
             <span className="book-price">
-              <strong>${price}</strong>/night
+              <strong>${place.price}</strong>/night
             </span>
             <div className="book-perfomance">
               <div className="book-rate">
                 <AiFillStar />
-                <span>{rate}</span>
+                <span>0.0</span>
               </div>
-              <span className="book-reviews">{reviews} reviews</span>
+              <span className="book-reviews">0 reviews</span>
             </div>
           </div>
           <div className="box">
@@ -114,7 +110,7 @@ function AccommodationPage() {
             <hr />
             <div className="book-total">
               <h5>Total</h5>
-              <p>${price}</p>
+              <p>${place.price}</p>
             </div>
           </div>
         </div>
@@ -133,13 +129,13 @@ function AccommodationPage() {
         <div className="review-header">
           <div className="review-header-rate">
             <AiFillStar />
-            <h5>{rate}</h5>
+            <h5>0.0</h5>
           </div>
-          <h5>{reviews} reviews</h5>
+          <h5>0 reviews</h5>
         </div>
         <div className="review-profile-container">
           {reviewsData.map((item) => (
-            <div className="review-profile-content">
+            <div key={item.id} className="review-profile-content">
               <div className="review-profile">
                 <img src={item.img} alt="" />
                 <div className="review-profile-text">
@@ -152,7 +148,7 @@ function AccommodationPage() {
           ))}
         </div>
       </div>
-      <h2 className="extra-info-title">Things To Know</h2>
+      {/* <h2 className="extra-info-title">Things To Know</h2>
       <div className="extra-info">
         <div className="info-detail">
           <span>
@@ -181,7 +177,7 @@ function AccommodationPage() {
             <br /> caused by COVID-19.
           </p>
         </div>
-      </div>
+      </div> */}
       <BigFooter />
     </div>
   )

@@ -29,7 +29,7 @@ function HostNav() {
   const username = userInfo?.username
 
   return (
-    <nav>
+    <nav className="host-nav">
       <Link to={"/"}>
         <img src={logo} alt="" />
       </Link>

@@ -83,7 +83,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   margin-top: -1.5rem;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
 }
 
 nav img {
@@ -218,13 +218,14 @@ nav img {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 15rem;
   text-decoration: none;
   color: black;
 }
 
 .places-data img {
   width: 100%;
-  height: 16rem;
+  height: 12rem;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
@@ -416,15 +417,21 @@ p {
   margin: 4rem 0 1rem 0;
 }
 
-.offer-detail img {
-  width: 30px;
+.offer-detail span {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
 }
 
-.amenities {
+/* .offer-detail img {
+  width: 30px;
+} */
+
+/* .amenities {
   display: flex;
   align-items: center;
   gap: 10px;
-}
+} */
 
 .place-details-container {
   display: flex;
@@ -441,6 +448,7 @@ p {
   padding: 1rem;
   border-radius: 0.35rem;
   margin-top: 2rem;
+  height: fit-content;
 }
 
 .book-price-detail {
@@ -681,12 +689,23 @@ input[type="checkbox"] {
 .places-upload {
   display: flex;
   text-align: center;
+  flex-direction: column;
   margin: 1.5rem 0 2rem 0;
-  cursor: pointer;
   width: fit-content;
+}
+
+.upload-photo-button {
   border: 2px solid rgb(124, 124, 124);
-  padding: 3.5rem;
+  padding: 2rem 2rem 1.5rem 2rem;
+  margin-bottom: 1rem;
   border-radius: 0.5rem;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.uploaded-photos {
+  display: flex;
+  gap: 10px;
 }
 
 .places-upload svg {
@@ -700,6 +719,12 @@ input[type="checkbox"] {
 .places-upload input {
   width: 0;
   height: 0;
+}
+
+.places-upload img {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
 }
 
 .place-title-input {
@@ -797,6 +822,14 @@ input[type="checkbox"] {
   padding: 0 2rem;
 }
 
+.today h2 span {
+  text-transform: capitalize;
+}
+
+.host-nav {
+  padding: 0 2rem;
+}
+
 .hosting-nav-item {
   display: flex;
   align-items: center;
@@ -852,6 +885,7 @@ input[type="checkbox"] {
   text-decoration: none;
   color: black;
   margin: 2rem 0;
+  width: 15rem;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -1079,7 +1113,7 @@ input[type="checkbox"] {
 /*===== Listings Details Subage =====*/
 .details-container {
   display: flex;
-  gap: 100px;
+  gap: 50px;
   margin-bottom: 5rem;
   width: 100%;
   max-width: 1400px;
@@ -1087,8 +1121,7 @@ input[type="checkbox"] {
 }
 
 .details-column-2 {
-  width: 100%;
-  max-width: 800px;
+  width: 800px;
 }
 
 .details-column-2-header {
@@ -1122,6 +1155,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   gap: 5px;
+  width: 20rem;
 }
 
 .details-column-1-img img {
@@ -1265,14 +1299,13 @@ input[type="checkbox"] {
 /*===== Pricing Details Subage =====*/
 .pricing-page {
   display: flex;
-  gap: 150px;
+  gap: 50px;
   margin-bottom: 5rem;
   padding: 0 2rem;
 }
 
 .pricing-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 800px;
 }
 
 .pricing-edit {
@@ -1332,14 +1365,13 @@ input[type="checkbox"] {
 /*===== Policies Subage =====*/
 .policies-page {
   display: flex;
-  gap: 150px;
+  gap: 50px;
   margin-bottom: 5rem;
   padding: 0 2rem;
 }
 
 .policies-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 800px;
 }
 
 .cancellation-edit {
@@ -2136,6 +2168,7 @@ input[type="checkbox"] {
 }
 
 .calendar-page-test {
+  height: 50vh;
   padding: 0 2rem;
 }
 

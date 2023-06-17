@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import placesData, { DAYS } from "../data"
 import {
@@ -11,12 +11,22 @@ import HostNav from "./HostNav"
 import BigFooter from "./BigFooter"
 import { MdArrowBackIos } from "react-icons/md"
 import { RxCross2 } from "react-icons/rx"
+import axios from "axios"
 
 function IdCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const { id } = useParams()
-  const place = placesData.find((place) => place.id === id)
-  const { mainImg, title, price } = place
+  const [place, setPlace] = useState(null)
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+    axios.get(`/places/${id}`).then((response) => {
+      setPlace(response.data)
+    })
+  }, [id])
+
+  if (!place) return ""
 
   return (
     <div className="calendar-container">
@@ -26,8 +36,8 @@ function IdCalendar() {
           <h4>LISTING</h4>
           <div className="calendar-page-img">
             <div className="calendar-page-content">
-              <img src={mainImg} alt="" />
-              <span>{title}</span>
+              <img src={place.photos[0]} alt="" />
+              <span>{place.title}</span>
             </div>
           </div>
           <div className="listing-availability">
@@ -44,8 +54,8 @@ function IdCalendar() {
             </div>
             <h5>Pricing</h5>
             <div className="listing-available-price">
-              <span>${price}</span>
-              <input type="text" place />
+              <span>${place.price}</span>
+              <input type="text" />
             </div>
           </div>
         </div>
@@ -72,7 +82,7 @@ function IdCalendar() {
             {getSortedDays(currentDate).map((day) => (
               <div key={day} className="col-div">
                 <span>{day}</span>
-                <span className="span-price">{price}</span>
+                <span className="span-price">{place.price}</span>
               </div>
             ))}
           </div>

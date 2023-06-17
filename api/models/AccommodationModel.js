@@ -5,6 +5,7 @@ const AccommodationSchema = new mongoose.Schema({
   title: String,
   country: String,
   address: String,
+  photos: [String],
   city: String,
   state: String,
   description: String,

@@ -43,7 +43,7 @@ function RentAccommodation() {
       setCountry(data.country)
       setCity(data.city)
       setState(data.state)
-      // setAddedPhotos(data.photos)
+      setAddedPhotos(data.photos)
       setBathrooms(data.bathrooms)
       setBedrooms(data.bedrooms)
       setBeds(data.beds)
@@ -67,6 +67,7 @@ function RentAccommodation() {
       state,
       city,
       description,
+      addedPhotos,
       perks,
       price,
       categoriesCheck,
@@ -125,16 +126,15 @@ function RentAccommodation() {
       })
       .then((response) => {
         const { data: filenames } = response
-        onChange((prev) => {
+        setAddedPhotos((prev) => {
           return [...prev, ...filenames]
         })
       })
   }
   function removePhoto(ev, filename) {
     ev.preventDefault()
-    onChange([...addedPhotos.filter((photo) => photo !== filename)])
+    setAddedPhotos([...addedPhotos.filter((photo) => photo !== filename)])
   }
-
 
   return (
     <>
@@ -263,13 +263,22 @@ function RentAccommodation() {
             <h2>Add some photos of you place</h2>
             <span>Show guests what your place looks like</span>
           </div>
-          <label className="places-upload">
-            <div>
+          <div className="places-upload">
+            <label className="upload-photo-button">
               <AiOutlineCloudUpload className="upload-icon" />
               <p>Click here to upload</p>
+              <input
+                type="file"
+                multiple
+                className="hidden"
+                onChange={uploadPhoto}
+              />
+            </label>
+            <div className="uploaded-photos">
+              {addedPhotos.length > 0 &&
+                addedPhotos.map((link) => <img key={link} src={link} alt="" />)}
             </div>
-            <input type="file" multiple className="hidden" onChange={uploadPhoto}/>
-          </label>
+          </div>
           <div className="rent-accommodation-title">
             <h2>How would you describe your place</h2>
             <span>Sweet and short works the best</span>

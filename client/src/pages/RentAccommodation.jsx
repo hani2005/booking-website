@@ -10,6 +10,7 @@ import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
 import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
+import { FaTrash } from "react-icons/fa"
 
 function RentAccommodation() {
   const { id } = useParams()
@@ -38,6 +39,7 @@ function RentAccommodation() {
     }
     axios.get("/places/" + id).then((response) => {
       const { data } = response
+      console.log(data)
       setTitle(data.title)
       setAddress(data.address)
       setCountry(data.country)
@@ -50,9 +52,6 @@ function RentAccommodation() {
       setDescription(data.description)
       setPerks(data.perks)
       setCategoriesCheck(data.categoriesCheck)
-      // setExtraInfo(data.extraInfo)
-      // setCheckIn(data.checkIn)
-      // setCheckOut(data.checkOut)
       setMaxGuests(data.maxGuests)
       setPrice(data.price)
     })
@@ -131,6 +130,7 @@ function RentAccommodation() {
         })
       })
   }
+
   function removePhoto(ev, filename) {
     ev.preventDefault()
     setAddedPhotos([...addedPhotos.filter((photo) => photo !== filename)])
@@ -276,7 +276,14 @@ function RentAccommodation() {
             </label>
             <div className="uploaded-photos">
               {addedPhotos.length > 0 &&
-                addedPhotos.map((link) => <img key={link} src={link} alt="" />)}
+                addedPhotos.map((link) => (
+                  <div>
+                    <img key={link} src={link} alt="" />
+                    <button onClick={(ev) => removePhoto(ev, link)}>
+                      <span>Remove</span> <FaTrash />
+                    </button>
+                  </div>
+                ))}
             </div>
           </div>
           <div className="rent-accommodation-title">

@@ -5,12 +5,21 @@ import placesData, { amenities, reviewsData } from "../data"
 import { AiFillStar } from "react-icons/ai"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
-import { DateRange } from "react-date-range"
+import { DateRange, Range, RangeKeyDict } from "react-date-range"
 import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
 import axios from "axios"
+import {
+  differenceInCalendarDays,
+  differenceInDays,
+  eachDayOfInterval,
+  format
+} from "date-fns"
 
 function AccommodationPage() {
+  const [nowPrice, setNowPrice] = useState(398)
+  const [totalPrice, setTotalPrice] = useState(nowPrice)
+  const [day, setDay] = useState()
   const [readMore, setReadMore] = useState(false)
   const [state, setState] = useState([
     {
@@ -22,14 +31,26 @@ function AccommodationPage() {
 
   const { id } = useParams()
   const [place, setPlace] = useState(null)
+
+  axios.get(`/places/${id}`).then((response) => {
+    setPlace(response.data)
+  })
+
   useEffect(() => {
-    // if (!id) {
-    //   return;
-    // }
-    axios.get(`/places/${id}`).then((response) => {
-      setPlace(response.data)
-    })
-  }, [id])
+    if (state[0].startDate && state[0].endDate) {
+      const dayCount = differenceInCalendarDays(
+        state[0].endDate,
+        state[0].startDate
+      )
+
+      if (dayCount && nowPrice) {
+        setTotalPrice(dayCount * nowPrice)
+      } else {
+        setTotalPrice(nowPrice)
+      }
+      setDay(dayCount)
+    }
+  }, [state[0], nowPrice])
 
   if (!place) return ""
 
@@ -110,13 +131,15 @@ function AccommodationPage() {
             <hr />
             <div className="book-total">
               <h5>Total</h5>
-              <p>${place.price}</p>
+              <p>
+                <span>${totalPrice}</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
       <div className="date-picker">
-        <h2>7 Nights in Dubai</h2>
+        <h2>{day + 1} Nights in Dubai</h2>
         <DateRange
           rangeColors={["#000000"]}
           onChange={(item) => setState([item.selection])}

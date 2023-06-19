@@ -65,7 +65,7 @@ function ManageListing() {
             <div className="details-content">
               <div className="details-content-title">
                 <h4>Photos</h4>
-                <p>Edit</p>
+                <Link to={`/rent-accommodation/${id}`}>Edit</Link>
               </div>
               <div className="details-content-img">
                 {place.photos.map((imgData) => (

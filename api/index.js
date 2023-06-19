@@ -177,6 +177,52 @@ app.get("/places", async (req, res) => {
   res.json(await AccommodationModel.find())
 })
 
+app.put("/places", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  const {
+    id,
+    title,
+    address,
+    country,
+    state,
+    city,
+    description,
+    perks,
+    price,
+    categoriesCheck,
+    maxGuests,
+    beds,
+    bedrooms,
+    addedPhotos,
+    bathrooms
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    if (err) throw err
+    const placeDoc = await AccommodationModel.findById(id)
+    if (userData.id === placeDoc.owner.toString()) {
+      placeDoc.set({
+        title,
+        address,
+        country,
+        state,
+        city,
+        description,
+        perks,
+        price,
+        categoriesCheck,
+        maxGuests,
+        beds,
+        bedrooms,
+        photos: addedPhotos,
+        bathrooms
+      })
+      await placeDoc.save()
+      res.json("ok")
+    }
+  })
+})
+
 app.get("/user-places", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies

@@ -33,7 +33,6 @@ function ListingsPage() {
         {places.map((place) => (
           <div key={place._id} className="listings-manage-container">
             <div className="listings-manage">
-              <h3>LISTING</h3>
               <div className="listing-manage-img">
                 <Link to={`/listings/${place._id}/details`}>
                   <img src={place.photos[0]} alt="" />

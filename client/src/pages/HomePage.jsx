@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import AccommodationsNav from "../components/AccommodationsNav"
 import AccommodationsCat from "../components/AccommodationsCat"
 import PlacesData from "../components/PlacesData"
@@ -7,6 +7,12 @@ import banner from "../assets/dubai-banner.mp4"
 import Modal from "../components/Modal"
 
 function HomePage() {
+  // useEffect(() => {
+  //   if (window.location.href.includes("success")) {
+  //     bookThisPlace()
+  //     alert("place booked")
+  //   }
+  // }, [])
   return (
     <>
       <div className="homepage">

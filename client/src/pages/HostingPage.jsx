@@ -12,8 +12,10 @@ import {
   useMultiChatLogic
 } from "react-chat-engine-advanced"
 import { UserContext } from "../UserContext"
+import { format } from "date-fns"
 
 function HostingPage() {
+  const { id } = useParams()
   const { setUserInfo, userInfo } = useContext(UserContext)
   const [places, setPlaces] = useState([])
   useEffect(() => {
@@ -41,13 +43,19 @@ function HostingPage() {
     })
   }, [])
 
+  const [bookings, setBookings] = useState([])
+  useEffect(() => {
+    axios.get("/bookings").then(({ data }) => {
+      setBookings(data)
+    })
+  }, [])
+
   const userName = userInfo.username
   const userPassword = userInfo.password
-
   const chatProps = useMultiChatLogic(
     "d1edf851-346b-41d6-adb7-f520dec7f196",
-    'ahmed',
-    'ahmed'
+    "ahmed",
+    "ahmed"
   )
 
   return (
@@ -55,12 +63,14 @@ function HostingPage() {
       <HostNav />
       {subpage === "today" && (
         <div className="today">
-          <h2>Welcome back, <span>{userInfo.username}</span></h2>
+          <h2>
+            Welcome back, <span>{userInfo.username}</span>
+          </h2>
           <h4>Your reservations</h4>
           <div className="hosting-details">
-            <Link>Currently hosting (1)</Link>
-            <Link>Your Bookings (1)</Link>
-            <Link>Pending Review (0)</Link>
+            <Link to={"/hosting/today"}>Currently hosting</Link>
+            <Link to={"/hosting/today/my-bookings"}>Your Bookings</Link>
+            <Link to={"/hosting/today/pending-review"}>Pending Review</Link>
           </div>
           <div className="hosting-detail-container">
             {places.map((place) => (
@@ -68,7 +78,88 @@ function HostingPage() {
                 <img src={place.photos[0]} alt="" />
                 <h5>{place.address}</h5>
                 <span>{place.title}</span>
-                <span><strong>Beds:</strong> {place.beds}</span>
+                <span>
+                  <strong>Beds:</strong> {place.beds}
+                </span>
+                <p>night {place.price}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+      {subpage === "my-bookings" && (
+        <div className="today">
+          <h2>
+            Welcome back, <span>{userInfo.username}</span>
+          </h2>
+          <h4>Your reservations</h4>
+          <div className="hosting-details">
+            <Link to={"/hosting/today"}>Currently hosting</Link>
+            <Link to={"/hosting/today/my-bookings"}>Your Bookings</Link>
+            <Link to={"/hosting/today/pending-review"}>Pending Review</Link>
+          </div>
+          <div className="hosting-booking-container">
+            {bookings.map((place) => (
+              <Link key={place._id}>
+                <div className="hosting-booking-img">
+                  <img src={place.photos[0]} alt="" />
+                  <div className="hosting-booking-imgs">
+                    <img src={place.photos[1]} alt="" />
+                    <img src={place.photos[2]} alt="" />
+                  </div>
+                </div>
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <div className="hosting-booking-spans">
+                  <span>
+                    <strong>Beds:</strong> {place.beds}
+                  </span>
+                  <span>
+                    <strong>Bedrooms:</strong> {place.bedrooms}
+                  </span>
+                  <span>
+                    <strong>Bathrooms:</strong> {place.bathrooms}
+                  </span>
+                </div>
+                <span>
+                  <strong>CheckIn:</strong>{" "}
+                  {format(new Date(place.checkIn), "yyyy-MM-dd")}
+                </span>
+                <span>
+                  <strong>CheckOut:</strong>{" "}
+                  {format(new Date(place.checkOut), "yyyy-MM-dd")}
+                </span>
+                <p>
+                  {place.city}, {place.country}
+                </p>
+                <p>
+                  <strong>Total Price:</strong> ${place.totalPrice}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+      {subpage === "pending-review" && (
+        <div className="today">
+          <h2>
+            Welcome back, <span>{userInfo.username}</span>
+          </h2>
+          <h4>Your reservations</h4>
+          <div className="hosting-details">
+            <Link to={"/hosting/today"}>Currently hosting</Link>
+            <Link to={"/hosting/today/my-bookings"}>Your Bookings</Link>
+            <Link to={"/hosting/today/pending-review"}>Pending Review</Link>
+          </div>
+          <div className="hosting-detail-container">
+            {places.map((place) => (
+              <Link key={place._id} to={`/accommodation/${place._id}`}>
+                <img src={place.photos[0]} alt="" />
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <span>
+                  <strong>Beds:</strong> {place.beds}
+                </span>
                 <p>night {place.price}</p>
               </Link>
             ))}

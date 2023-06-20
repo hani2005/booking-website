@@ -1,10 +1,22 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { IoIosArrowBack } from "react-icons/io"
 import { carsData } from "../data"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import BigFooter from "../components/BigFooter"
+import axios from "axios"
 
 function Checkout() {
+  const { id } = useParams()
+  const [place, setPlace] = useState()
+
+  useEffect(() => {
+    axios.get(`/places/${id}`).then((response) => {
+      setPlace(response.data)
+    })
+  }, [])
+
+  if (!place) return ""
+
   return (
     <div className="checkout-page">
       <Link to={"/"} className="checkout-header">
@@ -25,17 +37,14 @@ function Checkout() {
           <button>Confirm and pay</button>
         </div>
         <div className="checkout-content">
-          {carsData.slice(0, 1).map((item) => (
-            <div key={item.id} className="checkout-item-content">
-              <img src={item.mainImg} alt="" />
-              <div className="checkout-item-content-text">
-                <h4>{item.title}</h4>
-                <span>{item.location}</span>
-                <span>{item.model}</span>
-                <h5>${item.price}</h5>
-              </div>
+          <div key={place._id} className="checkout-item-content">
+            <img src={place.photos[0]} alt="" />
+            <div className="checkout-item-content-text">
+              <h4>{place.title}</h4>
+              <span>{place.address}</span>
+              <h5>${place.price}</h5>
             </div>
-          ))}
+          </div>
           <h3>Price Details</h3>
           <div className="checkout-price-details">
             <div className="price-details-content">

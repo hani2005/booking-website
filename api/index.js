@@ -8,11 +8,14 @@ const cors = require("cors")
 const bcrypt = require("bcryptjs")
 const multer = require("multer")
 const AccommodationModel = require("./models/AccommodationModel")
+const Booking = require("./models/AccommodationBooking")
 const app = express()
 const axios = require("axios")
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3")
 const fs = require("fs")
 const mime = require("mime-types")
+const { default: Order } = require("./models/Oder")
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 // bcrypt password
 const salt = bcrypt.genSaltSync(10)
@@ -25,6 +28,15 @@ app.use(cors({ credentials: true, origin: "http://localhost:5173" }))
 app.use(express.json())
 app.use(cookieParser())
 app.use("/uploads", express.static(__dirname + "/uploads"))
+
+function getUserDataFromReq(req) {
+  return new Promise((resolve, reject) => {
+    jwt.verify(req.cookies.token, secret, {}, async (err, userData) => {
+      if (err) throw err
+      resolve(userData)
+    })
+  })
+}
 
 app.get("/", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
@@ -64,11 +76,6 @@ app.post("/upload", photosMiddleware.array("photos", 100), async (req, res) => {
   }
   res.json(uploadedFiles)
 })
-
-// app.post("/authenticate", async (req, res) => {
-//   const { username } = req.body
-//   return res.json({ username: username, secret: "sha256..." })
-// })
 
 app.post("/register", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
@@ -230,6 +237,81 @@ app.get("/user-places", (req, res) => {
     const { id } = userData
     res.json(await AccommodationModel.find({ owner: id }))
   })
+})
+
+app.post("/bookings", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  // const userData = await getUserDataFromReq(req)
+  const { token } = req.cookies
+  const {
+    title,
+    country,
+    address,
+    addedPhotos,
+    city,
+    state,
+    description,
+    beds,
+    bathrooms,
+    bedrooms,
+    maxGuests,
+    checkIn,
+    checkOut,
+    totalPrice
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err
+    const BookingDoc = await Booking.create({
+      booked: info.id,
+      title,
+      country,
+      address,
+      photos: addedPhotos,
+      city,
+      state,
+      description,
+      beds,
+      bathrooms,
+      bedrooms,
+      maxGuests,
+      checkIn,
+      checkOut,
+      totalPrice
+    })
+    res.json(BookingDoc)
+  })
+})
+
+app.get("/bookings", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    const { id } = userData
+    res.json(await Booking.find({ booked: id }))
+  })
+})
+
+app.post("/checkout", async (req, res) => {
+  const place = req.body.items
+  const price = req.body.price
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "USD",
+          product_data: { name: place.title },
+          unit_amount: price * 100
+        },
+        quantity: 1
+      }
+    ],
+    payment_method_types: ['card'],
+    mode: "payment",
+    success_url: `http://localhost:5173/${place._id}/success`,
+    cancel_url: `http://localhost:5173/${place._id}/cancel`
+  })
+  res.json({ url: session.url })
 })
 
 app.listen(3000)

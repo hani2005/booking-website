@@ -28,9 +28,12 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/accommodation/:id" element={<AccommodationPage />} />
+          <Route path="/:id/success" element={<AccommodationPage />} />
+          <Route path="/:id/canceled" element={<AccommodationPage />} />
           <Route path="/rent-accommodation" element={<RentAccommodation />} />
           <Route path="/rent-accommodation/:id" element={<RentAccommodation />} />
           <Route path="/hosting/:subpage?" element={<HostingPage />} />
+          <Route path="/hosting/:subpage?/:subpage?" element={<HostingPage />} />
           <Route path="/listings" element={<ListingsPage />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/calendar/:id" element={<IdCalendar />} />
@@ -43,7 +46,7 @@ function App() {
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/host-experience" element={<HostExperience />} />
           <Route path="/experience/:id" element={<Experience />} />
-          <Route path="/checkout" element={<Checkout />} />
+          {/* <Route path="/checkout/:id" element={<Checkout />} /> */}
         </Routes>
       </UserContextProvider>
     </div>

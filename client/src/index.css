@@ -9,6 +9,67 @@
   font-family: "Poppins", sans-serif;
 }
 
+aside {
+  position: fixed;
+  height: 100%;
+  padding: 5rem 1rem 0 1rem;
+  right: -1120px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: 0.6s;
+  z-index: 1;
+}
+
+aside.active {
+  right: 0;
+}
+
+aside i {
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.aside i:hover {
+  background-color: #ebebeb;
+}
+
+aside a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin: 2rem 0 0 0;
+  padding: 0.5rem 5rem 0.5rem 0.4rem;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+aside a:hover {
+  background-color: #ebebeb;
+}
+
+.backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.35);
+  inset: 0;
+  backdrop-filter: blur(3px);
+  display: none;
+}
+
+.backdrop.active {
+  display: block;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -723,7 +784,6 @@ input[type="checkbox"] {
 }
 
 .uploaded-photos button span {
-
   font-weight: 500;
   letter-spacing: -0.5px;
   font-size: 0.9rem;
@@ -927,10 +987,75 @@ input[type="checkbox"] {
   letter-spacing: -0.5px;
 }
 
+.hosting-booking-container {
+  display: flex;
+  gap: 10px;
+}
+
+.hosting-booking-container p {
+  text-decoration: none;
+}
+
+.hosting-booking-container img {
+  width: 280px;
+  height: 250px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.hosting-booking-container a {
+  text-decoration: none;
+  color: black;
+  margin: 2rem 0;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hosting-booking-container h5 {
+  letter-spacing: -0.6px;
+  font-size: 0.95rem;
+}
+
+.hosting-booking-container span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.hosting-booking-spans {
+  display: flex;
+  gap: 20px;
+}
+
+.hosting-booking-spans span {
+  display: flex;
+}
+
+.hosting-booking-container strong {
+  margin-right: 0.2rem;
+}
+
+.hosting-booking-img {
+  display: flex;
+  gap: 5px;
+}
+
+.hosting-booking-imgs {
+  display: flex;
+  flex-direction: column;
+}
+
+.hosting-booking-imgs img {
+  width: 150px;
+  height: 120px;
+}
+
 /*=========== Inbox Subpage ===========*/
 
 .inbox-container {
- padding: 2rem;
+  padding: 2rem;
   display: flex;
 }
 
@@ -2009,6 +2134,7 @@ input[type="checkbox"] {
 
 .checkout-item-content img {
   width: 200px;
+  height: 150px;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
@@ -2037,10 +2163,18 @@ input[type="checkbox"] {
 
 .checkout-container {
   display: flex;
-  height: 50vh;
+  flex-direction: column;
   justify-content: center;
-  gap: 100px;
+  gap: 50px;
   margin-bottom: 5rem;
+}
+
+.checkout-page {
+  overflow: scroll;
+}
+
+.checkout-page::-webkit-scrollbar {
+  display: none;
 }
 
 .checkout-header {
@@ -2077,14 +2211,16 @@ input[type="checkbox"] {
 .checkout-details {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .checkout-details input {
   padding: 0.8rem;
+
 }
 
 .checkout-details button {
-  margin-top: 2rem;
+  margin: 2rem 0;
   padding: 1rem;
   background-color: black;
   color: white;
@@ -2104,12 +2240,6 @@ input[type="checkbox"] {
   letter-spacing: -0.25px;
   font-weight: 500;
   font-size: 0.9rem;
-}
-
-.checkout-content {
-  border: 1px solid rgb(99, 99, 99);
-  border-radius: 10px;
-  padding: 1rem;
 }
 
 .checkout-cancellation-policy {
@@ -2227,4 +2357,3 @@ input[type="checkbox"] {
   text-decoration: none;
   color: black;
 }
-

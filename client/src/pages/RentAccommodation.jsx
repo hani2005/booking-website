@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import AccommodationsNav from "../components/AccommodationsNav"
 import { amenities, categories } from "../data"
 import {
@@ -11,6 +11,7 @@ import Modal from "../components/Modal"
 import { Navigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { FaTrash } from "react-icons/fa"
+import { UserContext } from "../UserContext"
 
 function RentAccommodation() {
   const { id } = useParams()
@@ -32,6 +33,17 @@ function RentAccommodation() {
   const [beds, setBeds] = useState("")
   const [price, setPrice] = useState("")
   const [redirect, setRedirect] = useState(false)
+
+  const { setUserInfo, userInfo } = useContext(UserContext)
+  useEffect(() => {
+    fetch("http://localhost:3000/profile", {
+      credentials: "include"
+    }).then((response) => {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+      })
+    })
+  }, [])
 
   useEffect(() => {
     if (!id) {
@@ -60,6 +72,7 @@ function RentAccommodation() {
   async function savePlace(ev) {
     ev.preventDefault()
     const AccommodationData = {
+      host: userInfo.username,
       title,
       address,
       country,

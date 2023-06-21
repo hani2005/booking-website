@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const AccommodationSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  host: { type: String, ref: "User" },
   title: String,
   country: String,
   address: String,

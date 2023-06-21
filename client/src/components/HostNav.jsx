@@ -45,13 +45,10 @@ function HostNav() {
       </div>
       <div className="profile">
         {username ? (
-          <>
-            {userInfo.username}
             <Link to={"/hosting/today"} className="user-container">
               <HiMenu className="menu-icon" />
               <FaUserCircle className="user-icon" />
             </Link>
-          </>
         ) : (
           <Link to={"/hosting/today"} className="user-container">
             <HiMenu className="menu-icon" />

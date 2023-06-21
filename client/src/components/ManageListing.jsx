@@ -65,7 +65,9 @@ function ManageListing() {
             <div className="details-content">
               <div className="details-content-title">
                 <h4>Photos</h4>
-                <Link to={`/rent-accommodation/${id}`}>Edit</Link>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <div className="details-content-img">
                 {place.photos.map((imgData) => (
@@ -76,42 +78,47 @@ function ManageListing() {
             <div className="listing-title-edit">
               <div className="details-content-title">
                 <h4>Listing title</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">{place.title}</span>
             </div>
             <div className="listing-desc-edit">
               <div className="details-content-title">
                 <h4>Listing description</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <p>{place.description}</p>
             </div>
             <div className="guests-num">
               <h4>Number of Guests</h4>
               <div className="guests-num-icons">
-                <FiPlus />
                 <h4>{place.maxGuests}</h4>
-                <FiMinus />
               </div>
             </div>
             <div className="listing-status-edit">
               <div className="details-content-title">
                 <h4>Listing status</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">Listed</span>
             </div>
             <div className="amenities-edit">
               <div className="details-content-title">
                 <h4>Amenities</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <div className="amenities-edit-data-container">
-                {amenities.slice(0, 6).map((item) => (
+                {place.perks.map((perk) => (
                   <div className="amenities-edit-data">
-                    <img src={item.icon} alt="" />
-                    <span>{item.amenitie}</span>
+                    <span>{perk}</span>
                   </div>
                 ))}
               </div>
@@ -119,21 +126,29 @@ function ManageListing() {
             <div className="listing-location-edit">
               <div className="details-content-title">
                 <h4>Listing location</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">{place.address}</span>
             </div>
             <div className="listing-category">
               <div className="details-content-title">
                 <h4>Property category</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
-              <span className="details-content-span">Serviced Apartment</span>
+              {place.categoriesCheck.map((category) => (
+                <span className="details-content-span">{category}</span>
+              ))}
             </div>
             <div className="listing-space">
               <div className="details-content-title">
                 <h4>Rooms and spaces</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span>Bedroom: {place.bedrooms}</span>
               <span>Bed: {place.beds}</span>
@@ -176,14 +191,18 @@ function ManageListing() {
             <div className="pricing-edit">
               <div className="details-content-title">
                 <h4>Pricing</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">${place.price}</span>
             </div>
             <div className="discounts-edit">
               <div className="details-content-title">
                 <h4>Discounts</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">Weekly discount</span>
               <span className="details-content-span">40%</span>
@@ -191,7 +210,9 @@ function ManageListing() {
             <div className="additional-charges-edit">
               <div className="details-content-title">
                 <h4>Additional charges</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <div className="additional-charges-edit-span">
                 <span>Cleaning fee</span>
@@ -205,14 +226,18 @@ function ManageListing() {
             <div className="taxes-edit">
               <div className="details-content-title">
                 <h4>Taxes</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <span className="details-content-span">5.00% VAT/GST</span>
             </div>
             <div className="trip-length-edit">
               <div className="details-content-title">
                 <h4>Trip length</h4>
-                <p>Edit</p>
+                <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                  Edit
+                </Link>
               </div>
               <div className="trip-length-edit-span">
                 <span>Minimum stay</span>
@@ -277,7 +302,9 @@ function ManageListing() {
               <div className="cancellation-edit">
                 <div className="details-content-title">
                   <h4>Cancellation policy</h4>
-                  <p>Edit</p>
+                  <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                    Edit
+                  </Link>
                 </div>
                 <span className="details-content-span">
                   Strict: Full refund for cancellations made within 48 hours of
@@ -287,73 +314,30 @@ function ManageListing() {
               <div className="instant-book-edit">
                 <div className="details-content-title">
                   <h4>Instant book</h4>
-                  <p>Edit</p>
+                  <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                    Edit
+                  </Link>
                 </div>
                 <span className="details-content-span">
                   Instant book on Guests who meet all the requirements can book
                   instantly. Others will need to send reservation request.
                 </span>
               </div>
-              <div className="house-rules">
-                <div className="details-content-title">
-                  <h4>House rules</h4>
-                  <p>Edit</p>
-                </div>
-                <span className="details-content-span">
-                  Guests are expected to follow your rules, and they can be
-                  removed from Airbnb if they cause issues.
-                </span>
-              </div>
-              <div className="manage-house-rules">
-                <span className="manage-house-rules-span">Pets Allowed</span>
-                <div className="manage-house-rules-icons">
-                  <AiOutlinePlusCircle />
-                  <AiOutlineMinusCircle />
-                </div>
-              </div>
-              <div className="manage-house-rules">
-                <span className="manage-house-rules-span">Events Allowed</span>
-                <div className="manage-house-rules-icons">
-                  <AiOutlinePlusCircle />
-                  <AiOutlineMinusCircle />
-                </div>
-              </div>
-              <div className="manage-house-rules">
-                <span className="manage-house-rules-span">
-                  Smoking, vaping, e cigarattes
-                </span>
-                <div className="manage-house-rules-icons">
-                  <AiOutlinePlusCircle />
-                  <AiOutlineMinusCircle />
-                </div>
-              </div>
-              <div className="manage-house-rules">
-                <span className="manage-house-rules-span">
-                  Commercial photography
-                </span>
-                <div className="manage-house-rules-icons">
-                  <AiOutlinePlusCircle />
-                  <AiOutlineMinusCircle />
-                </div>
-              </div>
-              <div className="times">
-                <div className="details-content-title">
-                  <h4>Quiet times</h4>
-                  <p>Edit</p>
-                </div>
-                <span className="details-content-span">Not set</span>
-              </div>
               <div className="times">
                 <div className="details-content-title">
                   <h4>Check in window</h4>
-                  <p>Edit</p>
+                  <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                    Edit
+                  </Link>
                 </div>
                 <span className="details-content-span">After 3:00 PM</span>
               </div>
               <div className="times">
                 <div className="details-content-title">
                   <h4>Checkout time</h4>
-                  <p>Edit</p>
+                  <Link className="edit-link" to={`/rent-accommodation/${id}`}>
+                    Edit
+                  </Link>
                 </div>
                 <span className="details-content-span">12:00 PM</span>
               </div>

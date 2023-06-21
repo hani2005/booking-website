@@ -13,6 +13,8 @@ import {
 } from "react-chat-engine-advanced"
 import { UserContext } from "../UserContext"
 import { format } from "date-fns"
+import { BiMenu, BiSearch } from "react-icons/bi"
+import { BsFillImageFill } from "react-icons/bs"
 
 function HostingPage() {
   const { id } = useParams()
@@ -152,26 +154,19 @@ function HostingPage() {
             <Link to={"/hosting/today/pending-review"}>Pending Review</Link>
           </div>
           <div className="hosting-detail-container">
-            {places.map((place) => (
-              <Link key={place._id} to={`/accommodation/${place._id}`}>
+            {bookings.map((place) => (
+              <div key={place._id} className="pending-review">
                 <img src={place.photos[0]} alt="" />
                 <h5>{place.address}</h5>
-                <span>{place.title}</span>
-                <span>
-                  <strong>Beds:</strong> {place.beds}
-                </span>
-                <p>night {place.price}</p>
-              </Link>
+                <span>Leave a review!</span>
+              </div>
             ))}
           </div>
         </div>
       )}
       {subpage === "inbox" && (
-        // className="inbox-container"
-        <div style={{ height: "100vh" }}>
-          <MultiChatSocket {...chatProps} />
-          <MultiChatWindow {...chatProps} style={{ height: "100%" }} />
-          {/* <div className="inbox-column-1">
+        <div className="inbox-container">
+          <div className="inbox-column-1">
             <div className="inbox-heading">
               <BiMenu />
               <h3>All messages</h3>
@@ -260,7 +255,7 @@ function HostingPage() {
                 alt=""
               />
             </div>
-          </div> */}
+          </div>
         </div>
       )}
       {subpage === "insights" && (

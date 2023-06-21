@@ -154,6 +154,7 @@ app.post("/places", (req, res) => {
     if (err) throw err
     const AccommodationDoc = await AccommodationModel.create({
       owner: info.id,
+      host: info.username,
       title,
       address,
       country,

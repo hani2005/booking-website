@@ -1,18 +1,20 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import AccommodationsNav from "../components/AccommodationsNav"
 import AccommodationsCat from "../components/AccommodationsCat"
 import PlacesData from "../components/PlacesData"
 import SmallFooter from "../components/SmallFooter"
 import banner from "../assets/dubai-banner.mp4"
 import Modal from "../components/Modal"
+import axios from "axios"
 
 function HomePage() {
-  // useEffect(() => {
-  //   if (window.location.href.includes("success")) {
-  //     bookThisPlace()
-  //     alert("place booked")
-  //   }
-  // }, [])
+  const [places,setPlaces] = useState([]);
+  useEffect(() => {
+    axios.get('/places').then(response => {
+      setPlaces(response.data);
+    });
+  }, []);
+  
   return (
     <>
       <div className="homepage">
@@ -22,7 +24,7 @@ function HomePage() {
           The Best Vacation Rental Apartments, Luxury Cars & Experiences in
           Dubai
         </h1>
-      <AccommodationsCat />
+        <AccommodationsCat places={places}/>
       </div>
       <video
         className="banner"

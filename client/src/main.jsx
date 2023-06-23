@@ -6,10 +6,11 @@ import "./index.css"
 import { AppProvider } from "./context"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <AppProvider>
-      <App />
-    </AppProvider>
-  </BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 )

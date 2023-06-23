@@ -20,7 +20,7 @@ import Checkout from "./pages/Checkout"
 import { UserContextProvider } from "./UserContext"
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3000"
+  axios.defaults.baseURL = "https://booking-website-rho.vercel.app/api"
   axios.defaults.withCredentials = true
   return (
     <div className="container">

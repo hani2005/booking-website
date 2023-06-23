@@ -14,7 +14,7 @@ function LoginPage() {
 
   async function login(e) {
     e.preventDefault()
-    const response = await fetch("http://localhost:3000/api/login", {
+    const response = await fetch("https://booking-website-rho.vercel.app/api/login", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },

@@ -13,8 +13,6 @@ const app = express()
 const axios = require("axios")
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3")
 const fs = require("fs")
-const mime = require("mime-types")
-const { default: Order } = require("./models/Oder")
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 // bcrypt password

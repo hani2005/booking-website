@@ -6,11 +6,11 @@ import axios from "axios"
 import placesData from "../data"
 import { HiMenu } from "react-icons/hi"
 import { DateRange } from "react-date-range"
-import {
-  MultiChatSocket,
-  MultiChatWindow,
-  useMultiChatLogic
-} from "react-chat-engine-advanced"
+// import {
+//   MultiChatSocket,
+//   MultiChatWindow,
+//   useMultiChatLogic
+// } from "react-chat-engine-advanced"
 import { UserContext } from "../UserContext"
 import { format } from "date-fns"
 import { BiMenu, BiSearch } from "react-icons/bi"
@@ -52,13 +52,13 @@ function HostingPage() {
     })
   }, [])
 
-  const userName = userInfo.username
-  const userPassword = userInfo.password
-  const chatProps = useMultiChatLogic(
-    "d1edf851-346b-41d6-adb7-f520dec7f196",
-    "ahmed",
-    "ahmed"
-  )
+  // const userName = userInfo.username
+  // const userPassword = userInfo.password
+  // const chatProps = useMultiChatLogic(
+  //   "d1edf851-346b-41d6-adb7-f520dec7f196",
+  //   "ahmed",
+  //   "ahmed"
+  // )
 
   return (
     <div className="hosting-page">

@@ -29,16 +29,16 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/uploads", express.static(__dirname + "/uploads"))
 
-function getUserDataFromReq(req) {
-  return new Promise((resolve, reject) => {
-    jwt.verify(req.cookies.token, secret, {}, async (err, userData) => {
-      if (err) throw err
-      resolve(userData)
-    })
-  })
-}
+// function getUserDataFromReq(req) {
+//   return new Promise((resolve, reject) => {
+//     jwt.verify(req.cookies.token, secret, {}, async (err, userData) => {
+//       if (err) throw err
+//       resolve(userData)
+//     })
+//   })
+// }
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   res.send("Here")
 })
@@ -67,7 +67,7 @@ async function uploadToS3(path, originalFilename, mimetype) {
 }
 
 const photosMiddleware = multer({ dest: "/tmp" })
-app.post("/upload", photosMiddleware.array("photos", 100), async (req, res) => {
+app.post("/api/upload", photosMiddleware.array("photos", 100), async (req, res) => {
   const uploadedFiles = []
   for (let i = 0; i < req.files.length; i++) {
     const { path, originalname, mimetype } = req.files[i]
@@ -77,7 +77,7 @@ app.post("/upload", photosMiddleware.array("photos", 100), async (req, res) => {
   res.json(uploadedFiles)
 })
 
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { username, password } = req.body
   try {
@@ -98,7 +98,7 @@ app.post("/register", async (req, res) => {
 })
 
 // to login
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { username, password } = req.body
   const userDoc = await User.findOne({ username })
@@ -117,7 +117,7 @@ app.post("/login", async (req, res) => {
 })
 
 // to get user profile
-app.get("/profile", (req, res) => {
+app.get("/api/profile", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   jwt.verify(token, secret, {}, (err, info) => {
@@ -127,11 +127,11 @@ app.get("/profile", (req, res) => {
 })
 
 // logout
-app.post("/logout", (req, res) => {
+app.post("/api/logout", (req, res) => {
   res.cookie("token", "").json("ok")
 })
 
-app.post("/places", (req, res) => {
+app.post("/api/places", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   const {
@@ -174,18 +174,18 @@ app.post("/places", (req, res) => {
   })
 })
 
-app.get("/places/:id", async (req, res) => {
+app.get("/api/places/:id", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { id } = req.params
   res.json(await AccommodationModel.findById(id))
 })
 
-app.get("/places", async (req, res) => {
+app.get("/api/places", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   res.json(await AccommodationModel.find())
 })
 
-app.put("/places", async (req, res) => {
+app.put("/api/places", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   const {
@@ -231,7 +231,7 @@ app.put("/places", async (req, res) => {
   })
 })
 
-app.get("/user-places", (req, res) => {
+app.get("/api/user-places", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   jwt.verify(token, secret, {}, async (err, userData) => {
@@ -240,7 +240,7 @@ app.get("/user-places", (req, res) => {
   })
 })
 
-app.post("/bookings", async (req, res) => {
+app.post("/api/bookings", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   // const userData = await getUserDataFromReq(req)
   const { token } = req.cookies
@@ -283,7 +283,7 @@ app.post("/bookings", async (req, res) => {
   })
 })
 
-app.get("/bookings", async (req, res) => {
+app.get("/api/bookings", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   jwt.verify(token, secret, {}, async (err, userData) => {
@@ -292,7 +292,7 @@ app.get("/bookings", async (req, res) => {
   })
 })
 
-app.post("/checkout", async (req, res) => {
+app.post("/api/checkout", async (req, res) => {
   const place = req.body.items
   const price = req.body.price
 

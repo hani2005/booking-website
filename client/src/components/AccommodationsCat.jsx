@@ -11,6 +11,8 @@ function AccommodationsCat({ places }) {
     setData(result)
   }
 
+  console.log(places)
+
   return (
     <>
       <div className="accommodations-category">
@@ -95,9 +97,9 @@ function AccommodationsCat({ places }) {
           <span>Unique Stays</span>
         </div>
       </div>
-      {/* {data.map((item) => (
+      {/* {data?.map((item) => (
         <div key={item._id} className="">
-          <Product {...item} />
+          <PlacesData {...item} />
         </div>
       ))} */}
     </>

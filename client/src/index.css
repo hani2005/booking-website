@@ -1016,11 +1016,15 @@ input[type="checkbox"] {
   text-decoration: none;
   color: black;
   margin: 2rem 0;
-  width: 15rem;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: fit-content;
 }
+
+/* .hosting-booking-container {
+
+} */
 
 .hosting-booking-container h5 {
   letter-spacing: -0.6px;

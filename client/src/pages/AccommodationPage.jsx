@@ -48,7 +48,7 @@ function AccommodationPage() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/profile", {
+    fetch("http://localhost:3000/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -101,7 +101,7 @@ function AccommodationPage() {
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/checkout", {
+    await fetch("http://localhost:3000/api/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

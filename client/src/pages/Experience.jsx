@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import BigFooter from "../components/BigFooter"
-import { Link, useParams } from "react-router-dom"
+import { Link, Navigate, useParams } from "react-router-dom"
 import { experienceData, perks, reviewsData } from "../data"
 import ExperienceNav from "../components/ExperienceNav"
 import Modal from "../components/Modal"
@@ -8,9 +8,20 @@ import { AiFillStar } from "react-icons/ai"
 import { DateRange } from "react-date-range"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
+import axios from "axios"
+import { UserContext } from "../UserContext"
+import { differenceInCalendarDays } from "date-fns"
 
 function Experience() {
+  const [nowPrice, setNowPrice] = useState()
+  const [totalPrice, setTotalPrice] = useState(nowPrice)
+  const [day, setDay] = useState()
+  const [clicked, setClicked] = useState(false)
+  const [review, setReview] = useState("")
+  const [reviews, setReviews] = useState([])
   const [readMore, setReadMore] = useState(false)
+  const [showMore, setShowMore] = useState(false)
+  const [redirect, setRedirect] = useState(false)
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -20,50 +31,210 @@ function Experience() {
   ])
 
   const { id } = useParams()
-  const experience = experienceData.find((experience) => experience.id === id)
-  const {
-    mainImg,
-    img1,
-    img2,
-    img3,
-    img4,
-    title,
-    location,
-    desc,
-    price,
-    reviews,
-    rate
-  } = experience
+  const [experienceData, setExperienceData] = useState(null)
+
+  useEffect(() => {
+    axios.get(`/experience/${id}`).then((response) => {
+      setExperienceData(response.data)
+      setNowPrice(response.data.price)
+    })
+  }, [])
+
+  const [bookings, setBookings] = useState([0])
+  useEffect(() => {
+    axios.get("/bookings").then((response) => {
+      setBookings(response.data[0])
+    })
+  }, [])
+
+  const { setUserInfo, userInfo } = useContext(UserContext)
+  useEffect(() => {
+    fetch("http://localhost:3000/api/profile", {
+      credentials: "include"
+    }).then((response) => {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+      })
+    })
+  }, [])
+
+  useEffect(() => {
+    if (state[0].startDate && state[0].endDate) {
+      const dayCount = differenceInCalendarDays(
+        state[0].endDate,
+        state[0].startDate
+      )
+
+      if (dayCount && nowPrice) {
+        setTotalPrice(dayCount * nowPrice + nowPrice)
+      } else {
+        setTotalPrice(nowPrice)
+      }
+      setDay(dayCount)
+    }
+
+    if (window.location.href.includes("success")) {
+      // toast.success("Place has been successfully booked")
+      bookThisPlace()
+      setTimeout(() => {
+        setRedirect(true)
+      }, 2000)
+    }
+  }, [state[0], nowPrice])
+
+  async function bookThisPlace() {
+    await axios.post("/bookings", {
+      checkIn: state[0].startDate,
+      checkOut: state[0].endDate,
+      totalPrice,
+      title: place.title,
+      country: place.country,
+      address: place.address,
+      addedPhotos: place.photos,
+      city: place.city,
+      state: place.state,
+      description: place.description,
+      beds: place.beds,
+      bathrooms: place.bathrooms,
+      bedrooms: place.bedrooms,
+      maxGuests: place.maxGuests
+    })
+  }
+
+  const checkout = async () => {
+    await fetch("http://localhost:3000/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ items: place, price: totalPrice })
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url) // Forwarding user to Stripe
+        }
+      })
+  }
+
+  const resetForm = (e) => {
+    e.preventDefault()
+    setReview("")
+    setClicked(false)
+  }
+
+  const submitReview = (e) => {
+    e.preventDefault()
+    const newReview = {
+      description: review
+    }
+    setReviews([...reviews, newReview])
+    resetForm(e)
+  }
+
+  const deleteReview = (e, index) => {
+    e.preventDefault()
+    const clone = [...reviews]
+    const newState = clone.filter((x, i) => i !== index)
+    setReviews(newState)
+  }
+
+  if (!experienceData) return ""
+
+  if (redirect) {
+    return <Navigate to={"/"} />
+  }
 
   return (
     <div className="experience-page">
       <ExperienceNav />
       <Modal />
-      <h2 className="place-title">{title}</h2>
+      <h2 className="place-title">{experienceData.title}</h2>
       <div className="place-subtitle">
-        <div className="place-rate">
-          <AiFillStar />
-          <span>{rate}</span>
-        </div>
-        <h5>{reviews} reviews</h5>
-        <p>{location}</p>
+        <h5>{reviews.length} reviews</h5>
+        <p>
+          {experienceData.address}, {experienceData.country}
+        </p>
       </div>
-      <div className="img-container">
-        <img src={mainImg} alt="" className="mainImg" />
+      {experienceData.photos[0] == <img /> ? (
+        <div className="img-container">
+          <img src={experienceData.photos[0]} alt="" className="mainImg" />
+          <div className="small-img-container">
+            <img src={experienceData.photos[1]} alt="" />
+            <img src={experienceData.photos[2]} alt="" className="img2" />
+            <img src={experienceData.photos[3]} alt="" />
+            <img src={experienceData.photos[4]} alt="" className="img4" />
+          </div>
+        </div>
+      ) : (
+        <div className="img-container">
+          <video
+            muted
+            autoPlay
+            loop
+            type="video/mp4"
+            src={experienceData.photos[0]}
+            alt=""
+            className="mainImg"
+          />
+          <div className="small-img-container">
+            <video
+              muted
+              autoPlay
+              loop
+              type="video/mp4"
+              src={experienceData.photos[1]}
+              alt=""
+            />
+            <video
+              muted
+              autoPlay
+              loop
+              type="video/mp4"
+              src={experienceData.photos[2]}
+              alt=""
+              className="img2"
+            />
+            <video
+              muted
+              autoPlay
+              loop
+              type="video/mp4"
+              src={experienceData.photos[3]}
+              alt=""
+            />
+            <video
+              muted
+              autoPlay
+              loop
+              type="video/mp4"
+              src={experienceData.photos[4]}
+              alt=""
+              className="img4"
+            />
+          </div>
+        </div>
+      )}
+      {/* <div className="img-container">
+        <img src={experienceData.photos[0]} alt="" className="mainImg" />
         <div className="small-img-container">
-          <img src={img1} alt="" />
-          <img src={img2} alt="" className="img2" />
-          <img src={img3} alt="" />
-          <img src={img4} alt="" className="img4" />
+          <img src={experienceData.photos[1]} alt="" />
+          <img src={experienceData.photos[2]} alt="" className="img2" />
+          <img src={experienceData.photos[3]} alt="" />
+          <img src={experienceData.photos[4]} alt="" className="img4" />
         </div>
-      </div>
+      </div> */}
       <div className="place-details-container">
         <div className="place-details">
-          <h1>Experience hosted by Rakan</h1>
+          <h1>Experience hosted by {experienceData.host}</h1>
           <div className="desc-container">
             <h2>What you'll do</h2>
             <p>
-              {readMore ? desc : `${desc.substring(0, 200)}...`}
+              {readMore
+                ? experienceData.description
+                : `${experienceData.description.substring(0, 200)}...`}
               <button onClick={() => setReadMore(!readMore)}>
                 {readMore ? "Show less" : "Show more"}
               </button>
@@ -72,26 +243,26 @@ function Experience() {
           <div className="offers">
             <h2>What's included</h2>
             <div className="offer-detail">
-              {perks.slice(0, 6).map((item) => (
-                <div key={item.perk} className="amenities">
-                  <img src={item.icon} alt="" />
-                  <span>{item.perk}</span>
-                </div>
-              ))}
+              {showMore
+                ? experienceData.included.map((included) => (
+                    <span key={included}>{included}</span>
+                  ))
+                : experienceData.included
+                    .slice(0, 4)
+                    .map((included) => <span key={included}>{included}</span>)}
             </div>
+            <button onClick={() => setShowMore(!showMore)}>
+              Show all {experienceData.included.length} perks
+            </button>
           </div>
         </div>
         <div className="book">
           <div className="book-price-detail">
             <span className="book-price">
-              <strong>${price}</strong>/person
+              <strong>${experienceData.price}</strong>/person
             </span>
             <div className="book-perfomance">
-              <div className="book-rate">
-                <AiFillStar />
-                <span>{rate}</span>
-              </div>
-              <span className="book-reviews">{reviews} reviews</span>
+              <span className="book-reviews">{reviews.length} reviews</span>
             </div>
           </div>
           <div className="box">
@@ -105,12 +276,12 @@ function Experience() {
             />
           </div>
           <div className="reserve">
-            <Link to={"/checkout"}>Reserve</Link>
+            <Link to={checkout}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">
               <h5>Total</h5>
-              <p>${price}</p>
+              <p>${totalPrice}</p>
             </div>
           </div>
         </div>
@@ -127,25 +298,41 @@ function Experience() {
       </div>
       <div className="reviews-container">
         <div className="review-header">
-          <div className="review-header-rate">
-            <AiFillStar />
-            <h5>{rate}</h5>
-          </div>
-          <h5>{reviews} reviews</h5>
+          <h5>{reviews.length} reviews</h5>
         </div>
         <div className="review-profile-container">
-          {reviewsData.map((item) => (
+          {bookings?.booked ? (
             <div className="review-profile-content">
+              <textarea
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+              />
+              <button onClick={(e) => submitReview(e)} disabled={review === ""}>
+                Submit
+              </button>
               <div className="review-profile">
-                <img src={item.img} alt="" />
-                <div className="review-profile-text">
-                  <h5>{item.name}</h5>
-                  <span>{item.date}</span>
-                </div>
+                {reviews.map((r) => {
+                  return (
+                    <div key={reviews} className="review-profile-text">
+                      <h5>{userInfo.username}</h5>
+                      <p>{r.description}</p>
+                    </div>
+                  )
+                })}
               </div>
-              <p>{item.review}</p>
             </div>
-          ))}
+          ) : (
+            <div className="review-profile">
+              {reviews.map((r) => {
+                return (
+                  <div key={reviews} className="review-profile-text">
+                    <h5>{userInfo.username}</h5>
+                    <p>{r.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
       </div>
       <BigFooter />

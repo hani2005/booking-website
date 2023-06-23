@@ -1,21 +1,140 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Modal from "../components/Modal"
 import ExperienceNav from "../components/ExperienceNav"
 import { experienceCategories, perks } from "../data"
-import { AiOutlineCloudUpload, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
+import { AiOutlineCloudUpload } from "react-icons/ai"
 import BigFooter from "../components/BigFooter"
+import { UserContext } from "../UserContext"
+import axios from "axios"
+import { Navigate, useParams } from "react-router-dom"
+import { FaTrash } from "react-icons/fa"
 
 function HostExperience() {
-  const [country, setCountry] = useState("")
+  const { id } = useParams()
+  const [title, setTitle] = useState("")
   const [address, setAddress] = useState("")
-  const [city, setCity] = useState("")
   const [state, setState] = useState("")
+  const [city, setCity] = useState("")
+  const [country, setCountry] = useState("")
+  const [addedPhotos, setAddedPhotos] = useState([])
+  const [description, setDescription] = useState("")
+  const [included, setIncluded] = useState([])
+  const [categoriesCheck, setCategoriesCheck] = useState([])
+  const [price, setPrice] = useState("")
+  const [redirect, setRedirect] = useState(false)
+
+  const { setUserInfo, userInfo } = useContext(UserContext)
+  useEffect(() => {
+    fetch("http://localhost:3000/api/profile", {
+      credentials: "include"
+    }).then((response) => {
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo)
+      })
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!id) {
+      return
+    }
+    axios.get("/places/" + id).then((response) => {
+      const { data } = response
+      setTitle(data.title)
+      setAddress(data.address)
+      setCountry(data.country)
+      setCity(data.city)
+      setState(data.state)
+      setAddedPhotos(data.photos)
+      setDescription(data.description)
+      setIncluded(data.included)
+      setCategoriesCheck(data.categoriesCheck)
+      setPrice(data.price)
+    })
+  }, [id])
+
+  async function savePlace(ev) {
+    ev.preventDefault()
+    const ExperienceData = {
+      host: userInfo.username,
+      title,
+      address,
+      country,
+      state,
+      city,
+      description,
+      addedPhotos,
+      included,
+      price,
+      categoriesCheck
+    }
+    if (id) {
+      // update
+      await axios.put("/experience", {
+        id,
+        ...ExperienceData
+      })
+      setRedirect(true)
+    } else {
+      // new place
+      await axios.post("/experience", ExperienceData)
+      setRedirect(true)
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to={"/"} />
+  }
+
+  function handlePerksClick(ev) {
+    const { checked, name } = ev.target
+    if (checked) {
+      setIncluded([...included, name])
+    } else {
+      setIncluded([...included.filter((selectedName) => selectedName !== name)])
+    }
+  }
+
+  function handleCatClick(ev) {
+    const { checked, name } = ev.target
+    if (checked) {
+      setCategoriesCheck([...categoriesCheck, name])
+    } else {
+      setCategoriesCheck([
+        ...categoriesCheck.filter((selectedName) => selectedName !== name)
+      ])
+    }
+  }
+
+  function uploadPhoto(ev) {
+    const files = ev.target.files
+    const data = new FormData()
+    for (let i = 0; i < files.length; i++) {
+      data.append("photos", files[i])
+    }
+    axios
+      .post("/upload", data, {
+        headers: { "Content-type": "multipart/form-data" }
+      })
+      .then((response) => {
+        const { data: filenames } = response
+        setAddedPhotos((prev) => {
+          return [...prev, ...filenames]
+        })
+      })
+  }
+
+  function removePhoto(ev, filename) {
+    ev.preventDefault()
+    setAddedPhotos([...addedPhotos.filter((photo) => photo !== filename)])
+  }
+
   return (
     <>
       <Modal />
       <div className="rent-accommodation">
         <ExperienceNav />
-        <div className="rent-accommodation-container">
+        <form className="rent-accommodation-container" onSubmit={savePlace}>
           <div className="rent-accommodation-title">
             <h2>Which of these best describes your experience?</h2>
             <span>Pick category</span>
@@ -23,7 +142,12 @@ function HostExperience() {
           <div className="perks">
             {experienceCategories.map((item) => (
               <label key={item.label}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={categoriesCheck.includes(`${item.label}`)}
+                  name={`${item.label}`}
+                  onChange={handleCatClick}
+                />
                 <div className="perks-label">
                   <img src={item.icon} alt="" />
                   <h5>{item.label}</h5>
@@ -68,7 +192,12 @@ function HostExperience() {
           <div className="amenities-container">
             {perks.map((item) => (
               <label key={item.perk}>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={included.includes(`${item.perk}`)}
+                  name={`${item.perk}`}
+                  onChange={handlePerksClick}
+                />
                 <div className="amenities-label">
                   <img src={item.icon} alt="" />
                   <h5>{item.perk}</h5>
@@ -80,20 +209,56 @@ function HostExperience() {
             <h2>Add some photos of you experience</h2>
             <span>Show guests what your experience looks like</span>
           </div>
-          <label className="places-upload">
-            <div>
+          <div className="places-upload">
+            <label className="upload-photo-button">
               <AiOutlineCloudUpload className="upload-icon" />
               <p>Click here to upload</p>
+              <input
+                type="file"
+                multiple
+                className="hidden"
+                onChange={uploadPhoto}
+              />
+            </label>
+            <div className="uploaded-photos">
+              {addedPhotos.length > 0 &&
+                addedPhotos.map((link) => (
+                  <div>
+                    {link == <img /> ? (
+                      <img key={link} src={link} alt="" />
+                    ) : (
+                      <video
+                        muted
+                        autoPlay
+                        loop
+                        type="video/mp4"
+                        key={link}
+                        src={link}
+                      />
+                    )}
+                    <button onClick={(ev) => removePhoto(ev, link)}>
+                      <span>Remove</span> <FaTrash />
+                    </button>
+                  </div>
+                ))}
             </div>
-            <input type="file" />
-          </label>
+          </div>
           <div className="rent-accommodation-title">
             <h2>How would you describe your experience</h2>
             <span>Sweet and short works the best</span>
           </div>
           <div className="place-title-input">
-            <input type="text" placeholder="Title" />
-            <textarea placeholder="Description" />
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className="rent-accommodation-title">
             <h2>Now, set your price</h2>
@@ -101,10 +266,14 @@ function HostExperience() {
           </div>
           <div className="place-price">
             <h4>$</h4>
-            <input type="text" />
+            <input
+              type="text"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </div>
-          <button>Save</button>
-        </div>
+          <button className="save-btn">Save</button>
+        </form>
         <BigFooter />
       </div>
     </>

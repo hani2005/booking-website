@@ -11,8 +11,6 @@ function AccommodationsCat({ places }) {
     setData(result)
   }
 
-  console.log(places)
-
   return (
     <>
       <div className="accommodations-category">

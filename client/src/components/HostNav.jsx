@@ -9,7 +9,7 @@ import { UserContext } from "../UserContext"
 function HostNav() {
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("http://localhost:3000/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -19,7 +19,7 @@ function HostNav() {
   }, [])
 
   function logout() {
-    fetch("https://booking-website-rho.vercel.app/api/logout", {
+    fetch("http://localhost:3000/api/logout", {
       credentials: "include",
       method: "POST"
     })

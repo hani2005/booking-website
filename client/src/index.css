@@ -297,7 +297,6 @@ nav img {
 
 .places-data p {
   font-size: 0.85rem;
-  font-weight: 700;
   text-decoration: none;
 }
 
@@ -680,6 +679,23 @@ input[type="checkbox"] {
   letter-spacing: -0.5px;
 }
 
+.car-perks-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.car-perks-label img {
+  width: 50px;
+}
+
+.car-perks-label h5 {
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: -0.5px;
+}
+
 .amenities-label img {
   width: 30px;
 }
@@ -770,7 +786,14 @@ input[type="checkbox"] {
 
 .uploaded-photos {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+}
+
+.uploaded-photos video {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
 }
 
 .uploaded-photos button svg {
@@ -1929,11 +1952,11 @@ input[type="checkbox"] {
 }
 
 .carsData-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  width: 100%;
   max-width: 1200px;
-  gap: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 1rem;
 }
 
@@ -1943,15 +1966,18 @@ input[type="checkbox"] {
 }
 
 .carsData-content {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
   gap: 5px;
+  width: 15rem;
+  text-decoration: none;
+  color: black;
 }
 
 .carsData-content img {
   width: 100%;
-  height: 16rem;
+  height: 14rem;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
@@ -1960,6 +1986,14 @@ input[type="checkbox"] {
   color: rgb(99, 99, 99);
   letter-spacing: -0.5px;
   font-size: 0.95rem;
+}
+
+.carsData-content p {
+  text-decoration: none;
+}
+
+.carsData-content p strong {
+  margin-right: 0.2rem;
 }
 
 .carsData-content h4 {
@@ -2323,11 +2357,11 @@ input[type="checkbox"] {
 }
 
 .experienceData-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  width: 100%;
   max-width: 1200px;
-  gap: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-top: 1rem;
 }
 
@@ -2337,15 +2371,25 @@ input[type="checkbox"] {
 }
 
 .experienceData-content {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
   gap: 5px;
+  width: 15rem;
+  text-decoration: none;
+  color: black;
+}
+
+.experienceData-content video {
+  width: 100%;
+  height: 15rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .experienceData-content img {
   width: 100%;
-  height: 16rem;
+  height: 14rem;
   border-radius: 10px;
   margin-bottom: 0.5rem;
 }
@@ -2362,6 +2406,14 @@ input[type="checkbox"] {
 
 .experienceData-content h5 {
   font-size: 1rem;
+}
+
+.experienceData-content p {
+  text-decoration: none;
+}
+
+.experienceData-content p strong {
+  margin-right: 0.2rem;
 }
 
 .calendar-page-test {

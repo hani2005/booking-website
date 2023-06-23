@@ -3,8 +3,6 @@ import AccommodationsNav from "../components/AccommodationsNav"
 import { amenities, categories } from "../data"
 import {
   AiOutlineCloudUpload,
-  AiOutlineMinus,
-  AiOutlinePlus
 } from "react-icons/ai"
 import BigFooter from "../components/BigFooter"
 import Modal from "../components/Modal"
@@ -24,9 +22,6 @@ function RentAccommodation() {
   const [description, setDescription] = useState("")
   const [perks, setPerks] = useState([])
   const [categoriesCheck, setCategoriesCheck] = useState([])
-  const [extraInfo, setExtraInfo] = useState("")
-  const [checkIn, setCheckIn] = useState("")
-  const [checkOut, setCheckOut] = useState("")
   const [maxGuests, setMaxGuests] = useState("")
   const [bedrooms, setBedrooms] = useState("")
   const [bathrooms, setBathrooms] = useState("")
@@ -36,7 +31,7 @@ function RentAccommodation() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("http://localhost:3000/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -51,7 +46,6 @@ function RentAccommodation() {
     }
     axios.get("/places/" + id).then((response) => {
       const { data } = response
-      console.log(data)
       setTitle(data.title)
       setAddress(data.address)
       setCountry(data.country)

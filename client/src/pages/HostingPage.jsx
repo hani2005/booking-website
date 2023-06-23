@@ -31,7 +31,7 @@ function HostingPage() {
   ])
 
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("http://localhost:3000/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {

@@ -13,6 +13,8 @@ const app = express()
 const axios = require("axios")
 const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3")
 const fs = require("fs")
+const RentCarModel = require("./models/RentCarModel")
+const ExperienceModel = require("./models/ExperienceModel")
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 // bcrypt password
@@ -65,15 +67,19 @@ async function uploadToS3(path, originalFilename, mimetype) {
 }
 
 const photosMiddleware = multer({ dest: "/tmp" })
-app.post("/api/upload", photosMiddleware.array("photos", 100), async (req, res) => {
-  const uploadedFiles = []
-  for (let i = 0; i < req.files.length; i++) {
-    const { path, originalname, mimetype } = req.files[i]
-    const url = await uploadToS3(path, originalname, mimetype)
-    uploadedFiles.push(url)
+app.post(
+  "/api/upload",
+  photosMiddleware.array("photos", 100),
+  async (req, res) => {
+    const uploadedFiles = []
+    for (let i = 0; i < req.files.length; i++) {
+      const { path, originalname, mimetype } = req.files[i]
+      const url = await uploadToS3(path, originalname, mimetype)
+      uploadedFiles.push(url)
+    }
+    res.json(uploadedFiles)
   }
-  res.json(uploadedFiles)
-})
+)
 
 app.post("/api/register", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
@@ -229,12 +235,184 @@ app.put("/api/places", async (req, res) => {
   })
 })
 
+app.post("/api/car", (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  const {
+    title,
+    country,
+    city,
+    state,
+    address,
+    addedPhotos,
+    description,
+    price,
+    features,
+    modelYear,
+    categoriesCheck
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err
+    const CarDoc = await RentCarModel.create({
+      owner: info.id,
+      host: info.username,
+      title,
+      address,
+      country,
+      state,
+      city,
+      description,
+      features,
+      price,
+      categoriesCheck,
+      modelYear,
+      photos: addedPhotos
+    })
+    res.json(CarDoc)
+  })
+})
+
+app.get("/api/car/:id", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { id } = req.params
+  res.json(await RentCarModel.findById(id))
+})
+
+app.get("/api/car", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  res.json(await RentCarModel.find())
+})
+
+app.put("/api/car", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  const {
+    id,
+    title,
+    address,
+    country,
+    state,
+    city,
+    description,
+    features,
+    price,
+    categoriesCheck,
+    addedPhotos,
+    modelYear
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    if (err) throw err
+    const CarDoc = await RentCarModel.findById(id)
+    if (userData.id === CarDoc.owner.toString()) {
+      CarDoc.set({
+        title,
+        address,
+        country,
+        state,
+        city,
+        description,
+        features,
+        price,
+        categoriesCheck,
+        photos: addedPhotos,
+        modelYear
+      })
+      await CarDoc.save()
+      res.json("ok")
+    }
+  })
+})
+
+app.post("/api/experience", (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  const {
+    title,
+    country,
+    city,
+    state,
+    address,
+    addedPhotos,
+    description,
+    price,
+    included,
+    categoriesCheck
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err
+    const ExperienceDoc = await ExperienceModel.create({
+      owner: info.id,
+      host: info.username,
+      title,
+      address,
+      country,
+      state,
+      city,
+      description,
+      included,
+      price,
+      categoriesCheck,
+      photos: addedPhotos
+    })
+    res.json(ExperienceDoc)
+  })
+})
+
+app.get("/api/experience/:id", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { id } = req.params
+  res.json(await ExperienceModel.findById(id))
+})
+
+app.get("/api/experience", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  res.json(await ExperienceModel.find())
+})
+
+app.put("/api/experience", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  const {
+    id,
+    title,
+    address,
+    country,
+    state,
+    city,
+    description,
+    price,
+    categoriesCheck,
+    addedPhotos,
+    included
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    if (err) throw err
+    const ExperienceDoc = await ExperienceModel.findById(id)
+    if (userData.id === ExperienceDoc.owner.toString()) {
+      ExperienceDoc.set({
+        title,
+        address,
+        country,
+        state,
+        city,
+        description,
+        price,
+        categoriesCheck,
+        photos: addedPhotos,
+        included
+      })
+      await ExperienceDoc.save()
+      res.json("ok")
+    }
+  })
+})
+
 app.get("/api/user-places", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   jwt.verify(token, secret, {}, async (err, userData) => {
     const { id } = userData
-    res.json(await AccommodationModel.find({ owner: id }))
+    res.json(await RentCarModel.find({ owner: id }))
   })
 })
 
@@ -305,10 +483,12 @@ app.post("/api/checkout", async (req, res) => {
         quantity: 1
       }
     ],
-    payment_method_types: ['card'],
+    payment_method_types: ["card"],
     mode: "payment",
-    success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
-    cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
+    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
+    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
+    success_url: `http://localhost:5173/${place._id}/success`,
+    cancel_url: `http://localhost:5173/${place._id}/cancel`
   })
   res.json({ url: session.url })
 })

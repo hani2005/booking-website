@@ -4,12 +4,12 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 
 function PlacesData() {
-  const [places,setPlaces] = useState([]);
+  const [places, setPlaces] = useState([])
   useEffect(() => {
-    axios.get('/places').then(response => {
-      setPlaces(response.data);
-    });
-  }, []);
+    axios.get("/places").then((response) => {
+      setPlaces(response.data)
+    })
+  }, [])
 
   return (
     <div className="places-data-container">
@@ -22,8 +22,12 @@ function PlacesData() {
           <img src={data.photos[0]} alt="" />
           <h5>{data.address}</h5>
           <span>{data.title}</span>
-          <span><strong>Beds:</strong> {data.beds}</span>
-          <p>night {data.price}</p>
+          <span>
+            <strong>Beds:</strong> {data.beds}
+          </span>
+          <p>
+            <strong>Night:</strong> {data.price}
+          </p>
         </Link>
       ))}
     </div>

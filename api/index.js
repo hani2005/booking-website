@@ -307,8 +307,8 @@ app.post("/api/checkout", async (req, res) => {
     ],
     payment_method_types: ['card'],
     mode: "payment",
-    success_url: `http://localhost:5173/${place._id}/success`,
-    cancel_url: `http://localhost:5173/${place._id}/cancel`
+    success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
+    cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
   })
   res.json({ url: session.url })
 })

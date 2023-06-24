@@ -1983,9 +1983,12 @@ input[type="checkbox"] {
 }
 
 .carsData-content span {
-  color: rgb(99, 99, 99);
   letter-spacing: -0.5px;
   font-size: 0.95rem;
+}
+
+.carsData-content span strong {
+  margin-right: 0.2rem;
 }
 
 .carsData-content p {

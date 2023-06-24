@@ -15,6 +15,8 @@ const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3")
 const fs = require("fs")
 const RentCarModel = require("./models/RentCarModel")
 const ExperienceModel = require("./models/ExperienceModel")
+const CarRentModel = require("./models/CarRent")
+const BookExperienceModel = require("./models/BookExperience")
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 // bcrypt password
@@ -407,12 +409,28 @@ app.put("/api/experience", async (req, res) => {
   })
 })
 
-app.get("/api/user-places", (req, res) => {
+app.get("/api/user-experiences", (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    const { id } = userData
+    res.json(await ExperienceModel.find({ owner: id }))
+  })
+})
+app.get("/api/user-cars", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   const { token } = req.cookies
   jwt.verify(token, secret, {}, async (err, userData) => {
     const { id } = userData
     res.json(await RentCarModel.find({ owner: id }))
+  })
+})
+app.get("/api/user-places", (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    const { id } = userData
+    res.json(await AccommodationModel.find({ owner: id }))
   })
 })
 
@@ -468,6 +486,96 @@ app.get("/api/bookings", async (req, res) => {
   })
 })
 
+app.post("/api/car-rent", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  // const userData = await getUserDataFromReq(req)
+  const { token } = req.cookies
+  const {
+    title,
+    country,
+    address,
+    addedPhotos,
+    city,
+    state,
+    description,
+    from,
+    to,
+    totalPrice,
+    modelYear
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err
+    const CarRentDoc = await CarRentModel.create({
+      booked: info.id,
+      title,
+      country,
+      address,
+      photos: addedPhotos,
+      city,
+      state,
+      description,
+      from,
+      to,
+      totalPrice,
+      modelYear
+    })
+    res.json(CarRentDoc)
+  })
+})
+
+app.get("/api/car-rent", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    const { id } = userData
+    res.json(await CarRentModel.find({ booked: id }))
+  })
+})
+
+app.post("/api/book-experience", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  // const userData = await getUserDataFromReq(req)
+  const { token } = req.cookies
+  const {
+    title,
+    country,
+    address,
+    addedPhotos,
+    city,
+    state,
+    description,
+    from,
+    to,
+    totalPrice,
+  } = req.body
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err
+    const BookExperienceDoc = await BookExperienceModel.create({
+      booked: info.id,
+      title,
+      country,
+      address,
+      photos: addedPhotos,
+      city,
+      state,
+      description,
+      from,
+      to,
+      totalPrice,
+    })
+    res.json(BookExperienceDoc)
+  })
+})
+
+app.get("/api/book-experience", async (req, res) => {
+  mongoose.connect(process.env.DATABASE_URL)
+  const { token } = req.cookies
+  jwt.verify(token, secret, {}, async (err, userData) => {
+    const { id } = userData
+    res.json(await BookExperienceModel.find({ booked: id }))
+  })
+})
+
 app.post("/api/checkout", async (req, res) => {
   const place = req.body.items
   const price = req.body.price
@@ -489,6 +597,56 @@ app.post("/api/checkout", async (req, res) => {
     // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
     success_url: `http://localhost:5173/${place._id}/success`,
     cancel_url: `http://localhost:5173/${place._id}/cancel`
+  })
+  res.json({ url: session.url })
+})
+
+app.post("/api/car-rent/checkout", async (req, res) => {
+  const carsData = req.body.items
+  const price = req.body.price
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "USD",
+          product_data: { name: carsData.title },
+          unit_amount: price * 100
+        },
+        quantity: 1
+      }
+    ],
+    payment_method_types: ["card"],
+    mode: "payment",
+    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
+    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
+    success_url: `http://localhost:5173/car-details/${carsData._id}/success`,
+    cancel_url: `http://localhost:5173/car-details/${carsData._id}/cancel`
+  })
+  res.json({ url: session.url })
+})
+
+app.post("/api/book-experience/checkout", async (req, res) => {
+  const experienceData = req.body.items
+  const price = req.body.price
+
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "USD",
+          product_data: { name: experienceData.title },
+          unit_amount: price * 100
+        },
+        quantity: 1
+      }
+    ],
+    payment_method_types: ["card"],
+    mode: "payment",
+    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
+    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
+    success_url: `http://localhost:5173/experience/${experienceData._id}/success`,
+    cancel_url: `http://localhost:5173/experience/${experienceData._id}/cancel`
   })
   res.json({ url: session.url })
 })

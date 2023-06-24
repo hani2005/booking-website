@@ -42,7 +42,7 @@ function Experience() {
 
   const [bookings, setBookings] = useState([0])
   useEffect(() => {
-    axios.get("/bookings").then((response) => {
+    axios.get("/book-experience").then((response) => {
       setBookings(response.data[0])
     })
   }, [])
@@ -83,31 +83,27 @@ function Experience() {
   }, [state[0], nowPrice])
 
   async function bookThisPlace() {
-    await axios.post("/bookings", {
-      checkIn: state[0].startDate,
-      checkOut: state[0].endDate,
+    await axios.post("/book-experience", {
+      from: state[0].startDate,
+      to: state[0].endDate,
       totalPrice,
-      title: place.title,
-      country: place.country,
-      address: place.address,
-      addedPhotos: place.photos,
-      city: place.city,
-      state: place.state,
-      description: place.description,
-      beds: place.beds,
-      bathrooms: place.bathrooms,
-      bedrooms: place.bedrooms,
-      maxGuests: place.maxGuests
+      title: experienceData.title,
+      country: experienceData.country,
+      address: experienceData.address,
+      addedPhotos: experienceData.photos,
+      city: experienceData.city,
+      state: experienceData.state,
+      description: experienceData.description
     })
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/checkout", {
+    await fetch("http://localhost:3000/api/book-experience/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ items: place, price: totalPrice })
+      body: JSON.stringify({ items: experienceData, price: totalPrice })
     })
       .then((response) => {
         return response.json()
@@ -158,66 +154,7 @@ function Experience() {
           {experienceData.address}, {experienceData.country}
         </p>
       </div>
-      {experienceData.photos[0] == <img /> ? (
-        <div className="img-container">
-          <img src={experienceData.photos[0]} alt="" className="mainImg" />
-          <div className="small-img-container">
-            <img src={experienceData.photos[1]} alt="" />
-            <img src={experienceData.photos[2]} alt="" className="img2" />
-            <img src={experienceData.photos[3]} alt="" />
-            <img src={experienceData.photos[4]} alt="" className="img4" />
-          </div>
-        </div>
-      ) : (
-        <div className="img-container">
-          <video
-            muted
-            autoPlay
-            loop
-            type="video/mp4"
-            src={experienceData.photos[0]}
-            alt=""
-            className="mainImg"
-          />
-          <div className="small-img-container">
-            <video
-              muted
-              autoPlay
-              loop
-              type="video/mp4"
-              src={experienceData.photos[1]}
-              alt=""
-            />
-            <video
-              muted
-              autoPlay
-              loop
-              type="video/mp4"
-              src={experienceData.photos[2]}
-              alt=""
-              className="img2"
-            />
-            <video
-              muted
-              autoPlay
-              loop
-              type="video/mp4"
-              src={experienceData.photos[3]}
-              alt=""
-            />
-            <video
-              muted
-              autoPlay
-              loop
-              type="video/mp4"
-              src={experienceData.photos[4]}
-              alt=""
-              className="img4"
-            />
-          </div>
-        </div>
-      )}
-      {/* <div className="img-container">
+      <div className="img-container">
         <img src={experienceData.photos[0]} alt="" className="mainImg" />
         <div className="small-img-container">
           <img src={experienceData.photos[1]} alt="" />
@@ -225,7 +162,7 @@ function Experience() {
           <img src={experienceData.photos[3]} alt="" />
           <img src={experienceData.photos[4]} alt="" className="img4" />
         </div>
-      </div> */}
+      </div>
       <div className="place-details-container">
         <div className="place-details">
           <h1>Experience hosted by {experienceData.host}</h1>
@@ -243,17 +180,10 @@ function Experience() {
           <div className="offers">
             <h2>What's included</h2>
             <div className="offer-detail">
-              {showMore
-                ? experienceData.included.map((included) => (
-                    <span key={included}>{included}</span>
-                  ))
-                : experienceData.included
-                    .slice(0, 4)
-                    .map((included) => <span key={included}>{included}</span>)}
+              {experienceData.included.map((included) => (
+                <span key={included}>{included}</span>
+              ))}
             </div>
-            <button onClick={() => setShowMore(!showMore)}>
-              Show all {experienceData.included.length} perks
-            </button>
           </div>
         </div>
         <div className="book">
@@ -276,7 +206,7 @@ function Experience() {
             />
           </div>
           <div className="reserve">
-            <Link to={checkout}>Reserve</Link>
+            <Link onClick={checkout}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">

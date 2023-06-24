@@ -224,18 +224,7 @@ function HostExperience() {
               {addedPhotos.length > 0 &&
                 addedPhotos.map((link) => (
                   <div>
-                    {link == <img /> ? (
-                      <img key={link} src={link} alt="" />
-                    ) : (
-                      <video
-                        muted
-                        autoPlay
-                        loop
-                        type="video/mp4"
-                        key={link}
-                        src={link}
-                      />
-                    )}
+                    <img key={link} src={link} alt="" />
                     <button onClick={(ev) => removePhoto(ev, link)}>
                       <span>Remove</span> <FaTrash />
                     </button>

@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import BigFooter from "../components/BigFooter"
 import { DateRange } from "react-date-range"
-import { AiFillStar } from "react-icons/ai"
 import Modal from "../components/Modal"
 import { Link, Navigate, useParams } from "react-router-dom"
-import { carFeatures, carsData, reviewsData } from "../data"
 import RentCarNav from "../components/RentCarNav"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
@@ -42,7 +40,7 @@ function CarDetails() {
 
   const [bookings, setBookings] = useState([0])
   useEffect(() => {
-    axios.get("/bookings").then((response) => {
+    axios.get("/car-rent").then((response) => {
       setBookings(response.data[0])
     })
   }, [])
@@ -75,39 +73,36 @@ function CarDetails() {
 
     if (window.location.href.includes("success")) {
       // toast.success("Place has been successfully booked")
-      bookThisPlace()
+      RentThisCar()
       setTimeout(() => {
         setRedirect(true)
       }, 2000)
     }
   }, [state[0], nowPrice])
 
-  async function bookThisPlace() {
-    await axios.post("/bookings", {
-      checkIn: state[0].startDate,
-      checkOut: state[0].endDate,
+  async function RentThisCar() {
+    await axios.post("/car-rent", {
+      from: state[0].startDate,
+      to: state[0].endDate,
       totalPrice,
-      title: place.title,
-      country: place.country,
-      address: place.address,
-      addedPhotos: place.photos,
-      city: place.city,
-      state: place.state,
-      description: place.description,
-      beds: place.beds,
-      bathrooms: place.bathrooms,
-      bedrooms: place.bedrooms,
-      maxGuests: place.maxGuests
+      title: carsData.title,
+      country: carsData.country,
+      address: carsData.address,
+      addedPhotos: carsData.photos,
+      city: carsData.city,
+      state: carsData.state,
+      description: carsData.description,
+      modelYear: carsData.modelYear
     })
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/checkout", {
+    await fetch("http://localhost:3000/api/car-rent/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ items: place, price: totalPrice })
+      body: JSON.stringify({ items: carsData, price: totalPrice })
     })
       .then((response) => {
         return response.json()
@@ -187,7 +182,9 @@ function CarDetails() {
             <h2>What This Place Offers</h2>
             <div className="offer-detail">
               {showMore
-                ? carsData.features.map((feature) => <span key={feature}>{feature}</span>)
+                ? carsData.features.map((feature) => (
+                    <span key={feature}>{feature}</span>
+                  ))
                 : carsData.features
                     .slice(0, 4)
                     .map((feature) => <span key={feature}>{feature}</span>)}
@@ -217,7 +214,7 @@ function CarDetails() {
             />
           </div>
           <div className="reserve">
-            <Link to={checkout}>Reserve</Link>
+            <Link onClick={checkout}>Reserve</Link>
             <span>You won't be charged yet</span>
             <hr />
             <div className="book-total">

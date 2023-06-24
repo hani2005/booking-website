@@ -47,17 +47,7 @@ function Experiences() {
             key={item._id}
             className="experienceData-content"
           >
-            {item.photos[0] == <img /> ? (
-              <img src={item.photos[0]} alt="" />
-            ) : (
-              <video
-                muted
-                autoPlay
-                loop
-                type="video/mp4"
-                src={item.photos[0]}
-              />
-            )}
+            <img src={item.photos[0]} alt="" />
             <h5>{item.city}</h5>
             <span>{item.title}</span>
             <p>

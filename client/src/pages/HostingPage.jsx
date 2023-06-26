@@ -20,6 +20,18 @@ function HostingPage() {
       setPlaces(data)
     })
   }, [])
+  const [carsData, setCarsData] = useState([])
+  useEffect(() => {
+    axios.get("/user-cars").then(({ data }) => {
+      setCarsData(data)
+    })
+  }, [])
+  const [experienceData, setExperienceData] = useState([])
+  useEffect(() => {
+    axios.get("/user-experiences").then(({ data }) => {
+      setExperienceData(data)
+    })
+  }, [])
 
   let { subpage } = useParams()
   const [state, setState] = useState([
@@ -46,6 +58,18 @@ function HostingPage() {
       setBookings(data)
     })
   }, [])
+  const [carRent, setCarRent] = useState([])
+  useEffect(() => {
+    axios.get("/car-rent").then(({ data }) => {
+      setCarRent(data)
+    })
+  }, [])
+  const [bookExperience, setBookExperience] = useState([])
+  useEffect(() => {
+    axios.get("/book-experience").then(({ data }) => {
+      setBookExperience(data)
+    })
+  }, [])
 
   return (
     <div className="hosting-page">
@@ -63,6 +87,28 @@ function HostingPage() {
           </div>
           <div className="hosting-detail-container">
             {places.map((place) => (
+              <Link key={place._id} to={`/accommodation/${place._id}`}>
+                <img src={place.photos[0]} alt="" />
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <span>
+                  <strong>Beds:</strong> {place.beds}
+                </span>
+                <p>night {place.price}</p>
+              </Link>
+            ))}
+            {carsData.map((place) => (
+              <Link key={place._id} to={`/accommodation/${place._id}`}>
+                <img src={place.photos[0]} alt="" />
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <span>
+                  <strong>Beds:</strong> {place.beds}
+                </span>
+                <p>night {place.price}</p>
+              </Link>
+            ))}
+            {experienceData.map((place) => (
               <Link key={place._id} to={`/accommodation/${place._id}`}>
                 <img src={place.photos[0]} alt="" />
                 <h5>{place.address}</h5>
@@ -126,6 +172,82 @@ function HostingPage() {
                 </p>
               </Link>
             ))}
+            {carRent.map((place) => (
+              <Link key={place._id}>
+                <div className="hosting-booking-img">
+                  <img src={place.photos[0]} alt="" />
+                  <div className="hosting-booking-imgs">
+                    <img src={place.photos[1]} alt="" />
+                    <img src={place.photos[2]} alt="" />
+                  </div>
+                </div>
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <div className="hosting-booking-spans">
+                  <span>
+                    <strong>Beds:</strong> {place.beds}
+                  </span>
+                  <span>
+                    <strong>Bedrooms:</strong> {place.bedrooms}
+                  </span>
+                  <span>
+                    <strong>Bathrooms:</strong> {place.bathrooms}
+                  </span>
+                </div>
+                {/* <span>
+                  <strong>CheckIn:</strong>{" "}
+                  {format(new Date(place.checkIn), "yyyy-MM-dd")}
+                </span>
+                <span>
+                  <strong>CheckOut:</strong>{" "}
+                  {format(new Date(place.checkOut), "yyyy-MM-dd")}
+                </span> */}
+                <p>
+                  {place.city}, {place.country}
+                </p>
+                <p>
+                  <strong>Total Price:</strong> ${place.totalPrice}
+                </p>
+              </Link>
+            ))}
+            {bookExperience.map((place) => (
+              <Link key={place._id}>
+                <div className="hosting-booking-img">
+                  <img src={place.photos[0]} alt="" />
+                  <div className="hosting-booking-imgs">
+                    <img src={place.photos[1]} alt="" />
+                    <img src={place.photos[2]} alt="" />
+                  </div>
+                </div>
+                <h5>{place.address}</h5>
+                <span>{place.title}</span>
+                <div className="hosting-booking-spans">
+                  <span>
+                    <strong>Beds:</strong> {place.beds}
+                  </span>
+                  <span>
+                    <strong>Bedrooms:</strong> {place.bedrooms}
+                  </span>
+                  <span>
+                    <strong>Bathrooms:</strong> {place.bathrooms}
+                  </span>
+                </div>
+                {/* <span>
+                  <strong>CheckIn:</strong>{" "}
+                  {format(new Date(place.checkIn), "yyyy-MM-dd")}
+                </span>
+                <span>
+                  <strong>CheckOut:</strong>{" "}
+                  {format(new Date(place.checkOut), "yyyy-MM-dd")}
+                </span> */}
+                <p>
+                  {place.city}, {place.country}
+                </p>
+                <p>
+                  <strong>Total Price:</strong> ${place.totalPrice}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       )}
@@ -153,16 +275,41 @@ function HostingPage() {
       )}
       {subpage === "inbox" && (
         <div className="inbox-container">
-          <div className="inbox-column-1">
-            <div className="inbox-heading">
-              <BiMenu />
-              <h3>All messages</h3>
+          <div className="chat-inbox">
+            <div className="inbox-column-1">
+              <div className="inbox-heading">
+                <BiMenu />
+                <h3>All messages</h3>
+              </div>
+              <div className="inbox-search">
+                <BiSearch />
+                <input type="search" placeholder="Search inbox" />
+              </div>
+              <div className="message-box-container">
+                <div className="message-box-user">
+                  <img
+                    src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""
+                  />
+                  <div>
+                    <h4>Hani</h4>
+                    <h5>Thank You</h5>
+                  </div>
+                </div>
+                <div className="message-box-user">
+                  <img
+                    src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""
+                  />
+                  <div>
+                    <h4>Hani</h4>
+                    <h5>Thank You</h5>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="inbox-search">
-              <BiSearch />
-              <input type="search" placeholder="Search inbox" />
-            </div>
-            <div className="message-box-container">
+            <div className="inbox-column-2">
+              <h3>Mohammed</h3>
               <div className="message-box-user">
                 <img
                   src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -170,7 +317,7 @@ function HostingPage() {
                 />
                 <div>
                   <h4>Hani</h4>
-                  <h5>Thank You</h5>
+                  <h5>Can I get your number to ask more details?</h5>
                 </div>
               </div>
               <div className="message-box-user">
@@ -180,46 +327,23 @@ function HostingPage() {
                 />
                 <div>
                   <h4>Hani</h4>
-                  <h5>Thank You</h5>
+                  <h5>Hi Kamal</h5>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="inbox-column-2">
-            <h3>Mohammed</h3>
-            <div className="message-box-user">
-              <img
-                src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt=""
-              />
-              <div>
-                <h4>Hani</h4>
-                <h5>Can I get your number to ask more details?</h5>
+              <div className="message-box-user">
+                <img
+                  src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                />
+                <div>
+                  <h4>Hani</h4>
+                  <h5>Please ask me here and I ll love to help</h5>
+                </div>
               </div>
-            </div>
-            <div className="message-box-user">
-              <img
-                src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt=""
-              />
-              <div>
-                <h4>Hani</h4>
-                <h5>Hi Kamal</h5>
+              <div className="message-input">
+                <BsFillImageFill />
+                <input type="text" placeholder="Message" />
               </div>
-            </div>
-            <div className="message-box-user">
-              <img
-                src="https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt=""
-              />
-              <div>
-                <h4>Hani</h4>
-                <h5>Please ask me here and I ll love to help</h5>
-              </div>
-            </div>
-            <div className="message-input">
-              <BsFillImageFill />
-              <input type="text" placeholder="Message" />
             </div>
           </div>
           <div className="inbox-column-3">

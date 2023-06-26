@@ -9,10 +9,20 @@
   font-family: "Poppins", sans-serif;
 }
 
+.mob-nav {
+  display: none;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 aside {
   position: fixed;
   height: 100%;
-  padding: 5rem 1rem 0 1rem;
+  padding: 3.5rem 6rem 0 4rem;
   right: -1120px;
   background-color: white;
   display: flex;
@@ -24,11 +34,12 @@ aside {
 
 aside.active {
   right: 0;
+  top: 0;
 }
 
-aside i {
+aside svg {
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   cursor: pointer;
   background-color: transparent;
   position: absolute;
@@ -39,17 +50,16 @@ aside i {
   transition: 0.5s;
 }
 
-.aside i:hover {
+/* .aside svg:hover {
   background-color: #ebebeb;
-}
+} */
 
 aside a {
   text-decoration: none;
   color: black;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 1.2rem !important;
   margin: 2rem 0 0 0;
-  padding: 0.5rem 5rem 0.5rem 0.4rem;
+  padding: 3rem 5rem 0.5rem 0.4rem;
   border-radius: 5px;
   transition: 0.5s;
 }
@@ -74,6 +84,7 @@ aside a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .date-picker .rdrCalendarWrapper {
@@ -130,8 +141,8 @@ aside a:hover {
 }
 
 .banner {
-  height: 100%;
   width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   filter: brightness(80%);
@@ -144,11 +155,13 @@ nav {
   align-items: center;
   justify-content: space-between;
   margin-top: -1.5rem;
-  /* padding: 0 2rem; */
+  padding: 0 2rem;
+  /* display: none; */
 }
 
 nav img {
   width: 180px;
+  /* margin-top: 0.6rem; */
   margin-left: -1rem;
 }
 
@@ -242,9 +255,20 @@ nav img {
   padding: 1.5rem;
   border-radius: 10px;
   width: 100%;
-  max-width: 1200px;
+  gap: 20px;
+  flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.603);
   margin-left: -1rem;
+}
+
+.mob-accommodations-category {
+  display: none;
+}
+.mob-cars-categories-container {
+  display: none;
+}
+.mob-experience-categories-container {
+  display: none;
 }
 
 .accommodations-cat-item img {
@@ -255,7 +279,6 @@ nav img {
   font-size: 0.8rem;
   font-weight: 700;
   margin-top: 0.3rem;
-  /* color: rgba(255, 255, 255, 0.603); */
 }
 
 .accommodations-cat-item {
@@ -309,8 +332,7 @@ nav img {
   background-color: black;
   padding: 1.2rem;
   margin-top: 5rem;
-  width: 100%;
-  max-width: 1200px;
+  width: -webkit-fill-available;
 }
 
 .small-footer h3 {
@@ -318,6 +340,7 @@ nav img {
   letter-spacing: 0.5px;
   font-size: 0.75rem;
   font-weight: 500;
+  text-align: center;
 }
 
 /*=========== Accommodation Page ===========*/
@@ -617,10 +640,10 @@ p {
 }
 
 /*=========== Rent Accommodation ===========*/
-.rent-accommodation {
+/* .rent-accommodation {
   width: 100%;
   max-width: 1100px;
-}
+} */
 
 .perks {
   display: grid;
@@ -870,6 +893,7 @@ input[type="checkbox"] {
 }
 
 .rent-accommodation-container {
+  padding: 0 1rem;
   margin: 3rem 0;
 }
 
@@ -901,6 +925,7 @@ input[type="checkbox"] {
 
 .column-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 80px;
 }
 
@@ -927,7 +952,7 @@ input[type="checkbox"] {
 }
 
 .today {
-  height: 100vh;
+  /* height: 100vh; */
   padding: 0 2rem;
 }
 
@@ -940,7 +965,7 @@ input[type="checkbox"] {
 }
 
 .host-nav {
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .hosting-nav-item {
@@ -954,6 +979,12 @@ input[type="checkbox"] {
   font-weight: 500;
   color: black;
   text-decoration: none;
+}
+
+.menu {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: -0.6rem;
 }
 
 .hosting-menu {
@@ -989,7 +1020,7 @@ input[type="checkbox"] {
 
 .hosting-detail-container {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .hosting-detail-container img {
@@ -1021,7 +1052,8 @@ input[type="checkbox"] {
 
 .hosting-booking-container {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .hosting-booking-container p {
@@ -1091,14 +1123,14 @@ input[type="checkbox"] {
 /*=========== Inbox Subpage ===========*/
 
 .inbox-container {
-  height: 80vh;
-  padding: 2rem;
+  /* height: 80vh; */
+  padding: 2rem 2rem 10rem 2rem;
   display: flex;
 }
 
-.inbox-column-1 {
-  flex: 1;
-}
+/* .chat-inbox {
+  flex: 2;
+} */
 
 .inbox-column-2 {
   flex: 2;
@@ -1182,6 +1214,12 @@ input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
+.chat-inbox {
+  display: flex;
+  flex: 2;
+  gap: 50px;
+}
+
 .message-box-user {
   display: flex;
   align-items: center;
@@ -1248,7 +1286,7 @@ input[type="checkbox"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .create-listing {
@@ -1257,6 +1295,17 @@ input[type="checkbox"] {
   border: 1px solid rgb(170, 170, 170);
   padding: 0.5rem 1rem;
   border-radius: 10px;
+}
+
+.listings-data {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.create-listing a {
+  text-decoration: none;
+  color: black;
 }
 
 .edit-link {
@@ -1295,6 +1344,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   gap: 55px;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
@@ -1312,14 +1362,14 @@ input[type="checkbox"] {
   display: flex;
   gap: 50px;
   margin-bottom: 5rem;
-  width: 100%;
-  max-width: 1400px;
+  /* width: 100%; */
+  max-width: 1200px;
   padding: 0 2rem;
 }
 
-.details-column-2 {
+/* .details-column-2 {
   width: 800px;
-}
+} */
 
 .details-column-2-header {
   display: flex;
@@ -1376,6 +1426,7 @@ input[type="checkbox"] {
   text-decoration: none;
   font-weight: 600;
   letter-spacing: -0.5px;
+  text-align: center;
   margin: 2rem 0;
 }
 
@@ -1385,15 +1436,16 @@ input[type="checkbox"] {
 }
 
 .details-content-img {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
   margin: 0.5rem 0 2rem 0;
 }
 
 .details-content-img img {
-  width: 140px;
+  width: 100%;
   border-radius: 10px;
-  height: 100px;
+  height: 130px;
 }
 
 .details-content-title {
@@ -1455,6 +1507,10 @@ input[type="checkbox"] {
   width: 30px;
 } */
 
+/* .accommodations-cat-item {
+  overflow: scroll;
+} */
+
 .amenities-edit-data span {
   letter-spacing: -0.5px;
 }
@@ -1501,7 +1557,7 @@ input[type="checkbox"] {
 }
 
 .pricing-container {
-  width: 800px;
+  width: 100%;
 }
 
 .pricing-edit {
@@ -1558,6 +1614,10 @@ input[type="checkbox"] {
   margin-bottom: 0.5rem;
 }
 
+/* .col-grid .headDays {
+  background-color: ;
+} */
+
 /*===== Policies Subage =====*/
 .policies-page {
   display: flex;
@@ -1567,7 +1627,7 @@ input[type="checkbox"] {
 }
 
 .policies-container {
-  width: 800px;
+  width: 100%;
 }
 
 .cancellation-edit {
@@ -1702,10 +1762,12 @@ input[type="checkbox"] {
 }
 
 .calendar-page {
-  display: flex;
+  /* display: flex; */
   margin-bottom: 5rem;
   padding: 0 2rem;
 }
+
+/* .details-column-1 {} */
 
 .date-control {
   width: 100%;
@@ -1747,8 +1809,8 @@ input[type="checkbox"] {
   border: 1px solid;
   height: 30px;
   padding: 5px;
-  background: black;
-  color: white;
+  background: #E1E7F0;
+  color: black;
   font-weight: 600;
 }
 
@@ -1941,13 +2003,13 @@ input[type="checkbox"] {
 
 .cars-categories-container {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.603);
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 10px;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.603);
   margin-left: -1rem;
 }
 
@@ -2112,9 +2174,18 @@ input[type="checkbox"] {
   display: none;
 }
 
+.month-picker .rdrMonthAndYearWrapper {
+  width: fit-content;
+}
+
 .month-picker .rdrNextPrevButton {
   width: 50px;
   height: 50px;
+  margin: 0;
+}
+
+.month-picker .rdrMonth {
+  width: fit-content;
 }
 
 .month-picker .rdrNextButton i {
@@ -2135,8 +2206,7 @@ input[type="checkbox"] {
 
 .insights-performance {
   background-color: rgb(236, 236, 236);
-  padding: 5rem;
-  height: 50vh;
+  padding: 5rem 5rem 20rem 5rem;
   border-radius: 10px;
 }
 
@@ -2349,13 +2419,13 @@ input[type="checkbox"] {
 
 .experience-categories-container {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.603);
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 10px;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.603);
   margin-left: -1rem;
 }
 
@@ -2420,12 +2490,13 @@ input[type="checkbox"] {
 }
 
 .calendar-page-test {
-  height: 70vh;
-  padding: 0 2rem;
+  /* height: 70vh; */
+  padding: 0 2rem 10rem 2rem;
 }
 
 .calendar-multi-date {
   display: flex;
+  flex-direction: column;
 }
 
 .calendar-page-days {
@@ -2450,4 +2521,348 @@ input[type="checkbox"] {
 .calendar-page-multi-date a {
   text-decoration: none;
   color: black;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1662px) {
+  .homepage h1 {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-width: 1290px) {
+  .accommodations-category {
+    margin-left: 0;
+    width: auto;
+  }
+
+  .cars-categories-container {
+    margin-left: 0;
+    width: auto;
+  }
+
+  .experience-categories-container {
+    margin-left: 0;
+    width: auto;
+  }
+
+  .homepage h1 {
+    font-size: 2.5rem;
+    height: 25vh;
+  }
+
+  .listings-manage-container {
+    gap: 25px;
+  }
+
+  .listings-manage-container h3 {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .listings-manage-container span {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 1126px) {
+  .details-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .inbox-container {
+    flex-direction: column;
+  }
+
+  .chat-inbox {
+    margin-bottom: 5rem;
+  }
+
+  .host-listing img {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .mob-nav {
+    display: flex;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-item {
+    display: none;
+  }
+
+  .logout-btn {
+    padding: 3rem 5rem 0.5rem 0.4rem;
+    font-size: 1.2rem;
+  }
+
+  .modal-links {
+    flex-direction: column;
+    margin-top: 0;
+    gap: 0;
+  }
+
+  .modal-links a {
+    font-weight: 600;
+  }
+
+  /* .accommodations-category {
+    display: none;
+  }
+
+  .cars-categories-container {
+    display: none;
+  }
+
+  .experience-categories-container {
+    display: none;
+  } */
+
+  /* .mob-accommodations-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 10px;
+    margin: 3rem 0.5rem;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .mob-cars-categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 10px;
+    margin: 0.5rem;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .mob-experience-categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 10px;
+    margin: 1.5rem 0.5rem;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  } */
+
+  .aside a:hover {
+    background-color: transparent;
+  }
+
+  .hosting-nav-item {
+    display: none;
+  }
+
+  .user-container {
+    display: none;
+  }
+
+  .banner {
+    height: 35rem;
+    width: auto;
+  }
+  
+  .experience-categories-container {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .insights-container {
+    gap: 0;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .insights-performance {
+    margin-bottom: 5rem;
+  }
+
+  .performance-content-container {
+    margin-bottom: 5rem;
+  }
+
+  .details-column-1-img {
+    width: 0;
+  }
+
+  .pricing-page {
+    flex-direction: column;
+  }
+
+  .policies-page {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 871px) {
+  /* .homepage h1 {
+    height: 15vh;
+    font-size: 1.8rem;
+  } */
+
+  .mob-experience-categories-container span {
+    font-size: 0.8rem;
+  }
+
+  .accommodations-cat-item img {
+    width: 15px;
+  }
+
+  .accommodations-cat-item span {
+    font-size: 0.7rem;
+  }
+
+  .cars-categories-container img {
+    width: 35px;
+  }
+
+  .cars-categories-container span {
+    font-size: 0.7rem;
+  }
+
+  .accommodations-cat-item img {
+    width: 15px;
+  }
+
+  .accommodations-cat-item span {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 697px) {
+  .homepage h1 {
+    height: 20vh;
+    font-size: 2rem;
+  }
+
+  .accommodations-category {
+    justify-content: center;
+  }
+
+  .cars-categories-container {
+    justify-content: center;
+  }
+
+  .experience-categories span {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .column-container {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .homepage h1 {
+    font-size: 1.6rem;
+  }
+
+  .accommodations-category {
+    padding: 1rem;
+  }
+  
+  .experience-categories-container {
+    padding: 1rem;
+  }
+
+  .cars-categories-container {
+    padding: 1rem;
+  }
+
+  /* .mob-accommodations-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .mob-cars-categories-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .mob-experience-categories-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  } */
+
+  .hosting-details a {
+    font-size: 0.7rem;
+  }
+
+  .hosting-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .hosting-booking-container img {
+    width: 180px;
+    height: 165px;
+  }
+  
+  .hosting-booking-imgs img {
+    width: 100px;
+    height: 80px;
+  }
+
+  /* .listings-manage {
+    width: auto;
+    display: block;
+  } */
+  
+}
+
+@media screen and (max-width: 390px) {
+  /* .mob-accommodations-category {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mob-cars-categories-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mob-experience-categories-container {
+    grid-template-columns: 1fr 1fr;
+  } */
+
+  .homepage h1 {
+    font-size: 1.4rem;
+  }
+
+  .listings-search {
+    display: block;
+  }
+
+  .listings-container h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .details-links {
+    flex-direction: column;
+    gap: 0;
+    margin: 1.4rem 0;
+    align-items: baseline;
+  }
+
+  .details-links a {
+    margin: 0.5rem 0;
+  }
 }

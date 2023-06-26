@@ -6,6 +6,7 @@ import SmallFooter from "../components/SmallFooter"
 import banner from "../assets/dubai-banner.mp4"
 import Modal from "../components/Modal"
 import axios from "axios"
+import MobAccommodationsCat from "../components/MobAccommodationCat"
 
 function HomePage() {
   const [places,setPlaces] = useState([]);
@@ -34,6 +35,7 @@ function HomePage() {
         loop
         type="video/mp4"
       ></video>
+      <MobAccommodationsCat places={places}/>
       <PlacesData />
       <SmallFooter />
     </>

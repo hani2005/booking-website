@@ -34,10 +34,6 @@ function ManageListing() {
       {subpage === "details" && (
         <div className="details-container">
           <div className="details-column-1">
-            <div className="inbox-search">
-              <BiSearch />
-              <input type="search" placeholder="Search inbox" />
-            </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
               <img src={place.photos[0]} alt="" />
@@ -160,10 +156,6 @@ function ManageListing() {
       {subpage === "pricing" && (
         <div className="pricing-page">
           <div className="details-column-1">
-            <div className="inbox-search">
-              <BiSearch />
-              <input type="search" placeholder="Search inbox" />
-            </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
               <img src={place.photos[0]} alt="" />
@@ -269,10 +261,6 @@ function ManageListing() {
       {subpage === "policies" && (
         <div className="policies-page">
           <div className="details-column-1">
-            <div className="inbox-search">
-              <BiSearch />
-              <input type="search" placeholder="Search inbox" />
-            </div>
             <h4>LISTING</h4>
             <div className="details-column-1-img">
               <img src={place.photos[0]} alt="" />

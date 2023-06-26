@@ -532,18 +532,18 @@ export const carsCategories = [
     label: "Jaguar",
     icon: "https://static.cdnlogo.com/logos/j/98/jaguar.svg"
   },
-  {
-    label: "Tesla",
-    icon: "https://static.cdnlogo.com/logos/t/75/tesla.svg"
-  },
-  {
-    label: "Lincoln",
-    icon: "https://static.cdnlogo.com/logos/l/41/lincoln.svg"
-  },
-  {
-    label: "Rolls-Royce",
-    icon: "https://static.cdnlogo.com/logos/r/50/rolls-royce-motors.svg"
-  }
+  // {
+  //   label: "Tesla",
+  //   icon: "https://static.cdnlogo.com/logos/t/75/tesla.svg"
+  // },
+  // {
+  //   label: "Lincoln",
+  //   icon: "https://static.cdnlogo.com/logos/l/41/lincoln.svg"
+  // },
+  // {
+  //   label: "Rolls-Royce",
+  //   icon: "https://static.cdnlogo.com/logos/r/50/rolls-royce-motors.svg"
+  // }
 ]
 
 export const experienceCategories = [

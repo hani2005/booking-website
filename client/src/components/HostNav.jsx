@@ -1,12 +1,25 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import logo from "../assets/digital-bnb.png"
 import { Link } from "react-router-dom"
 import { HiMenu } from "react-icons/hi"
 import { FaUserCircle } from "react-icons/fa"
-import { IoIosArrowDown } from "react-icons/io"
+import { IoIosArrowDown, IoMdClose } from "react-icons/io"
 import { UserContext } from "../UserContext"
 
 function HostNav() {
+  const [backDrop, setBackDrop] = useState("backdrop")
+  const [aside, setAside] = useState("aside")
+
+  const openMenu = () => {
+    setBackDrop("backdrop active")
+    setAside("aside active")
+  }
+
+  const closeMenu = () => {
+    setBackDrop("backdrop")
+    setAside("aside")
+  }
+
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
     fetch("http://localhost:3000/api/profile", {
@@ -44,17 +57,34 @@ function HostNav() {
         </div>
       </div>
       <div className="profile">
-        {username ? (
-            <Link to={"/hosting/today"} className="user-container">
-              <HiMenu className="menu-icon" />
-              <FaUserCircle className="user-icon" />
-            </Link>
-        ) : (
-          <Link to={"/hosting/today"} className="user-container">
-            <HiMenu className="menu-icon" />
-            <FaUserCircle className="user-icon" />
+        <Link to={"/hosting/today"} className="user-container">
+          <HiMenu className="menu-icon" />
+          <FaUserCircle className="user-icon" />
+        </Link>
+      </div>
+      <div className="mob-nav">
+        <span className="menu" onClick={openMenu}>
+          Menu
+        </span>
+        <div className={backDrop}></div>
+        <aside className={aside}>
+          <IoMdClose onClick={closeMenu} />
+          <Link onClick={closeMenu} to={"/hosting/today"}>
+            Today
           </Link>
-        )}
+          <Link onClick={closeMenu} to={"/hosting/inbox"}>
+            Inbox
+          </Link>
+          <Link onClick={closeMenu} to={"/calendar"}>
+            Calendar
+          </Link>
+          <Link onClick={closeMenu} to={"/hosting/insights"}>
+            Insights
+          </Link>
+          <Link onClick={closeMenu} to={"/listings"}>
+            Menu
+          </Link>
+        </aside>
       </div>
     </nav>
   )

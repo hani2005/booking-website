@@ -41,6 +41,14 @@ function RentCar() {
         loop
         type="video/mp4"
       ></video>
+      <div className="mob-cars-categories-container">
+        {carsCategories.map((item) => (
+          <div key={item.label} className="cars-categories">
+            <img src={item.icon} alt="" />
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
       <div className="carsData-container">
         {carsData.map((item) => (
           <Link

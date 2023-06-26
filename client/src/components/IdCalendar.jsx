@@ -12,9 +12,17 @@ import BigFooter from "./BigFooter"
 import { MdArrowBackIos } from "react-icons/md"
 import { RxCross2 } from "react-icons/rx"
 import axios from "axios"
+import { DateRange } from "react-date-range"
 
 function IdCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection"
+    }
+  ])
   const { id } = useParams()
   const [place, setPlace] = useState(null)
   useEffect(() => {
@@ -62,13 +70,15 @@ function IdCalendar() {
 
         <div className="wrapper">
           <div className="date-control">
-            <BsFillArrowLeftCircleFill
-              onClick={() => prevMonth(currentDate, setCurrentDate)}
-            />
-            {getMonthYear(currentDate)}
-            <BsFillArrowRightCircleFill
-              onClick={() => nextMonth(currentDate, setCurrentDate)}
-            />
+            <div className="month-picker">
+              <DateRange
+                rangeColors={["#000000"]}
+                onChange={(item) => setState([item.selection])}
+                ranges={state}
+                minDate={new Date()}
+                date={new Date()}
+              />
+            </div>
           </div>
           <div className="col-grid">
             {DAYS.map((day) => (

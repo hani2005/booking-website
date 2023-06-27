@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import BigFooter from "../components/BigFooter"
 import { Link, Navigate, useParams } from "react-router-dom"
-import { experienceData, perks, reviewsData } from "../data"
 import ExperienceNav from "../components/ExperienceNav"
 import Modal from "../components/Modal"
-import { AiFillStar } from "react-icons/ai"
 import { DateRange } from "react-date-range"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
@@ -49,7 +47,7 @@ function Experience() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -86,19 +84,19 @@ function Experience() {
     await axios.post("/book-experience", {
       from: state[0].startDate,
       to: state[0].endDate,
-      totalPrice,
+      totalPrice: experienceData.totalPrice,
       title: experienceData.title,
       country: experienceData.country,
       address: experienceData.address,
       addedPhotos: experienceData.photos,
       city: experienceData.city,
       state: experienceData.state,
-      description: experienceData.description
+      description: experienceData.description,
     })
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/book-experience/checkout", {
+    await fetch("https://booking-website-rho.vercel.app/api/book-experience/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -128,13 +126,6 @@ function Experience() {
     }
     setReviews([...reviews, newReview])
     resetForm(e)
-  }
-
-  const deleteReview = (e, index) => {
-    e.preventDefault()
-    const clone = [...reviews]
-    const newState = clone.filter((x, i) => i !== index)
-    setReviews(newState)
   }
 
   if (!experienceData) return ""

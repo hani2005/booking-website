@@ -47,7 +47,7 @@ function CarDetails() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -84,7 +84,7 @@ function CarDetails() {
     await axios.post("/car-rent", {
       from: state[0].startDate,
       to: state[0].endDate,
-      totalPrice,
+      totalPrice: carsData.totalPrice,
       title: carsData.title,
       country: carsData.country,
       address: carsData.address,
@@ -97,7 +97,7 @@ function CarDetails() {
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/car-rent/checkout", {
+    await fetch("https://booking-website-rho.vercel.app/api/car-rent/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -127,13 +127,6 @@ function CarDetails() {
     }
     setReviews([...reviews, newReview])
     resetForm(e)
-  }
-
-  const deleteReview = (e, index) => {
-    e.preventDefault()
-    const clone = [...reviews]
-    const newState = clone.filter((x, i) => i !== index)
-    setReviews(newState)
   }
 
   if (!carsData) return ""

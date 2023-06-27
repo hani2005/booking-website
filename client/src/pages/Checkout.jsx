@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { IoIosArrowBack } from "react-icons/io"
-import { carsData } from "../data"
 import { Link, useParams } from "react-router-dom"
 import BigFooter from "../components/BigFooter"
 import axios from "axios"

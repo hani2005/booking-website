@@ -10,7 +10,7 @@ function RegisterPage() {
 
   async function register(e) {
     e.preventDefault()
-    const response = await fetch("http://localhost:3000/api/register", {
+    const response = await fetch("https://booking-website-rho.vercel.app/api/register", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" }

@@ -31,15 +31,6 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/uploads", express.static(__dirname + "/uploads"))
 
-// function getUserDataFromReq(req) {
-//   return new Promise((resolve, reject) => {
-//     jwt.verify(req.cookies.token, secret, {}, async (err, userData) => {
-//       if (err) throw err
-//       resolve(userData)
-//     })
-//   })
-// }
-
 app.get("/api/", (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
   res.send("Here")
@@ -92,12 +83,6 @@ app.post("/api/register", async (req, res) => {
       password: bcrypt.hashSync(password, salt)
     })
     res.json(userDoc)
-    await axios.post(
-      "https://api.chatengine.io/users/",
-      { username: username, secret: password, first_name: username },
-      { headers: { "Private-Key": "16294a01-98b7-4ce5-ab44-8eab38163906" } }
-    )
-    res.status(r.status).json(r.data)
   } catch (e) {
     res.status(400).json(e)
   }
@@ -436,7 +421,6 @@ app.get("/api/user-places", (req, res) => {
 
 app.post("/api/bookings", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
-  // const userData = await getUserDataFromReq(req)
   const { token } = req.cookies
   const {
     title,
@@ -488,7 +472,6 @@ app.get("/api/bookings", async (req, res) => {
 
 app.post("/api/car-rent", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
-  // const userData = await getUserDataFromReq(req)
   const { token } = req.cookies
   const {
     title,
@@ -534,7 +517,6 @@ app.get("/api/car-rent", async (req, res) => {
 
 app.post("/api/book-experience", async (req, res) => {
   mongoose.connect(process.env.DATABASE_URL)
-  // const userData = await getUserDataFromReq(req)
   const { token } = req.cookies
   const {
     title,
@@ -593,10 +575,8 @@ app.post("/api/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
-    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
-    success_url: `http://localhost:5173/${place._id}/success`,
-    cancel_url: `http://localhost:5173/${place._id}/cancel`
+    success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
+    cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
   })
   res.json({ url: session.url })
 })
@@ -618,10 +598,8 @@ app.post("/api/car-rent/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
-    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
-    success_url: `http://localhost:5173/car-details/${carsData._id}/success`,
-    cancel_url: `http://localhost:5173/car-details/${carsData._id}/cancel`
+    success_url: `https://booking-website-rho.vercel.app/${carsData._id}/success`,
+    cancel_url: `https://booking-website-rho.vercel.app/${carsData._id}/cancel`
   })
   res.json({ url: session.url })
 })
@@ -643,10 +621,8 @@ app.post("/api/book-experience/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    // success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
-    // cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
-    success_url: `http://localhost:5173/experience/${experienceData._id}/success`,
-    cancel_url: `http://localhost:5173/experience/${experienceData._id}/cancel`
+    success_url: `https://booking-website-rho.vercel.app/${experienceData._id}/success`,
+    cancel_url: `https://booking-website-rho.vercel.app/${experienceData._id}/cancel`
   })
   res.json({ url: session.url })
 })

@@ -3,7 +3,6 @@ import HostNav from "../components/HostNav"
 import BigFooter from "../components/BigFooter"
 import { Link, useParams } from "react-router-dom"
 import axios from "axios"
-import placesData from "../data"
 import { HiMenu } from "react-icons/hi"
 import { DateRange } from "react-date-range"
 import { UserContext } from "../UserContext"
@@ -43,7 +42,7 @@ function HostingPage() {
   ])
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -167,9 +166,6 @@ function HostingPage() {
                 <p>
                   {place.city}, {place.country}
                 </p>
-                <p>
-                  <strong>Total Price:</strong> ${place.totalPrice}
-                </p>
               </Link>
             ))}
             {carRent.map((place) => (
@@ -183,30 +179,16 @@ function HostingPage() {
                 </div>
                 <h5>{place.address}</h5>
                 <span>{place.title}</span>
-                <div className="hosting-booking-spans">
-                  <span>
-                    <strong>Beds:</strong> {place.beds}
-                  </span>
-                  <span>
-                    <strong>Bedrooms:</strong> {place.bedrooms}
-                  </span>
-                  <span>
-                    <strong>Bathrooms:</strong> {place.bathrooms}
-                  </span>
-                </div>
-                {/* <span>
-                  <strong>CheckIn:</strong>{" "}
-                  {format(new Date(place.checkIn), "yyyy-MM-dd")}
+                <span>
+                  <strong>From:</strong>{" "}
+                  {format(new Date(place.from), "yyyy-MM-dd")}
                 </span>
                 <span>
-                  <strong>CheckOut:</strong>{" "}
-                  {format(new Date(place.checkOut), "yyyy-MM-dd")}
-                </span> */}
+                  <strong>To:</strong>{" "}
+                  {format(new Date(place.to), "yyyy-MM-dd")}
+                </span>
                 <p>
                   {place.city}, {place.country}
-                </p>
-                <p>
-                  <strong>Total Price:</strong> ${place.totalPrice}
                 </p>
               </Link>
             ))}
@@ -221,30 +203,16 @@ function HostingPage() {
                 </div>
                 <h5>{place.address}</h5>
                 <span>{place.title}</span>
-                <div className="hosting-booking-spans">
-                  <span>
-                    <strong>Beds:</strong> {place.beds}
-                  </span>
-                  <span>
-                    <strong>Bedrooms:</strong> {place.bedrooms}
-                  </span>
-                  <span>
-                    <strong>Bathrooms:</strong> {place.bathrooms}
-                  </span>
-                </div>
-                {/* <span>
-                  <strong>CheckIn:</strong>{" "}
-                  {format(new Date(place.checkIn), "yyyy-MM-dd")}
+                <span>
+                  <strong>From:</strong>{" "}
+                  {format(new Date(place.from), "yyyy-MM-dd")}
                 </span>
                 <span>
-                  <strong>CheckOut:</strong>{" "}
-                  {format(new Date(place.checkOut), "yyyy-MM-dd")}
-                </span> */}
+                  <strong>To:</strong>{" "}
+                  {format(new Date(place.to), "yyyy-MM-dd")}
+                </span>
                 <p>
                   {place.city}, {place.country}
-                </p>
-                <p>
-                  <strong>Total Price:</strong> ${place.totalPrice}
                 </p>
               </Link>
             ))}

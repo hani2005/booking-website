@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react"
-import placesData, { DAYS } from "../data"
-import { getMonthYear, getSortedDays, nextMonth, prevMonth } from "../utils"
-import {
-  BsFillArrowLeftCircleFill,
-  BsFillArrowRightCircleFill
-} from "react-icons/bs"
+import { getSortedDays } from "../utils"
 import { Link } from "react-router-dom"
 import { BiSearch } from "react-icons/bi"
 import HostNav from "./HostNav"

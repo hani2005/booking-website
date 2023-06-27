@@ -48,7 +48,7 @@ function AccommodationPage() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -85,7 +85,7 @@ function AccommodationPage() {
     await axios.post("/bookings", {
       checkIn: state[0].startDate,
       checkOut: state[0].endDate,
-      totalPrice,
+      totalPrice: place.totalPrice,
       title: place.title,
       country: place.country,
       address: place.address,
@@ -101,7 +101,7 @@ function AccommodationPage() {
   }
 
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/checkout", {
+    await fetch("https://booking-website-rho.vercel.app/api/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -131,13 +131,6 @@ function AccommodationPage() {
     }
     setReviews([...reviews, newReview])
     resetForm(e)
-  }
-
-  const deleteReview = (e, index) => {
-    e.preventDefault()
-    const clone = [...reviews]
-    const newState = clone.filter((x, i) => i !== index)
-    setReviews(newState)
   }
 
   if (!place) return ""
@@ -280,36 +273,6 @@ function AccommodationPage() {
       </div>
       <BigFooter />
     </div>
-    /* <h2 className="extra-info-title">Things To Know</h2>
-      <div className="extra-info">
-        <div className="info-detail">
-          <span>
-            <strong>House rules</strong>
-          </span>
-          <span>{checkIn}</span>
-          <span>{checkOut}</span>
-          <span>{maxGuests}</span>
-        </div>
-        <div className="info-detail">
-          <span>
-            <strong>Safety & property</strong>
-          </span>
-          <span>Carbon monoxide alarm not reported</span>
-          <span>Smoke alarm not reported</span>
-          <span>Pool/hot tub without a gate or lock</span>
-        </div>
-        <div className="info-detail">
-          <span>
-            <strong>Cancellation policy</strong>
-          </span>
-          <span>Free cancellation for 48 hours.</span>
-          <p>
-            Review the Host's full cancellation policy which
-            <br /> applies even if you cancel for illness or disruptions
-            <br /> caused by COVID-19.
-          </p>
-        </div>
-      </div> */
   )
 }
 

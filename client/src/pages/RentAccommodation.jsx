@@ -31,7 +31,7 @@ function RentAccommodation() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -249,7 +249,6 @@ function RentAccommodation() {
             <h2>Tell guests what your place has to offer</h2>
             <span>What amenities do you have?</span>
           </div>
-          {/* selected={perks} onChange={setPerks} */}
           <div className="amenities-container">
             {amenities.map((item) => (
               <label key={item.amenitie}>

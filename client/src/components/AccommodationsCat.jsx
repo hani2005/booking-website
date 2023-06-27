@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PlacesData from "./PlacesData"
 
 function AccommodationsCat({ places }) {
   const [data, setData] = useState(places)
@@ -95,11 +94,6 @@ function AccommodationsCat({ places }) {
           <span>Unique Stays</span>
         </div>
       </div>
-      {/* {data?.map((item) => (
-        <div key={item._id} className="">
-          <PlacesData {...item} />
-        </div>
-      ))} */}
     </>
   )
 }

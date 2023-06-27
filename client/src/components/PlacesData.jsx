@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import placesData from "../data.js"
 import { Link } from "react-router-dom"
 import axios from "axios"
 

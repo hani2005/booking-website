@@ -16,11 +16,10 @@ import CarDetails from "./pages/CarDetails"
 import HostExperience from "./pages/HostExperience"
 import Experience from "./pages/Experience"
 import axios from "axios";
-import Checkout from "./pages/Checkout"
 import { UserContextProvider } from "./UserContext"
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3000/api"
+  axios.defaults.baseURL = "https://booking-website-rho.vercel.app/api"
   axios.defaults.withCredentials = true
   
   return (
@@ -51,7 +50,6 @@ function App() {
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/host-experience" element={<HostExperience />} />
           <Route path="/experience/:id" element={<Experience />} />
-          {/* <Route path="/checkout/:id" element={<Checkout />} /> */}
         </Routes>
       </UserContextProvider>
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
-import { BiSearch } from "react-icons/bi"
 import HostNav from "./HostNav"
 import BigFooter from "./BigFooter"
 import { Link } from "react-router-dom"

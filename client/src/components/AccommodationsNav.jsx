@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import logo from "../assets/digital-bnb.png"
 import {
-  FaArrowRight,
   FaSearch,
-  FaUserAstronaut,
   FaUserCircle
 } from "react-icons/fa"
 import { HiMenu } from "react-icons/hi"
@@ -29,7 +27,7 @@ function AccommodationsNav() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -39,7 +37,7 @@ function AccommodationsNav() {
   }, [])
 
   function logout() {
-    fetch("http://localhost:3000/api/logout", {
+    fetch("https://booking-website-rho.vercel.app/api/logout", {
       credentials: "include",
       method: "POST"
     })

@@ -50,10 +50,6 @@ aside svg {
   transition: 0.5s;
 }
 
-/* .aside svg:hover {
-  background-color: #ebebeb;
-} */
-
 aside a {
   text-decoration: none;
   color: black;
@@ -156,12 +152,10 @@ nav {
   justify-content: space-between;
   margin-top: -1.5rem;
   padding: 0 2rem;
-  /* display: none; */
 }
 
 nav img {
   width: 180px;
-  /* margin-top: 0.6rem; */
   margin-left: -1rem;
 }
 
@@ -198,7 +192,6 @@ nav img {
 
 .menu-icon {
   font-size: 1.1rem;
-  /* margin-right: 0.5rem; */
 }
 
 .user-icon {
@@ -224,7 +217,6 @@ nav img {
 .profile a {
   text-decoration: none;
   color: black;
-  /* margin-right: 1rem; */
   font-size: 0.9rem;
   margin-top: 0.15rem;
   font-weight: 600;
@@ -371,11 +363,6 @@ nav img {
   margin: 0.7rem 0 1rem 0;
 }
 
-/* .place-rate {
-  display: flex;
-  align-items: center;
-} */
-
 .place-subtitle h5,
 p {
   text-decoration: underline;
@@ -383,11 +370,6 @@ p {
   font-weight: 500;
   font-size: 0.9rem;
 }
-
-/* .place-rate span {
-  font-size: 0.9rem;
-  font-weight: 500;
-} */
 
 .img-container {
   display: flex;
@@ -510,16 +492,6 @@ p {
   padding: 1rem;
 }
 
-/* .offer-detail img {
-  width: 30px;
-} */
-
-/* .amenities {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-} */
-
 .place-details-container {
   display: flex;
   gap: 100px;
@@ -559,12 +531,6 @@ p {
   display: flex;
   gap: 15px;
 }
-
-/* .book-rate {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-} */
 
 .reserve {
   display: flex;
@@ -640,11 +606,6 @@ p {
 }
 
 /*=========== Rent Accommodation ===========*/
-/* .rent-accommodation {
-  width: 100%;
-  max-width: 1100px;
-} */
-
 .perks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -769,17 +730,6 @@ input[type="checkbox"] {
   border: 1px solid rgb(126, 126, 126);
   border-radius: 5px;
 }
-
-/* .place-basic-input svg {
-  border: 1px solid rgb(170, 170, 170);
-  padding: 0.5rem;
-  border-radius: 50%;
-  font-size: 1.2rem;
-}
-
-.place-basic-input span {
-  font-weight: 500;
-} */
 
 .place-basics h5 {
   font-size: 1.2rem;
@@ -952,7 +902,6 @@ input[type="checkbox"] {
 }
 
 .today {
-  /* height: 100vh; */
   padding: 0 2rem;
 }
 
@@ -1021,6 +970,7 @@ input[type="checkbox"] {
 .hosting-detail-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .hosting-detail-container img {
@@ -1077,10 +1027,6 @@ input[type="checkbox"] {
   width: fit-content;
 }
 
-/* .hosting-booking-container {
-
-} */
-
 .hosting-booking-container h5 {
   letter-spacing: -0.6px;
   font-size: 0.95rem;
@@ -1123,14 +1069,9 @@ input[type="checkbox"] {
 /*=========== Inbox Subpage ===========*/
 
 .inbox-container {
-  /* height: 80vh; */
   padding: 2rem 2rem 10rem 2rem;
   display: flex;
 }
-
-/* .chat-inbox {
-  flex: 2;
-} */
 
 .inbox-column-2 {
   flex: 2;
@@ -1367,10 +1308,6 @@ input[type="checkbox"] {
   padding: 0 2rem;
 }
 
-/* .details-column-2 {
-  width: 800px;
-} */
-
 .details-column-2-header {
   display: flex;
   align-items: center;
@@ -1503,14 +1440,6 @@ input[type="checkbox"] {
   font-weight: 500;
 }
 
-/* .amenities-edit-data img {
-  width: 30px;
-} */
-
-/* .accommodations-cat-item {
-  overflow: scroll;
-} */
-
 .amenities-edit-data span {
   letter-spacing: -0.5px;
 }
@@ -1613,10 +1542,6 @@ input[type="checkbox"] {
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
-
-/* .col-grid .headDays {
-  background-color: ;
-} */
 
 /*===== Policies Subage =====*/
 .policies-page {
@@ -1758,16 +1683,12 @@ input[type="checkbox"] {
 .calendar-container {
   width: 100%;
   max-width: 1400px;
-  /* padding: 0 2rem 5rem 0; */
 }
 
 .calendar-page {
-  /* display: flex; */
   margin-bottom: 5rem;
   padding: 0 2rem;
 }
-
-/* .details-column-1 {} */
 
 .date-control {
   width: 100%;
@@ -2076,16 +1997,6 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
-/* .review-header-rate {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.review-header-rate svg {
-  font-size: 1.7rem;
-} */
-
 .review-header h5 {
   font-size: 1.3rem;
   font-weight: 600;
@@ -2105,18 +2016,6 @@ input[type="checkbox"] {
   letter-spacing: -0.5px;
 }
 
-/* .review-profile span {
-  letter-spacing: -0.5px;
-  font-size: 0.9rem;
-  font-weight: 500;
-} */
-
-/* .review-profile img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-} */
-
 .reviews-container p {
   text-decoration: none;
   font-size: 0.95rem;
@@ -2126,12 +2025,6 @@ input[type="checkbox"] {
 .reviews-container {
   margin: 5rem 0 6rem 0;
 }
-
-/* .review-profile-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 50px;
-} */
 
 .review-profile-content {
   display: flex;
@@ -2411,9 +2304,6 @@ input[type="checkbox"] {
 
 /*=========== Experience Page ===========*/
 .experience-categories {
-  /* padding: 0.7rem; */
-  /* border: 1px solid rgb(99, 99, 99); */
-  /* border-radius: 10px; */
   font-weight: 600;
 }
 
@@ -2490,7 +2380,6 @@ input[type="checkbox"] {
 }
 
 .calendar-page-test {
-  /* height: 70vh; */
   padding: 0 2rem 10rem 2rem;
 }
 
@@ -2613,30 +2502,6 @@ input[type="checkbox"] {
     font-weight: 600;
   }
 
-  /* .accommodations-category {
-    display: none;
-  }
-
-  .cars-categories-container {
-    display: none;
-  }
-
-  .experience-categories-container {
-    display: none;
-  } */
-
-  /* .mob-accommodations-category {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    border-radius: 10px;
-    margin: 3rem 0.5rem;
-    align-items: center;
-    text-align: center;
-    padding: 0.5rem;
-  }
-
   .mob-cars-categories-container {
     display: flex;
     flex-wrap: wrap;
@@ -2712,11 +2577,6 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 871px) {
-  /* .homepage h1 {
-    height: 15vh;
-    font-size: 1.8rem;
-  } */
-
   .mob-experience-categories-container span {
     font-size: 0.8rem;
   }
@@ -2788,21 +2648,6 @@ input[type="checkbox"] {
     padding: 1rem;
   }
 
-  /* .mob-accommodations-category {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  .mob-cars-categories-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  .mob-experience-categories-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  } */
-
   .hosting-details a {
     font-size: 0.7rem;
   }
@@ -2820,27 +2665,9 @@ input[type="checkbox"] {
     width: 100px;
     height: 80px;
   }
-
-  /* .listings-manage {
-    width: auto;
-    display: block;
-  } */
-  
 }
 
 @media screen and (max-width: 390px) {
-  /* .mob-accommodations-category {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mob-cars-categories-container {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mob-experience-categories-container {
-    grid-template-columns: 1fr 1fr;
-  } */
-
   .homepage h1 {
     font-size: 1.4rem;
   }

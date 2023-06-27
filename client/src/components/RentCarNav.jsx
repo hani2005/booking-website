@@ -24,7 +24,7 @@ function RentCarNav() {
   }
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -34,7 +34,7 @@ function RentCarNav() {
   }, [])
 
   function logout() {
-    fetch("http://localhost:3000/api/logout", {
+    fetch("https://booking-website-rho.vercel.app/api/logout", {
       credentials: "include",
       method: "POST"
     })

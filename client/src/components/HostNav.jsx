@@ -22,7 +22,7 @@ function HostNav() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile", {
+    fetch("https://booking-website-rho.vercel.app/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -30,14 +30,6 @@ function HostNav() {
       })
     })
   }, [])
-
-  function logout() {
-    fetch("http://localhost:3000/api/logout", {
-      credentials: "include",
-      method: "POST"
-    })
-    setUserInfo(null)
-  }
 
   const username = userInfo?.username
 

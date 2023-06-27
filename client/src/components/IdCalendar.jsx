@@ -6,7 +6,7 @@ import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill
 } from "react-icons/bs"
-import { getMonthYear, getSortedDays, nextMonth, prevMonth } from "../utils"
+import { getMonthYear, getSortedDays } from "../utils"
 import HostNav from "./HostNav"
 import BigFooter from "./BigFooter"
 import { MdArrowBackIos } from "react-icons/md"

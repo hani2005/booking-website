@@ -2,15 +2,10 @@ import React, { useEffect, useState } from "react"
 import HostNav from "./HostNav"
 import BigFooter from "./BigFooter"
 import { Link, useParams } from "react-router-dom"
-import { BiSearch } from "react-icons/bi"
-import placesData, { amenities } from "../data"
 import { BsDot, BsFillLightningFill } from "react-icons/bs"
 import {
   AiFillEye,
-  AiOutlineMinusCircle,
-  AiOutlinePlusCircle
 } from "react-icons/ai"
-import { FiMinus, FiPlus } from "react-icons/fi"
 import axios from "axios"
 
 function ManageListing() {

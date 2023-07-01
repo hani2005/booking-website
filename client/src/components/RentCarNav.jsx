@@ -58,7 +58,7 @@ function RentCarNav() {
         {username ? (
           <>
             <div className="desktop-nav">
-              <Link to={"/rent-car"}>Rent Your Car</Link>
+              <Link to={"/rent-your-car"}>Rent Your Car</Link>
               <button className="logout-btn" onClick={logout}>
                 Logout
               </button>
@@ -113,7 +113,7 @@ function RentCarNav() {
               <div className={backDrop}></div>
               <aside className={aside}>
                 <IoMdClose onClick={closeMenu} />
-                <Link to={"/rent-accommodation"}>Rent Your Car</Link>
+                <Link to={"/rent-your-car"}>Rent Your Car</Link>
                 <button className="logout-btn" onClick={logout}>
                   Logout
                 </button>

@@ -112,7 +112,7 @@ function ExperienceNav() {
               <div className={backDrop}></div>
               <aside className={aside}>
                 <IoMdClose onClick={closeMenu} />
-                <Link to={"/rent-accommodation"}>Host Your Experience</Link>
+                <Link to={"/host-experience"}>Host Your Experience</Link>
                 <button className="logout-btn" onClick={logout}>
                   Logout
                 </button>

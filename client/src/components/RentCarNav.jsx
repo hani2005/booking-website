@@ -58,7 +58,7 @@ function RentCarNav() {
         {username ? (
           <>
             <div className="desktop-nav">
-              <Link to={"/rent-accommodation"}>Rent Your Car</Link>
+              <Link to={"/rent-car"}>Rent Your Car</Link>
               <button className="logout-btn" onClick={logout}>
                 Logout
               </button>

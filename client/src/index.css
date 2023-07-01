@@ -970,7 +970,6 @@ input[type="checkbox"] {
 .hosting-detail-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
 .hosting-detail-container img {

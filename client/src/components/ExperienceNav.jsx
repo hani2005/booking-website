@@ -57,7 +57,7 @@ function ExperienceNav() {
         {username ? (
           <>
             <div className="desktop-nav">
-              <Link to={"/rent-accommodation"}>Host Your Experience</Link>
+              <Link to={"/host-experience"}>Host Your Experience</Link>
               <button className="logout-btn" onClick={logout}>
                 Logout
               </button>

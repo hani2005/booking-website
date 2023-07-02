@@ -42,7 +42,7 @@ function HostingPage() {
   ])
 
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("https://digitalbnb.ae/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {

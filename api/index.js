@@ -575,8 +575,8 @@ app.post("/api/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `https://booking-website-rho.vercel.app/${place._id}/success`,
-    cancel_url: `https://booking-website-rho.vercel.app/${place._id}/cancel`
+    success_url: `https://digitalbnb.ae/${place._id}/success`,
+    cancel_url: `https://digitalbnb.ae/${place._id}/cancel`
   })
   res.json({ url: session.url })
 })
@@ -598,8 +598,8 @@ app.post("/api/car-rent/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `https://booking-website-rho.vercel.app/${carsData._id}/success`,
-    cancel_url: `https://booking-website-rho.vercel.app/${carsData._id}/cancel`
+    success_url: `https://digitalbnb.ae/${carsData._id}/success`,
+    cancel_url: `https://digitalbnb.ae/${carsData._id}/cancel`
   })
   res.json({ url: session.url })
 })
@@ -621,8 +621,8 @@ app.post("/api/book-experience/checkout", async (req, res) => {
     ],
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `https://booking-website-rho.vercel.app/${experienceData._id}/success`,
-    cancel_url: `https://booking-website-rho.vercel.app/${experienceData._id}/cancel`
+    success_url: `https://digitalbnb.ae/${experienceData._id}/success`,
+    cancel_url: `https://digitalbnb.ae/${experienceData._id}/cancel`
   })
   res.json({ url: session.url })
 })

@@ -47,7 +47,7 @@ function Experience() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("https://digitalbnb.ae/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -96,7 +96,7 @@ function Experience() {
   }
 
   const checkout = async () => {
-    await fetch("https://booking-website-rho.vercel.app/api/book-experience/checkout", {
+    await fetch("https://digitalbnb.ae/api/book-experience/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

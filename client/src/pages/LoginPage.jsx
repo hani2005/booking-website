@@ -13,7 +13,7 @@ function LoginPage() {
 
   async function login(e) {
     e.preventDefault()
-    const response = await fetch("https://booking-website-rho.vercel.app/api/login", {
+    const response = await fetch("https://digitalbnb.ae/api/login", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },

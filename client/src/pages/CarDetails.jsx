@@ -47,7 +47,7 @@ function CarDetails() {
 
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("https://digitalbnb.ae/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -97,7 +97,7 @@ function CarDetails() {
   }
 
   const checkout = async () => {
-    await fetch("https://booking-website-rho.vercel.app/api/car-rent/checkout", {
+    await fetch("https://digitalbnb.ae/api/car-rent/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

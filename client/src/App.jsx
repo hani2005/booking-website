@@ -19,7 +19,7 @@ import axios from "axios";
 import { UserContextProvider } from "./UserContext"
 
 function App() {
-  axios.defaults.baseURL = "https://booking-website-rho.vercel.app/api"
+  axios.defaults.baseURL = "https://digitalbnb.ae/api"
   axios.defaults.withCredentials = true
   
   return (

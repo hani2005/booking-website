@@ -24,7 +24,7 @@ function RentCarNav() {
   }
   const { setUserInfo, userInfo } = useContext(UserContext)
   useEffect(() => {
-    fetch("https://booking-website-rho.vercel.app/api/profile", {
+    fetch("https://digitalbnb.ae/api/profile", {
       credentials: "include"
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -34,7 +34,7 @@ function RentCarNav() {
   }, [])
 
   function logout() {
-    fetch("https://booking-website-rho.vercel.app/api/logout", {
+    fetch("https://digitalbnb.ae/api/logout", {
       credentials: "include",
       method: "POST"
     })

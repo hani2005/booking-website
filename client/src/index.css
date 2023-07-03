@@ -283,8 +283,8 @@ nav img {
 .places-data-container {
   max-width: 1200px;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 1rem;
 }
@@ -1729,7 +1729,7 @@ input[type="checkbox"] {
   border: 1px solid;
   height: 30px;
   padding: 5px;
-  background: #E1E7F0;
+  background: #e1e7f0;
   color: black;
   font-weight: 600;
 }
@@ -2523,9 +2523,8 @@ input[type="checkbox"] {
     align-items: center;
     text-align: center;
     padding: 0.5rem;
-  } */
-
-  .aside a:hover {
+  }
+  */ .aside a:hover {
     background-color: transparent;
   }
 
@@ -2541,7 +2540,7 @@ input[type="checkbox"] {
     height: 35rem;
     width: auto;
   }
-  
+
   .experience-categories-container {
     justify-content: center;
   }
@@ -2638,7 +2637,7 @@ input[type="checkbox"] {
   .accommodations-category {
     padding: 1rem;
   }
-  
+
   .experience-categories-container {
     padding: 1rem;
   }
@@ -2659,16 +2658,28 @@ input[type="checkbox"] {
     width: 180px;
     height: 165px;
   }
-  
+
   .hosting-booking-imgs img {
     width: 100px;
     height: 80px;
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 397px) {
   .homepage h1 {
     font-size: 1.4rem;
+  }
+
+  .accommodations-category {
+    padding: 0.5rem;
+  }
+
+  .experience-categories-container {
+    padding: 0.5rem;
+  }
+
+  .cars-categories-container {
+    padding: 0.5rem;
   }
 
   .listings-search {

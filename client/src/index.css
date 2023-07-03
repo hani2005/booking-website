@@ -293,6 +293,7 @@ nav img {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  width: 18rem;
   gap: 5px;
   text-decoration: none;
   color: black;
@@ -2601,6 +2602,10 @@ input[type="checkbox"] {
   .accommodations-cat-item span {
     font-size: 0.7rem;
   }
+
+  .places-data {
+    width: auto;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -2608,7 +2613,7 @@ input[type="checkbox"] {
     height: 20vh;
     font-size: 2rem;
   }
-
+  
   .accommodations-category {
     justify-content: center;
   }

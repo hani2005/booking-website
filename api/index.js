@@ -436,6 +436,7 @@ app.post("/api/bookings", async (req, res) => {
     maxGuests,
     checkIn,
     checkOut,
+    totalPrice
   } = req.body
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err
@@ -454,6 +455,7 @@ app.post("/api/bookings", async (req, res) => {
       maxGuests,
       checkIn,
       checkOut,
+      totalPrice
     })
     res.json(BookingDoc)
   })
@@ -481,6 +483,7 @@ app.post("/api/car-rent", async (req, res) => {
     description,
     from,
     to,
+    totalPrice,
     modelYear
   } = req.body
   jwt.verify(token, secret, {}, async (err, info) => {
@@ -496,6 +499,7 @@ app.post("/api/car-rent", async (req, res) => {
       description,
       from,
       to,
+      totalPrice,
       modelYear
     })
     res.json(CarRentDoc)
@@ -524,6 +528,7 @@ app.post("/api/book-experience", async (req, res) => {
     description,
     from,
     to,
+    totalPrice,
   } = req.body
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err
@@ -538,6 +543,7 @@ app.post("/api/book-experience", async (req, res) => {
       description,
       from,
       to,
+      totalPrice,
     })
     res.json(BookExperienceDoc)
   })

@@ -84,6 +84,7 @@ function CarDetails() {
     await axios.post("/car-rent", {
       from: state[0].startDate,
       to: state[0].endDate,
+      totalPrice: carsData.totalPrice,
       title: carsData.title,
       country: carsData.country,
       address: carsData.address,

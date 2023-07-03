@@ -24,7 +24,7 @@ const salt = bcrypt.genSaltSync(10)
 
 // jwt secret
 const secret = "sasofasfo43ogoeg5546p45kpojhuu21y8e1"
-const bucket = "digital-bnb"
+const bucket = "digital-bnb-2023"
 
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }))
 app.use(express.json())

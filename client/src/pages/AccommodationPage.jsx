@@ -85,7 +85,6 @@ function AccommodationPage() {
     await axios.post("/bookings", {
       checkIn: state[0].startDate,
       checkOut: state[0].endDate,
-      totalPrice: place.totalPrice,
       title: place.title,
       country: place.country,
       address: place.address,

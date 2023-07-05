@@ -31,8 +31,6 @@ function HostNav() {
     })
   }, [])
 
-  const username = userInfo?.username
-
   return (
     <nav className="host-nav">
       <Link to={"/"}>
@@ -47,6 +45,7 @@ function HostNav() {
           <Link to={"/listings"}>Menu</Link>
           <IoIosArrowDown />
         </div>
+        <Link to={"/hosting/profile"}>Profile</Link>
       </div>
       <div className="profile">
         <Link to={"/hosting/today"} className="user-container">
@@ -75,6 +74,9 @@ function HostNav() {
           </Link>
           <Link onClick={closeMenu} to={"/listings"}>
             Menu
+          </Link>
+          <Link onClick={closeMenu} to={"/hosting/profile"}>
+            Profile
           </Link>
         </aside>
       </div>

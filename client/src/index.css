@@ -1207,7 +1207,6 @@ input[type="checkbox"] {
 /*=========== Listings Page ===========*/
 
 .listings-container {
-  height: 50vh;
   margin: 0 2rem 5rem 2rem;
 }
 

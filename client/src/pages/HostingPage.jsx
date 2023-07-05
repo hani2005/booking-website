@@ -31,7 +31,7 @@ function HostingPage() {
       setExperienceData(data)
     })
   }, [])
-
+  
   let { subpage } = useParams()
   const [state, setState] = useState([
     {
@@ -373,6 +373,11 @@ function HostingPage() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+      {subpage === "profile" && (
+        <div>
+          <span>{userInfo.username}</span>
         </div>
       )}
       <BigFooter />

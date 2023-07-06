@@ -19,9 +19,9 @@ import axios from "axios";
 import { UserContextProvider } from "./UserContext"
 
 function App() {
-  axios.defaults.baseURL = "http://localhost:3000/api"
+  axios.defaults.baseURL = "https://digitalbnb.ae/api"
   axios.defaults.withCredentials = true
-  
+
   return (
     <div className="container">
       <UserContextProvider>

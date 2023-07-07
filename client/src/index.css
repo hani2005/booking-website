@@ -127,7 +127,7 @@ aside a:hover {
 .homepage h1 {
   text-align: center;
   font-size: 3.5rem;
-  min-height: 45vh;
+  min-height: 50vh;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -2425,12 +2425,6 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 1662px) {
-  /* .homepage h1 {
-    height: 40vh;
-  } */
-}
-
 @media screen and (max-width: 1430px) {
   .cars-categories img {
     width: 40px;
@@ -2438,11 +2432,11 @@ input[type="checkbox"] {
   }
 }
 
-@media screen and (max-width: 1368px) {
+/* @media screen and (max-width: 1368px) {
   .homepage h1 {
     min-height: 30vh;
   }
-}
+} */
 
 @media screen and (max-width: 1290px) {
   .accommodations-category {
@@ -2830,10 +2824,10 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 397px) {
-  .homepage h1 {
+  /* .homepage h1 {
     font-size: 1.5rem;
     min-height: 30vh;
-  }
+  } */
 
   .menu {
     font-size: 1.1rem;

@@ -2425,6 +2425,12 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 1465px) {
+  .homepage h1 {
+    height: 45vh;
+  }
+}
+
 @media screen and (max-width: 1430px) {
   .cars-categories img {
     width: 40px;

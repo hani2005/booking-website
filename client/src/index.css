@@ -2827,6 +2827,10 @@ input[type="checkbox"] {
   .small-img-container img {
     height: 150px;
   }
+
+  .homepage h1 {
+    height: 20vh;
+  }
 }
 
 @media screen and (max-width: 397px) {

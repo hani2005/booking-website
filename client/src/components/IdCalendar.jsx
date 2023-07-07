@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import placesData, { DAYS } from "../data"
 import {
-  BsCheckLg,
-  BsFillArrowLeftCircleFill,
-  BsFillArrowRightCircleFill
+  BsCheckLg
 } from "react-icons/bs"
 import { getMonthYear, getSortedDays } from "../utils"
 import HostNav from "./HostNav"

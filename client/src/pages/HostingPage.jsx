@@ -19,12 +19,14 @@ function HostingPage() {
       setPlaces(data)
     })
   }, [])
+
   const [carsData, setCarsData] = useState([])
   useEffect(() => {
     axios.get("/user-cars").then(({ data }) => {
       setCarsData(data)
     })
   }, [])
+  
   const [experienceData, setExperienceData] = useState([])
   useEffect(() => {
     axios.get("/user-experiences").then(({ data }) => {
@@ -97,7 +99,7 @@ function HostingPage() {
               </Link>
             ))}
             {carsData.map((place) => (
-              <Link key={place._id} to={`/accommodation/${place._id}`}>
+              <Link key={place._id} to={`/car-details/${place._id}`}>
                 <img src={place.photos[0]} alt="" />
                 <h5>{place.address}</h5>
                 <span>{place.title}</span>
@@ -108,7 +110,7 @@ function HostingPage() {
               </Link>
             ))}
             {experienceData.map((place) => (
-              <Link key={place._id} to={`/accommodation/${place._id}`}>
+              <Link key={place._id} to={`/experience/${place._id}`}>
                 <img src={place.photos[0]} alt="" />
                 <h5>{place.address}</h5>
                 <span>{place.title}</span>
@@ -377,7 +379,6 @@ function HostingPage() {
       )}
       {subpage === "profile" && (
         <div className="profile-hosting-page">
-          <span>{userInfo.username}</span>
         </div>
       )}
       <BigFooter />

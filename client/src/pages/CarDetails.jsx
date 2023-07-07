@@ -158,7 +158,7 @@ function CarDetails() {
       <div className="place-details-container">
         <div className="place-details">
           <h1>
-            Car hosted by Ahmed <span>{carsData.host}</span>
+            Car hosted by <span>{carsData.host}</span>
           </h1>
           <div className="desc-container">
             <h2>About This Car</h2>

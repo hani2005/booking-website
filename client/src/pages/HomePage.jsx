@@ -35,7 +35,6 @@ function HomePage() {
         loop
         type="video/mp4"
       ></video>
-      <MobAccommodationsCat places={places}/>
       <PlacesData />
       <SmallFooter />
     </>

@@ -209,6 +209,7 @@ function RentAccommodation() {
               <div className="place-basic-input">
                 <input
                   type="text"
+                  placeholder="2"
                   value={maxGuests}
                   onChange={(e) => setMaxGuests(e.target.value)}
                 />
@@ -219,6 +220,7 @@ function RentAccommodation() {
               <div className="place-basic-input">
                 <input
                   type="text"
+                  placeholder="1"
                   value={bedrooms}
                   onChange={(e) => setBedrooms(e.target.value)}
                 />
@@ -229,6 +231,7 @@ function RentAccommodation() {
               <div className="place-basic-input">
                 <input
                   type="text"
+                  placeholder="3"
                   value={beds}
                   onChange={(e) => setBeds(e.target.value)}
                 />
@@ -239,6 +242,7 @@ function RentAccommodation() {
               <div className="place-basic-input">
                 <input
                   type="text"
+                  placeholder="2"
                   value={bathrooms}
                   onChange={(e) => setBathrooms(e.target.value)}
                 />

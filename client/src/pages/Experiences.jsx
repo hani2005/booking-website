@@ -40,13 +40,6 @@ function Experiences() {
         loop
         type="video/mp4"
       ></video>
-      <div className="mob-experience-categories-container">
-        {experienceCategories.map((item) => (
-          <div key={item.label} className="experience-categories">
-            <span>{item.label}</span>
-          </div>
-        ))}
-      </div>
       <div className="experienceData-container">
         {experienceData.map((item) => (
           <Link

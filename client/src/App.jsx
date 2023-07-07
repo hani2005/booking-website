@@ -46,9 +46,11 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/rent-car" element={<RentCar />} />
           <Route path="/rent-your-car" element={<RentYourCar />} />
+          <Route path="/rent-your-car/:id" element={<RentYourCar />} />
           <Route path="/car-details/:id" element={<CarDetails />} />
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/host-experience" element={<HostExperience />} />
+          <Route path="/host-experience/:id" element={<HostExperience />} />
           <Route path="/experience/:id" element={<Experience />} />
         </Routes>
       </UserContextProvider>

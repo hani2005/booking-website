@@ -79,6 +79,10 @@ function AccommodationPage() {
         setRedirect(true)
       }, 2000)
     }
+    if (window.location.href.includes("cancel")) {
+      // toast.success("Place has been successfully booked")
+      setRedirect(true)
+    }
   }, [state[0], nowPrice])
 
   async function bookThisPlace() {

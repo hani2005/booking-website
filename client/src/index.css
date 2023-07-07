@@ -2851,7 +2851,7 @@ input[type="checkbox"] {
     margin-top: 0.8rem;
   }
 
-  .accommodations-category {
+  /* .accommodations-category {
     display: none;
   }
   .cars-categories-container {
@@ -2859,7 +2859,7 @@ input[type="checkbox"] {
   }
   .experience-categories-container {
     display: none;
-  }
+  } */
 
   .experience-categories-container {
     padding: 0.5rem;

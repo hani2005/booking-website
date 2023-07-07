@@ -3,7 +3,7 @@ import AccommodationsNav from "../components/AccommodationsNav"
 import AccommodationsCat from "../components/AccommodationsCat"
 import PlacesData from "../components/PlacesData"
 import SmallFooter from "../components/SmallFooter"
-import banner from "../assets/dubai-banner.mp4"
+import banner from "../assets/dubai.mp4"
 import Modal from "../components/Modal"
 import axios from "axios"
 

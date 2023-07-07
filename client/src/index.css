@@ -904,6 +904,7 @@ input[type="checkbox"] {
 
 .today {
   padding: 0 2rem;
+  min-height: 50vh;
 }
 
 .pending-review {
@@ -940,6 +941,10 @@ input[type="checkbox"] {
 .hosting-menu {
   display: flex;
   align-items: center;
+}
+
+.profile-hosting-page {
+  min-height: 50vh;
 }
 
 .hosting-page h2 {
@@ -1071,6 +1076,7 @@ input[type="checkbox"] {
 .inbox-container {
   padding: 2rem 2rem 10rem 2rem;
   display: flex;
+  min-height: 50vh;
 }
 
 .inbox-column-2 {
@@ -1208,6 +1214,7 @@ input[type="checkbox"] {
 
 .listings-container {
   margin: 0 2rem 5rem 2rem;
+  min-height: 50vh;
 }
 
 .listings-page {
@@ -2091,7 +2098,7 @@ input[type="checkbox"] {
 /*=========== Insights Subpage ===========*/
 .insights-container {
   display: flex;
-
+  min-height: 50vh;
   gap: 150px;
   padding: 0 2rem;
 }
@@ -2379,6 +2386,7 @@ input[type="checkbox"] {
 }
 
 .calendar-page-test {
+  min-height: 50vh;
   padding: 0 2rem 10rem 2rem;
 }
 
@@ -2674,8 +2682,12 @@ input[type="checkbox"] {
     font-size: 1.4rem;
   }
 
+  .menu {
+    font-size: 1.1rem;
+  }
+
   .accommodations-category {
-    padding: 0.5rem;
+    display: none;
   }
 
   .experience-categories-container {

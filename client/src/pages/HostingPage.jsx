@@ -376,7 +376,7 @@ function HostingPage() {
         </div>
       )}
       {subpage === "profile" && (
-        <div>
+        <div className="profile-hosting-page">
           <span>{userInfo.username}</span>
         </div>
       )}

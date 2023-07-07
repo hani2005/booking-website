@@ -2653,10 +2653,6 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 871px) {
-  /* .mob-experience-categories-container span {
-    font-size: 0.8rem;
-  } */
-
   .experienceData-content {
     width: 100%;
   }

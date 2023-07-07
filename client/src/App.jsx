@@ -30,6 +30,10 @@ function App() {
           <Route path="/accommodation/:id" element={<AccommodationPage />} />
           <Route path="/:id/success" element={<AccommodationPage />} />
           <Route path="/:id/cancel" element={<AccommodationPage />} />
+          <Route path="/:id/success" element={<CarDetails />} />
+          <Route path="/:id/cancel" element={<CarDetails />} />
+          <Route path="/:id/success" element={<Experience />} />
+          <Route path="/:id/cancel" element={<Experience />} />
           <Route path="/car-details/:id/success" element={<CarDetails />} />
           <Route path="/car-details/:id/canceled" element={<CarDetails />} />
           <Route path="/experience/:id/success" element={<Experience />} />

@@ -127,7 +127,7 @@ aside a:hover {
 .homepage h1 {
   text-align: center;
   font-size: 3.5rem;
-  min-height: 50vh;
+  height: 50vh;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -2434,7 +2434,7 @@ input[type="checkbox"] {
 
 @media screen and (max-width: 1368px) {
   .homepage h1 {
-    min-height: 45vh;
+    height: 45vh;
   }
 }
 
@@ -2517,7 +2517,7 @@ input[type="checkbox"] {
   }
 
   .homepage h1 {
-    min-height: 20vh;
+    height: 20vh;
   }
 }
 
@@ -2826,7 +2826,7 @@ input[type="checkbox"] {
 @media screen and (max-width: 397px) {
   .homepage h1 {
     font-size: 1.5rem;
-    min-height: 30vh;
+    height: 30vh;
   }
 
   .menu {
